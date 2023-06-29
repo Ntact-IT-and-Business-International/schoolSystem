@@ -1,0 +1,11 @@
+<script src="{{ asset('Front/js/jquery.js')}}"></script>
+<script src="{{ asset('Front/js/jquery.easing.1.3.js')}}"></script>
+<script src="{{ asset('Front/js/bootstrap.min.js')}}"></script>
+<script src="{{ asset('Front/js/jquery.fancybox.pack.js')}}"></script>
+<script src="{{ asset('Front/js/jquery.fancybox-media.js')}}"></script> 
+<script src="{{ asset('Front/js/portfolio/jquery.quicksand.js')}}"></script>
+<script src="{{ asset('Front/js/portfolio/setting.js')}}"></script>
+<script src="{{ asset('Front/js/jquery.flexslider.js')}}"></script>
+<script src="{{ asset('Front/js/animate.js')}}"></script>
+<script src="{{ asset('Front/js/custom.js')}}"></script>
+<script src="{{ asset('Front/js/owl-carousel/owl.carousel-2.html')}}"></script>

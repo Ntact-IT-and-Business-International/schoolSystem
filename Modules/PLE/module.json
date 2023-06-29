@@ -1,0 +1,11 @@
+{
+    "name": "PLE",
+    "alias": "ple",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PLE\\Providers\\PLEServiceProvider"
+    ],
+    "files": []
+}

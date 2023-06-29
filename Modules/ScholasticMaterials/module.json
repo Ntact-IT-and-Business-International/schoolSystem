@@ -1,0 +1,11 @@
+{
+    "name": "ScholasticMaterials",
+    "alias": "scholasticmaterials",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ScholasticMaterials\\Providers\\ScholasticMaterialsServiceProvider"
+    ],
+    "files": []
+}

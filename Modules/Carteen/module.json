@@ -1,0 +1,11 @@
+{
+    "name": "Carteen",
+    "alias": "carteen",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Carteen\\Providers\\CarteenServiceProvider"
+    ],
+    "files": []
+}
