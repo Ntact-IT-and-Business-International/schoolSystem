@@ -22,7 +22,11 @@ class StudentsForClassessPerYear extends Component
     public function render()
     {
         return view('livewire.students-for-classess-per-year',[
-            'students_for_particular_for_year' =>Student::getStudentsForClassesForYear($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
+            'students_for_particular_for_year' =>Student::getStudentsForClassesForYear($this->class_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
+    }
+    public function mount($class_id)
+    {
+        $this->class_id = $class_id;
     }
 }

@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @livewire('classess-per-year',['class_id'=>$class_id])
+    @livewire('classess-per-year',['year_id'=>$year_id])
 
 @endsection

@@ -32,9 +32,9 @@ class StudentsPerYear extends Component
      * This function gets the last five year upto the current year
      */
     private function getYears(){
-        return Student::distinct()->join('users', 'users.id', 'students.user_id')
+        return Student::join('users', 'users.id', 'students.user_id')
         ->join('classes', 'classes.id', 'students.class_id')
-        ->whereYear('students.created_at', '>=',now()->subYears(5)->format('Y'))
+        ->whereYear('students.created_at', '>',now()->subYear(5))
         ->distinct('students.created_at')
         ->get( ['students.*']); 
     }
@@ -44,9 +44,5 @@ class StudentsPerYear extends Component
             ->orderBy('students.created_at')
             ->pluck(\DB::raw('Year(students.created_at) as year'))
             ->toArray();
-
-            //$this->$class_id =class_id;
-
-            //$this->class_id = $class_id;
     }
 }

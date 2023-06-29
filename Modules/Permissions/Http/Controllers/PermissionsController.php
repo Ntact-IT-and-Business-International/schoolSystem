@@ -45,8 +45,8 @@ class PermissionsController extends Controller
     /**
      * This function gets all particular users types Permissions
      */
-    public function userTypePermissions($permission_id){
-        return view('permissions::user_types_permissions',compact('permission_id'));
+    public function userTypePermissions($category_id){
+        return view('permissions::user_types_permissions',compact('category_id'));
     }
     /**
      * This function gets all Particular users types permissions

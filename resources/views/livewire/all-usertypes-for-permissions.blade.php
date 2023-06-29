@@ -57,7 +57,7 @@
         <div class="col-sm-6">
         </div>
         <div class="col-sm-6 text-right">
-            <button class="btn btn-success btn-sm mb-3 btn-square" onclick="Livewire.emit('openModal', 'account-settings.add-category')"><i class="feather icon-plus"></i> Add Nurse(s)</button>
+            <button class="btn btn-success btn-sm mb-3 btn-square" onclick="Livewire.emit('openModal', 'account-settings.add-category')"><i class="feather icon-plus"></i> Add User Title(s)</button>
         </div>
     </div>
 </div>

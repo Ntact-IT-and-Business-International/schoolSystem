@@ -120,21 +120,20 @@ class Student extends Model
     /**
      * This function gets classes and students for a particular year
      */
-    public static function getClassesForYear($search, $sortBy, $sortDirection, $perPage){
+    public static function getClassesForYear($year_id,$search, $sortBy, $sortDirection, $perPage){
         return Student::join('users', 'users.id', 'students.user_id')
         ->join('classes', 'classes.id', 'students.class_id')
-        ->whereYear('students.created_at', date('Y', strtotime('students.created_at')))
-        //->whereYear('students.created_at', date('Y'))
+        ->whereYear('students.created_at',$year_id)
         ->distinct('classes.level')
         ->paginate($perPage, ['students.*','classes.level']);
     }
     /**
      * This function gets classes and students for a particular year
      */
-    public static function getStudentsForClassesForYear($search, $sortBy, $sortDirection, $perPage){
+    public static function getStudentsForClassesForYear($class_id,$search, $sortBy, $sortDirection, $perPage){
         return Student::join('users', 'users.id', 'students.user_id')
         ->join('classes', 'classes.id', 'students.class_id')
-        ->whereYear('students.created_at', date('Y')-1)
+        ->whereClassId($class_id)
         ->paginate($perPage, ['students.*','classes.level']);
     }
 }

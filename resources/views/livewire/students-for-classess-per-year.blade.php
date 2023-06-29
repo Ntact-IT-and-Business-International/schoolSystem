@@ -37,6 +37,9 @@
                 <th scope="col" wire:click="sortBy('date_of_birth')" style="cursor: pointer;"> Class
                     @include('partials._sort-icon',['field'=>'date_of_birth'])
                 </th>
+                <th scope="col" wire:click="sortBy('created_at')" style="cursor: pointer;"> Year
+                    @include('partials._sort-icon',['field'=>'created_at'])
+                </th>
                 <th scope="col" wire:click="sortBy('date_of_birth')" style="cursor: pointer;"> DOB
                     @include('partials._sort-icon',['field'=>'date_of_birth'])
                 </th>
@@ -64,7 +67,7 @@
                 <th scope="col" wire:click="sortBy('photo')" style="cursor: pointer;"> Photo
                     @include('partials._sort-icon',['field'=>'photo'])
                 </th>
-                <th>Option</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -73,6 +76,7 @@
                 <th scope="row">{{$students_for_particular_for_year->firstitem() + $i}}</th>
                 <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
                 <td>{{$student->level}}</td>
+                <td>{{ date('Y', strtotime($student->created_at))}}</td>
                 <td>{{$student->date_of_birth}}</td>
                 <td>{{$student->gender}}</td>
                 <td>{{$student->special_need}}</td>

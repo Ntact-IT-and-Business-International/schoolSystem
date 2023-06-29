@@ -66,7 +66,7 @@
         </div>
     </div>
 </div>
- <div class="row">
+<div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$all_permissions->firstItem()}} to {{$all_permissions->lastItem()}} out of {{$all_permissions->total()}} items
         </div>

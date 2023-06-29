@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @livewire('all-user-type-permissions',['permission_id'=>$permission_id])
+    @livewire('all-user-type-permissions',['category_id'=>$category_id])
 
 @endsection

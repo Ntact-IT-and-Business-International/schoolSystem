@@ -50,8 +50,8 @@ class StudentsController extends Controller
     /**
      * This function gets the students for the particular year class
      */
-    public function studentsForParticularYearClass($class_id){
-        return view('students::classes_per_year',compact('class_id'));
+    public function studentsForParticularYearClass($year_id){
+        return view('students::classes_per_year',compact('year_id'));
     }
     /**
      * This function gets the students for the particular year class

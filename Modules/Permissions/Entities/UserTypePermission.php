@@ -37,12 +37,12 @@ class UserTypePermission extends Model
     /**
      * This function get permissions for particular Usertype  
      */
-    public static function getUsertypePermissions($search, $sortBy, $sortDirection, $perPage)
+    public static function getUsertypePermissions($category_id,$search, $sortBy, $sortDirection, $perPage)
     {
         return UserTypePermission::join('users', 'users.id', 'user_type_permissions.created_by')
         ->join('permissions', 'permissions.id', 'user_type_permissions.created_by')
         ->join('user_types', 'user_types.id', 'user_type_permissions.usertype_id')
-        //->where('user_types.id','user_type_permissions.usertype_id')
+        ->where('user_types.id',$category_id)
         ->search($search)
         ->orderBy($sortBy, $sortDirection)
         ->paginate($perPage, ['user_type_permissions.*','users.name','user_types.category','permissions.permission']);

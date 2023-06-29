@@ -19,6 +19,6 @@ Route::group(['prefix' => 'permissions', 'middleware' => ['auth']], function () 
 
     //This routes are for adding users particular permission 
     Route::get('users-for-permissions','PermissionsController@allUserTypesForPermission')->name('Users Categories'); 
-    Route::get('view-permissions/{permission_id}','PermissionsController@userTypePermissions')->name('User Type Permissions'); 
+    Route::get('view-permissions/{category_id}','PermissionsController@userTypePermissions')->name('User Type Permissions'); 
     Route::get('select-permissions','PermissionsController@permission')->name('Permissions'); 
 });
