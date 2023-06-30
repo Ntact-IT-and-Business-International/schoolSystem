@@ -23,12 +23,14 @@ class Expenditure extends Model
         ->orWhere('unit_price', 'like', '%'.$val.'%') 
         ->orWhere('amount', 'like', '%'.$val.'%')
         ->orWhere('signed_by', 'like', '%'.$val.'%')
+        ->orWhere('term', 'like', '%'.$val.'%')
+        ->orWhere('user_types.category', 'like', '%'.$val.'%')
         ->orWhere('users.name', 'like', '%'.$val.'%');
     }
     /**
      * This function creates the expenditure
      */
-    public static function addExpenditure($item,$user_type_id,$quantity,$unit_price,$amount,$signed_by){
+    public static function addExpenditure($item,$user_type_id,$quantity,$unit_price,$amount,$signed_by,$term){
         Expenditure::create([
             'item'         =>$item,
             'user_type_id' =>$user_type_id,
@@ -36,6 +38,7 @@ class Expenditure extends Model
             'unit_price'  =>$unit_price,
             'amount'      =>$amount,
             'signed_by'   =>$signed_by,
+            'term'        =>$term,
             'user_id' =>auth()->user()->id,
         ]);
     }
@@ -61,7 +64,7 @@ class Expenditure extends Model
     /**
      * This function updates the edited expenditure
      */
-    public static function updatExpenditureInfo($expenditure_id,$item,$quantity,$unit_price,$amount,$signed_by)
+    public static function updatExpenditureInfo($expenditure_id,$item,$quantity,$unit_price,$amount,$signed_by,$term)
     {
         Expenditure::whereId($expenditure_id)->update([
             'item'        => $item,
@@ -69,6 +72,7 @@ class Expenditure extends Model
             'unit_price'  => $unit_price,
             'amount'      => $amount,
             'signed_by'   =>$signed_by,
+            'term'        =>$term,
             'user_id'     =>auth()->user()->id,
         ]);
     }

@@ -18,6 +18,7 @@ class AddFees extends ModalComponent
     public $payment_code;
     public $class_id;
     public $date_of_payment;
+    public $term;
 
     //validate category
     protected $rules = [
@@ -26,6 +27,7 @@ class AddFees extends ModalComponent
         'balance'     => 'required',
         'mode_of_payment'  => 'required',
         'payment_code'  => 'required',
+        'term'          =>'required',
     ];
 
     /**
@@ -37,6 +39,7 @@ class AddFees extends ModalComponent
         'balance.required' => 'Balance is required',
         'mode_of_payment.required' => 'Mode of Payment is required',
         'payment_code.required' => 'Payment Code is required',
+        'term.required' => 'Term is required',
     ];
 
     public function render()
@@ -53,7 +56,7 @@ class AddFees extends ModalComponent
     {
         $this->validate();
         $this->emit('Fees', 'refreshComponent');
-        Fee::addPayment($this->student_id,$this->class_id,$this->amount_paid,$this->balance,$this->mode_of_payment,$this->payment_code,$this->date_of_payment);
+        Fee::addPayment($this->student_id,$this->class_id,$this->amount_paid,$this->balance,$this->mode_of_payment,$this->payment_code,$this->date_of_payment,$this->term);
         //activity()->log(auth()->user()->name.' Added a new Category called '.$this->category);
         $this->closeModal();
         Session::flash('msg', 'Fees creation is successful');

@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Office in Charge</label>
                             <select class="custom-select" wire:model="user_type_id">
                                 @foreach($user_types as $type)
@@ -38,12 +38,19 @@
                             </select>
                         @error('user_type_id') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Signed By</label>
                         <input type="text" class="form-control" wire:model="signed_by" placeholder="">
                         @error('signed_by') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Term</label>
+                        <select class="custom-select" wire:model="term">
+                                    <option value="1">Term 1</option>
+                                    <option value="2">Term 2</option>
+                                    <option value="3">Term 2</option>
+                            </select>
+                        @error('term') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="text-center">

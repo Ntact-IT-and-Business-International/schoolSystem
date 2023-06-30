@@ -1,8 +1,76 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
-</div>
-<div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
+    <div class="row">
+            <!-- Staustic card 3 Start -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card mb-4">
+                <div class="progress bg-white">
+                    <div class="progress-bar bg-info" style="width:56%"></div>
+                </div>
+                <div class="card-body">
+                    <div class="text-center"> 
+                        <span class="d-block text-primary display-3">{{number_format($this->getExpenditureToday())}}</span>
+                        <p class="mb-0">Shillings</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-info bg-pattern-2">
+                    <h6 class="text-white mb-0">Today Expenditure</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card mb-4">
+                <div class="progress bg-white">
+                    <div class="progress-bar bg-success" style="width:14%"></div>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <span class="d-block text-success display-3">{{number_format($this->getExpenditureThisWeek())}}</span>
+                        <p class="mb-0">Shillings</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-success bg-pattern-2">
+                    <h6 class="text-white mb-0">This Week Expenditure</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card mb-4">
+                <div class="progress bg-white">
+                    <div class="progress-bar bg-danger" style="width:85%"></div>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <span class="d-block text-danger display-3">{{ number_format($this->getExpenditureThisMonth())}}</span>
+                        <p class="mb-0">Shillings</p>
+                    </div>
+                </div>
+                <div class="card-footer bg-danger  bg-pattern-2">
+                    <h6 class="text-white mb-0">This Month Expenditure</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card mb-4">
+                <div class="progress bg-white">
+                    <div class="progress-bar bg-warning" style="width:42%"></div>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                        <p class="mb-0 font-weight-bold">Term 1:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureThisTerm())}}</span></p>
+                        <p class="mb-0 font-weight-bold">Term 2:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureTerm2())}}</span></p>
+                        <p class="mb-0 font-weight-bold">Term 3:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureTerm3())}}</span></p>
+                        <h6>Shillings</h6>
+                        
+                    </div>
+                </div>
+                <div class="card-footer bg-warning  bg-pattern-2">
+                    <h6 class="text-white mb-0">This Year: Ugx:&nbsp;{{ number_format($this->getExpenditureThisYear())}}</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Staustic card 9 end -->
+    </div>
     <div class="card-header with-elements">
         <h6 class="card-header-title mb-0">
                 <div class="form-group col-sm-6">
@@ -37,6 +105,9 @@
                 <th scope="col" wire:click="sortBy('quantity')" style="cursor: pointer;"> Quantity
                     @include('partials._sort-icon',['field'=>'quantity'])
                 </th>
+                <th scope="col" wire:click="sortBy('category')" style="cursor: pointer;"> Category
+                    @include('partials._sort-icon',['field'=>'category'])
+                </th>
                 <th scope="col" wire:click="sortBy('unit_price')" style="cursor: pointer;"> Unit Price
                     @include('partials._sort-icon',['field'=>'unit_price'])
                 </th>
@@ -55,6 +126,7 @@
                 <th scope="row">{{$expenditures->firstitem() + $i}}</th>
                 <td>{{$expenses->item}}</td>
                 <td>{{$expenses->quantity}}</td>
+                <td>{{$expenses->category}}</td>
                 <td>{{ number_format($expenses->unit_price)}}</td>
                 <td>{{ number_format($expenses->amount)}}</td>
                 <td>{{$expenses->signed_by}}</td>

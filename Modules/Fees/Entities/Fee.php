@@ -27,12 +27,13 @@ class Fee extends Model
         ->orWhere('mode_of_payment', 'like', '%'.$val.'%')
         ->orWhere('payment_code', 'like', '%'.$val.'%')
         ->orWhere('date_of_payment', 'like', '%'.$val.'%')
+        ->orWhere('term', 'like', '%'.$val.'%')
         ->orWhere('users.name', 'like', '%'.$val.'%');
     }
     /**
      * This function creates the payments
      */
-    public static function addPayment($student_id,$class_id,$amount_paid,$balance,$mode_of_payment,$payment_code,$date_of_payment){
+    public static function addPayment($student_id,$class_id,$amount_paid,$balance,$mode_of_payment,$payment_code,$date_of_payment,$term){
         Fee::create([
             'student_id'      =>$student_id,
             'class_id'        =>$class_id,
@@ -41,6 +42,7 @@ class Fee extends Model
             'mode_of_payment' =>$mode_of_payment,
             'payment_code'    =>$payment_code,
             'date_of_payment' =>$date_of_payment,
+            'term'            =>$term,
             'user_id' =>auth()->user()->id,
         ]);
     }
@@ -67,7 +69,7 @@ class Fee extends Model
     /**
      * This function updates the edited payments
      */
-    public static function updateFeesInfo($fee_id,$student_id,$amount_paid,$balance,$mode_of_payment,$payment_code,$date_of_payment)
+    public static function updateFeesInfo($fee_id,$student_id,$amount_paid,$balance,$mode_of_payment,$payment_code,$date_of_payment,$term)
     {
         Fee::whereId($fee_id)->update([
             'student_id'      => $student_id,
@@ -76,6 +78,7 @@ class Fee extends Model
             'mode_of_payment' => $mode_of_payment,
             'payment_code'    => $payment_code,
             'date_of_payment' => $date_of_payment,
+            'term'            =>$term,
             'user_id'         =>auth()->user()->id,
         ]);
     }

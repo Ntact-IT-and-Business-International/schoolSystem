@@ -27,8 +27,8 @@
             <div class="card-body">
                 <div class="text-center">
                     <img src="{{ asset('Admin/assets/img/pages/interview.svg')}}" alt="image" class="img-fluid mb-2">
-                    @foreach ($all_permissions as $type)
-                    <h5>{{$type->category}}</h5>
+                    @foreach ($user_types as $type)
+                    <h5 class="font-weight-bold">{{$type->category}}</h5>
                     @endforeach
                 </div>
             </div>
@@ -74,14 +74,12 @@
             {{$all_permissions->links()}}
         </div>
     </div>
-    @foreach ($all_permissions as $type)
     <div class="row align-items-center m-l-0">
         <div class="col-sm-6">
         </div>
         <div class="col-sm-6 text-right">
-                <span><a href="/permissions/select-permissions/{{$type->usertype_id}}" class="btn btn-outline-primary mt-md-0 mt-2">Select Permission</a></span>
+                <span><a href="/permissions/select-permissions/{{request()->route()->category_id}}" class="btn btn-outline-primary mt-md-0 mt-2">Select Permission</a></span>
         </div>
     </div>
-    @endforeach
 </div>
 

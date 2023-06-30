@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('unit_price');
             $table->string('amount');
             $table->string('signed_by');
+            $table->string('term');
             $table->timestamps();
         });
     }

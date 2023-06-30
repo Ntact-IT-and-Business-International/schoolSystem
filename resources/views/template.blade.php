@@ -61,6 +61,7 @@
                         @include('layouts.breadcrumb')
                         <div class="row">
                             <div class="col-md-12">
+                                @include('layouts.message')
                                 <div class="card mb-4">
                                     <div class="card-body">
                                         @yield('content')

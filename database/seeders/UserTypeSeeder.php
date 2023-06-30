@@ -13,7 +13,7 @@ class UserTypeSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = ['Admin', 'Student', 'Director', 'Headteacher', 'Deputy Headteacher', 'Dos', 'Head of Department', 'Matron', 'Security', 'Cleaner', 'Cooks'];
+        $categories = ['Admin', 'Student', 'Director', 'Headteacher', 'Deputy Headteacher', 'Deputy Headteacher Academics','Deputy Headteacher Adminstration','Dos', 'Head of Department', 'Matron', 'Security', 'Cleaner', 'Cooks'];
 
         for ($i = 0; $i < count($categories); $i++) {
             $cat = new UserType();

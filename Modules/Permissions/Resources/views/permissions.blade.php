@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @livewire('permission')
+    @livewire('permission',['user_type_id'=>$user_type_id])
 
 @endsection

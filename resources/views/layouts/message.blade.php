@@ -1,6 +1,6 @@
 @if(session()->has('msg'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>Success! </strong> <span style="color:green; background-color:red">{{session()->get('msg')}}    </span>
+        <strong>Success! </strong> <span>{{session()->get('msg')}}    </span>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>

@@ -18,48 +18,37 @@ class Permission extends Model
     public function scopeSearch($query, $val)
     {
     return $query
-        ->Where('destination', 'like', '%'.$val.'%')
-        ->orWhere('classes.level', 'like', '%'.$val.'%')
-        ->orWhere('reason', 'like', '%'.$val.'%')
-        ->orWhere('reply', 'like', '%'.$val.'%')
-        ->orWhere('users.name', 'like', '%'.$val.'%');
+        ->Where('permission', 'like', '%'.$val.'%');
     }
     /**
      * This function creates the Permissions
      * 
     */
-    public static function requestForPermission($student_id,$staff_id,$class_id,$user_type,$destination,$reason){
-        PermissionRequest::create([
-            'student_id'  =>$student_id,
-            'staff_id'    =>$staff_id,
-            'class_id'    =>$class_id,
-            'user_type'   =>$user_type,
-            'destination' =>$destination,
-            'reason'      =>$reason,
-            'user_id' =>auth()->user()->id,
+    public static function addPermission($usertype_id,$permission_id){
+        Permission::create([
+            'usertype_id'  =>$usertype_id,
+            'permission_id'    =>$permission_id,
+            'status'    =>'active',
+            'created_by' =>auth()->user()->id,
         ]);
     }
     /**
      * This function get permissions for students  
      */
-    public static function getPupilsPermissions($search, $sortBy, $sortDirection, $perPage)
+    public static function getPermissions($search, $sortBy, $sortDirection, $perPage)
     {
-        return PermissionRequest::join('users', 'users.id', 'permission_requests.user_id')
-        ->join('classes', 'classes.id', 'permission_requests.class_id')
-        ->join('students', 'students.id', 'permission_requests.student_id')
-        ->search($search)
+        return Permission::search($search)
         ->orderBy($sortBy, $sortDirection)
-        ->paginate($perPage, ['permission_requests.*','users.name','classes.level','students.last_name','students.first_name','students.other_names',
-                            'students.contact']);
+        ->paginate($perPage, ['permissions.*']);
     }
     /**
      * this function get permissions for staff  
      */
     public static function allStaffPermissions($search, $sortBy, $sortDirection, $perPage)
     {
-        return PermissionRequest::join('users', 'users.id', 'permission_requests.user_id')
-        ->join('staffs', 'staffs.id', 'permission_requests.staff_id')
-        ->join('classes', 'classes.id', 'permission_requests.class_id') 
+        return Permission::join('users', 'users.id', 'permission_requests.user_id')
+        ->join('staffs', 'staffs.id', 'permission_requests.permission_id')
+        ->join('classes', 'classes.id', 'permission_requests.created_by') 
         ->where('permission_requests.user_type', auth()->user()->user_type)
         ->search($search)
         ->orderBy($sortBy, $sortDirection)

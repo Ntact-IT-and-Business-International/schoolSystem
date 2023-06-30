@@ -23,7 +23,8 @@ class AllUserTypePermissions extends Component
     public function render()
     {
         return view('livewire.all-user-type-permissions',[
-            'all_permissions' =>UserTypePermission::getUsertypePermissions($this->category_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
+            'all_permissions' =>UserTypePermission::getUsertypePermissions($this->category_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage),
+            'user_types' =>UserType::whereId($this->category_id)->get()
         ]);
     }
     public function mount($category_id){

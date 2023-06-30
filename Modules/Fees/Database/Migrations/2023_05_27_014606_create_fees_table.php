@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('payment_code');
             $table->string('date_of_payment');
             $table->string('amount_paid');
+            $table->string('term');
             $table->timestamps();
         });
     }
