@@ -40,7 +40,7 @@ class UserTypePermission extends Model
     public static function getUsertypePermissions($category_id,$search, $sortBy, $sortDirection, $perPage)
     {
         return UserTypePermission::join('users', 'users.id', 'user_type_permissions.created_by')
-        ->join('permissions', 'permissions.id', 'user_type_permissions.created_by')
+        ->join('permissions', 'permissions.id', 'user_type_permissions.permission_id')
         ->join('user_types', 'user_types.id', 'user_type_permissions.usertype_id')
         ->where('user_types.id',$category_id)
         ->search($search)

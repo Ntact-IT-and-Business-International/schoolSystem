@@ -55,7 +55,7 @@
                             <tr>
                                 <td>{{$all_permissions->firstitem() + $i}}</td>
                                 <td>{{$type->permission}}</td>
-                                <td><a href="/permissions/remove/{{$type->permission}}" class="btn btn-info btn-sm">Remove</a></td>
+                                <td><button wire:click="deleteUsertypePermission({{ $type->id }})" class="btn btn-info btn-sm">Remove</button></td>
                             </tr>
                             @endforeach
                         </tbody>

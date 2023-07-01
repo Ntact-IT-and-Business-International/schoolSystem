@@ -27,7 +27,18 @@ class AllUserTypePermissions extends Component
             'user_types' =>UserType::whereId($this->category_id)->get()
         ]);
     }
+    /**
+     * This function calls the categories
+     */
     public function mount($category_id){
         $this->category_id = $category_id;
+    }
+    /**
+     * This function deletes produce item
+     */
+    public static function deleteUsertypePermission($category_id)
+    {
+        UserTypePermission::whereId($category_id)->delete();
+        session()->flash('success', 'Operation Successful');
     }
 }

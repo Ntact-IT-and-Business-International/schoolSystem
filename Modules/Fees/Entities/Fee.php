@@ -82,4 +82,17 @@ class Fee extends Model
             'user_id'         =>auth()->user()->id,
         ]);
     }
+    /**
+     * this function gets particular student payments  receipt
+     */
+    public static function printPaymentReceipt($receipt_id,$search, $sortBy, $sortDirection, $perPage)
+    {
+        return Fee::join('users', 'users.id', 'fees.user_id')
+        ->join('students', 'students.id', 'fees.student_id')
+        ->join('classes', 'classes.id', 'fees.class_id')
+        ->where('fees.id',$receipt_id)
+        ->search($search)
+        ->orderBy($sortBy, $sortDirection)
+        ->paginate($perPage, ['fees.*','users.name','students.first_name','students.last_name','students.other_names','students.gender','classes.level']);
+    }
 }

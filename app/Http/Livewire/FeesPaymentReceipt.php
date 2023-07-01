@@ -1,42 +1,35 @@
 <?php
 
-namespace Modules\Fees\Http\Controllers;
+namespace App\Http\Livewire;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use App\Traits\WithSorting;
+use Livewire\Component;
+use Livewire\WithPagination;
 use Modules\Fees\Entities\Fee;
 
-class FeesController extends Controller
+class FeesPaymentReceipt extends Component
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable 
-     */
-    public function index()
-    {
-        return view('fees::index');
-    }
+    use WithPagination, WithSorting;
+    //This refreshes this page automatically
+    protected $listeners = ['FeesPaymentReceipt' => '$refresh'];
 
-    public function feeStructure()
-    {
-        return view('fees::fee_structure');
-    } 
-    /**
-     * This function gets receipt for particular student paid
-     */
-    public function generateReceipt($receipt_id){
-        return view('fees::receipt',compact('receipt_id'));
-    }
-    public function printReceipt($receipt_id)
-    {
+    //over ridding sortby from the trait
+    public $sortBy = 'students.last_name';
 
-        $print_receipts= Fee::join('users', 'users.id', 'fees.user_id')
-        ->join('students', 'students.id', 'fees.student_id')
-        ->join('classes', 'classes.id', 'fees.class_id')
-        ->where('fees.id',$receipt_id)
-        ->get(['fees.*','users.name','students.first_name','students.last_name','students.other_names','students.gender','classes.level']);
-        return view('fees::print_receipt_now',compact('print_receipts'));
+    //using the bootstrap pagination theme
+    protected $paginationTheme = 'bootstrap';
+    public function render()
+    {
+        return view('livewire.fees-payment-receipt',[
+            'print_receipts' =>Fee::printPaymentReceipt($this->receipt_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage),
+            $this->convert_number_to_words($this->receipt_id)
+        ]);
+    }
+    /**
+     * This function calls the receipts
+     */
+    public function mount($receipt_id){
+        $this->receipt_id = $receipt_id;
     }
     public static function convert_number_to_words($receipt_id) {
 

@@ -170,6 +170,7 @@
                 <td>{{$fee->payment_code}}</td>
                 <td>
                     <a href="#!" class="btn btn-info btn-sm">Edit</a>
+                    <a href="/fees/generate-receipt/{{$fee->id}}" class="btn btn-success btn-sm">Print Receipt</a>
                     <a href="#!" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
