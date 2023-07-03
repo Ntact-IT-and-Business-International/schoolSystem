@@ -36,7 +36,7 @@
                     <span class="app-brand-logo demo">
                         {{--<img src="{{ asset('Admin/assets/img/logo.png')}}" alt="Brand Logo" class="img-fluid">--}}
                     </span>
-                    <a href="/dashboard" class="app-brand-text demo sidenav-text font-weight-normal ml-2">Mukono Primary School</a>
+                    <a href="/dashboard" class="app-brand-text demo sidenav-text font-weight-normal ml-1">School Management System</a>
                     <a href="javascript:" class="layout-sidenav-toggle sidenav-link text-large ml-auto">
                         <i class="ion ion-md-menu align-middle"></i>
                     </a>

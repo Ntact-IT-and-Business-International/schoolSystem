@@ -20,6 +20,7 @@ class EditStudent extends Component
     public $nin;
     public $location;
     public $section;
+    public $student_id;
 
     //validate category
     protected $rules = [
@@ -40,6 +41,7 @@ class EditStudent extends Component
     {
         return view('livewire.edit-student',[
             'edit_student' => Student::editStudent($this->student_id),
+            'classes' =>Classes::get()
         ]);
     }
     /**

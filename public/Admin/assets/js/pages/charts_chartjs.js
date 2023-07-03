@@ -36,7 +36,7 @@ $(function() {
   var barsChart = new Chart(document.getElementById('chart-bars').getContext("2d"), {
     type: 'bar',
     data: {
-      labels: ['Italy', 'UK', 'USA', 'Germany', 'France', 'Japan'],
+      labels: ['P1', 'UK', 'USA', 'Germany', 'France', 'Japan'],
       datasets: [{
         label: '2010 customers #',
         data: [53, 99, 14, 10, 43, 27],

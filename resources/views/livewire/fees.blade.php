@@ -169,9 +169,15 @@
                 <td>{{$fee->mode_of_payment}}</td>
                 <td>{{$fee->payment_code}}</td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="/fees/generate-receipt/{{$fee->id}}" class="btn btn-success btn-sm">Print Receipt</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="/fees/generate-receipt/{{$fee->id}}" class="btn btn-success btn-sm dropdown-item mb-1">Print Receipt</a>
+                            <a href="/fees/clear-payments/{{$fee->id}}" class="btn btn-warning btn-sm dropdown-item mb-1">Clear Payments</a>
+                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach
@@ -194,3 +200,4 @@
         </div>
     </div>
 </div>
+<script src="{{ asset('Admin/assets/js/pages/ui_dropdowns.js')}}"></script>

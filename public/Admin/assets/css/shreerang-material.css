@@ -3779,7 +3779,10 @@ button.list-group-item-dark {
 
 .card-header {
   line-height: 1.54;
-  border-bottom-width: 1px; }
+  border-bottom-width: 1px;
+  font-weight:bold;
+  text-transform: capitalize;
+  font-size:20px; }
 
 .card-footer {
   border-top-width: 1px; }

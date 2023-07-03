@@ -15,6 +15,7 @@ class AddTimeTable extends ModalComponent
     public $staff_id;
     public $class_id;
     public $subject_id;
+    public $day;
     public $starting_time;
     public $end_time;
     public $title;
@@ -24,6 +25,7 @@ class AddTimeTable extends ModalComponent
         'staff_id'   => 'required',
         'class_id'   => 'required',
         'subject_id' => 'required',
+        'day'        =>'required',
         'starting_time' => 'required',
         'end_time'   =>'required',
         'title'     => 'required',
@@ -36,6 +38,7 @@ class AddTimeTable extends ModalComponent
         'staff_id.required' => 'Staff is required',
         'class_id.required' => 'Class is required',
         'subject_id.required' => 'Subject is required',
+        'day.required'        =>'Day of Week is required',
         'starting_time.required' => 'Starting Time is required',
         'end_time.required' => 'Ending Time is required',
         'title.required' => 'titles is required',
@@ -55,8 +58,8 @@ class AddTimeTable extends ModalComponent
     public function submit()
     {
         $this->validate();
-        $this->emit('TimeTables', 'refreshComponent');
-        TimeTable::addTimeTable($this->staff_id,$this->class_id,$this->subject_id,$this->starting_time,$this->end_time,$this->title);
+        $this->emit('Timetables', 'refreshComponent');
+        TimeTable::addTimeTable($this->staff_id,$this->class_id,$this->subject_id,$this->day,$this->starting_time,$this->end_time,$this->title);
         //activity()->log(auth()->user()->name.' Added a new Category called '.$this->category);
         $this->closeModal();
         Session::flash('msg', 'Timetable Details Added successfully');

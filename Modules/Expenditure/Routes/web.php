@@ -17,4 +17,5 @@ Route::group(['prefix' => 'expenditure', 'middleware' => ['auth']], function () 
     Route::get('/items', 'ExpenditureController@items')->name('Items');
     Route::get('/my-item-requests', 'ExpenditureController@itemsRequest')->name('Items Requested');
     Route::get('/requested-items-in-your-office', 'ExpenditureController@specificitemsRequest')->name('Office Items Requested');
+    Route::get('/edit-salary/{salary_id}', 'ExpenditureController@editSalary')->name('Salary');
 });

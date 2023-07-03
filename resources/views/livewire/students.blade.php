@@ -83,7 +83,7 @@
                 <td>{{$student->section}}</td>
                 <td><img src="{{ asset('storage/Student_photos/'.$student->photo)}}" style="width:60px; height:40px;"></td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{{URL::signedRoute('EditStudent', ['student_id' => $student->id])}}" class="btn btn-info btn-sm">Edit</a>
                     <a href="#!" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

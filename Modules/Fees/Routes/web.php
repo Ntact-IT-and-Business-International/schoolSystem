@@ -16,4 +16,5 @@ Route::group(['prefix' => 'fees', 'middleware' => ['auth']], function () {
     Route::get('/fees-structure', 'FeesController@feeStructure')->name('Fees Structure');
     Route::get('/generate-receipt/{receipt_id}', 'FeesController@generateReceipt')->name('Payment Receipt');
     Route::get('/print-receipt-now/{receipt_id}', 'FeesController@printReceipt');
+    Route::get('/clear-payments/{payment_id}', 'FeesController@clearPayment')->name('Clear Payments');
 });

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontPagesController; 
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +17,8 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('Home');
+Route::get('/', function () { return view('welcome');})->name('Home');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
 
 //Front pages
 Route::get('/about-us',[FrontPagesController::Class,'aboutUs'])->name('About Us');
@@ -42,6 +32,7 @@ Route::get('/register',function(){ return redirect('/');});
 Route::get('/send-message',[FrontPagesController::Class,'sendMessage']);
 
 Route::group(['middleware' => ['auth']], function () { 
+Route::get('/dashboard',[DashboardController::Class,'adminDashboard'])->name('Dashboard');
 Route::get('/logout',[LogoutController::Class,'logoutUser']);
 Route::get('/mark-as-approved/{request_id}',[AdminController::Class,'approveRequest']);
 Route::get('/mark-as-rejected/{request_id}',[AdminController::Class,'rejectRequest']);

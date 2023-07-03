@@ -63,7 +63,7 @@
                 <td>{{ number_format($salary->actual_salary-$salary->amount)}}</td>
                 <td>{{$salary->paid_on_date}}</td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
+                    <a href="{{URL::signedRoute('Salary', ['salary_id' => $salary->id])}}" class="btn btn-info btn-sm">Edit</a>
                     <a href="#!" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>

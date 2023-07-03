@@ -17,6 +17,7 @@ Route::group(['prefix' => 'students', 'middleware' => ['auth']], function () {
     Route::get('/attendance', 'StudentsController@dailyAttendance')->name('Attendance'); 
     Route::get('/pupils-permission', 'StudentsController@studentsPermission')->name('Students Permission');
     Route::get('/view-students-for-this-class/{class_id}', 'StudentsController@studentsForParticularClass')->name('StudentsList');
-    Route::get('/year-class/{year_id}', 'StudentsController@studentsForParticularYearClass')->name('Class Years');
+    Route::get('/year-class/{year_id}', 'StudentsController@studentsForParticularYearClass')->name('Class Years'); 
     Route::get('/students-per-class-per-year/{class_id}', 'StudentsController@studentsPerYearPerClass')->name('Students Per Class Per Years');
+    Route::get('/edit-student/{student_id}', 'StudentsController@editStudent')->name('EditStudent');
 });

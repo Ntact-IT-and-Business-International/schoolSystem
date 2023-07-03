@@ -93,6 +93,7 @@ class Student extends Model
             'nin'           => $nin,
             'location'      => $location,
             'section'       => $section,
+            'created_at'    =>\Carbon\Carbon::now(),    
             'user_id'       =>auth()->user()->id,
         ]);
     } 

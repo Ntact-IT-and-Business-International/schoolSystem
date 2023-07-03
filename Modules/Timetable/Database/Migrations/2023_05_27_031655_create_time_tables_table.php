@@ -19,9 +19,10 @@ return new class extends Migration
             $table->foreignId('staff_id');
             $table->foreignId('class_id');
             $table->foreignId('subject_id');
+            $table->string('day');
             $table->string('strting_time');
             $table->string('end_time');
-            $table->string('title')->nullable();
+            $table->string('timetable_status')->nullable();
             $table->timestamps();
         });
     }

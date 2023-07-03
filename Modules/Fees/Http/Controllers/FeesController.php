@@ -149,4 +149,10 @@ class FeesController extends Controller
 
         return $string;
     }
+    /**
+     * This function gets a form for clear school fees payment
+     */
+    public function clearPayment($payment_id){
+        return view('fees::clear_payments_form',compact('payment_id'));
+    }
 }

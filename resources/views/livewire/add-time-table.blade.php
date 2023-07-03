@@ -46,7 +46,20 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Day of The Week</label>
+                        <select class="custom-select" wire:model="day">
+                                <option value="Mon">Monday</option>
+                                <option value="Tue">Tuesday</option>
+                                <option value="Wed">Wednesday</option>
+                                <option value="Thur">Thursday</option>
+                                <option value="Fri">Friday</option>
+                                <option value="Sat">Saturday</option>
+                                <option value="Sun">Sunday</option>
+                        </select>
+                        @error('day') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group col-md-6">
                         <label class="form-label">Remark</label>
                         <textarea type="text" class="form-control" wire:model="title" placeholder="Title"></textarea>
                         @error('title') <span class="text-danger">{{ $message }}</span> @enderror

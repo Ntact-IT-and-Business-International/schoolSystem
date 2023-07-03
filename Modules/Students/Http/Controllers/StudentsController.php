@@ -59,4 +59,13 @@ class StudentsController extends Controller
     public function studentsPerYearPerClass($class_id){
         return view('students::students_classes_per_year',compact('class_id'));
     }
+    /**
+     * This function gets form for updating students information
+     */
+    public function editStudent($student_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('students::edit_student',compact('student_id'));
+    }
 }

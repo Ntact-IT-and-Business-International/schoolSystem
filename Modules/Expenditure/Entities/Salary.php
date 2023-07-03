@@ -59,11 +59,11 @@ class Salary extends Model
     /**
      * This function updates the edited Salary
      */
-    public static function updateSalaryInfo($salary_id,$staff_id,$amount,$quantity,$paid_on_date)
+    public static function updateSalaryInfo($salary_id,$staff_id,$actual_salary,$amount,$paid_on_date)
     {
         Salary::whereId($salary_id)->update([
             'staff_id'       => $staff_id,
-            'quantity'       =>$quantity,
+            'actual_salary'  =>$actual_salary,
             'amount'         => $amount,
             'paid_on_date'   =>$paid_on_date,
             'user_id'        =>auth()->user()->id,

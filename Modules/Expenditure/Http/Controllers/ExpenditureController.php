@@ -44,4 +44,10 @@ class ExpenditureController extends Controller
     public function specificitemsRequest(){
         return view('expenditure::specific_office_request');
     }
+    /**
+     * This function edits salary details
+     */
+    public function editSalary($salary_id){
+        return view('expenditure::edit_salary',compact('salary_id'));
+    }
 }

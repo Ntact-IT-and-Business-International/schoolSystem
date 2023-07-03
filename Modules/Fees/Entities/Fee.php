@@ -65,7 +65,13 @@ class Fee extends Model
     {
         return Fee::whereId($fee_id)->get();
     }
-
+    /**
+     * This function gets form for editing payments information
+     */
+    public static function clearPayment($payment_id)
+    {
+        return Fee::whereId($payment_id)->get();
+    }
     /**
      * This function updates the edited payments
      */
@@ -94,5 +100,15 @@ class Fee extends Model
         ->search($search)
         ->orderBy($sortBy, $sortDirection)
         ->paginate($perPage, ['fees.*','users.name','students.first_name','students.last_name','students.other_names','students.gender','classes.level']);
+    }
+    /**
+     * This function clears the payment
+     */
+    public static function updatePayment($payment_id, $amount_paid, $balance){
+        Fee::whereId($payment_id)->update([
+            'amount_paid'     => $amount_paid,
+            'balance'         => $balance,
+            'user_id'         =>auth()->user()->id,
+        ]);
     }
 }

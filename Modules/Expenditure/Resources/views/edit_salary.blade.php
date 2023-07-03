@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @livewire('timetables')
+    @livewire('edit-salary',['salary_id'=>$salary_id])
 
 @endsection

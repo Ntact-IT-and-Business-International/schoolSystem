@@ -10,6 +10,11 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Modules\Timetable\Entities\TimeTable;
+use Modules\Fees\Entities\Fee;
+use Carbon\Carbon;
+use Modules\Expenditure\Entities\Expenditure;
+use Modules\Students\Entities\Student;  
+use DB;
 
 class User extends Authenticatable
 {
@@ -135,4 +140,121 @@ class User extends Authenticatable
         ->where('time_tables.user_id',auth()->user()->id)
         ->value('classes.level');
     }
+    /**
+     * This function gets total amount collected today, this year
+     */
+    private function getFeesToday(){
+        return Fee::whereDate('created_at', Carbon::today())->sum('amount_paid');
+        
+    }
+    /**
+     * This function gets total amount collected this month, this year
+     */
+    private function getFeesThisMonth(){
+        return Fee::whereMonth('created_at', date('m'))->sum('amount_paid');
+    }
+    /**
+     * This function gets total amount collected this week, this year
+     */
+    private function getFeesThisWeek(){
+        return Fee::whereBetween('created_at',[Carbon::now()->startOfWeek(),Carbon::now()->endOfWeek()])->sum('amount_paid');
+    }
+    /**
+     * This function gets total amount collected this term, this year
+     */
+    public function getFeesTerm1(){
+        return Fee::whereYear('created_at', date('Y'))->whereTerm(1)->sum('amount_paid');
+    }
+    /**
+     * This function gets total amount collected this term 2, this year
+     */
+    public function getFeesTerm2(){
+        return Fee::whereYear('created_at', date('Y'))->whereTerm(2)->sum('amount_paid');
+    }
+    /**
+     * This function gets total amount collected this term 3, this year
+     */
+    public function getFeesTerm3(){
+        return Fee::whereYear('created_at', date('Y'))->whereTerm(3)->sum('amount_paid');
+    }
+    /**
+     * This function gets total of all terma expenditure  this year
+     */
+    public function getFeesThisYear(){
+        return $this->getFeesTerm1()+$this->getFeesTerm2() + $this->getFeesTerm3();
+    }
+    /**
+     * This function gets balances, this year
+     */
+    public function getBalances(){
+        return Fee::whereYear('created_at', date('Y'))->sum('balance');
+    }
+    /**
+     * This function gets total expenditure, this year
+     */
+    public function getExpenditureThisYear(){
+        return Expenditure::whereYear('created_at', date('Y'))->sum('amount');
+    }
+    /**
+     * This function gets the actual balance after expenditure
+     */
+    public function getActualBalance(){
+        return $this->getFeesThisYear() - $this->getExpenditureThisYear();
+    }
+    /**
+     * This function gets total number of users, this year
+     */
+    public function countUsers(){
+        return DB::table('users')->count();
+    }
+    /**
+     * This function gets total number of students registered, this year
+     */
+    public function countStudents(){
+        return DB::table('students')->whereYear('created_at', date('Y'))->count();
+
+    }
+    /**
+     * This function gets total number of teachers registered, this year
+     */
+    public function countTeachingStaff(){
+        return DB::table('staffs')->whereYear('created_at', date('Y'))->whereNotNull('class_id')->count();
+    }
+    /**
+     * This function gets total number of non teaching staff registered, this year
+     */
+    public function countNonTeachingStaff(){
+        return DB::table('staffs')->whereYear('created_at', date('Y'))->where('class_id',null)->count();
+    }
+    /**
+     * This function gets total number of complain, this year
+     */
+    public function countComplains(){
+        return DB::table('complains')->whereYear('created_at', date('Y'))->where('reply',null)->count();
+    }
+    /**
+     * This function gets total number of complain, this year
+     */
+    public function countPendingRequests(){
+        return DB::table('scholastic_requests')->whereYear('created_at', date('Y'))->whereStatus('pending')->count();
+    }
+    /**
+     * This function gets total number of boys, this year
+     */
+    public function countNumberOfBoys(){
+        return DB::table('students')->whereYear('created_at', date('Y'))->whereGender('M')->count();
+    }
+    /**
+     * This function counts the total number of girls,This year
+     */
+    public function countNumberOfGirls(){
+        return DB::table('students')->whereYear('created_at', date('Y'))->whereGender('F')->count();
+    }
+    /**
+     * This funcion counts the total number of children with special needs,This year
+     */
+    public function countNumberOfSpecialNeeds(){
+        return DB::table('students')->whereYear('created_at', date('Y'))->whereNotNull('special_need')->count();
+    }
+    
 }
