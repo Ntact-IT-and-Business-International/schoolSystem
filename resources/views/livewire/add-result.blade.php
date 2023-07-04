@@ -51,9 +51,21 @@
                         @error('assessment_marks') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="form-label">Examination</label>
+                        <label class="form-label">Assessment Grade</label>
+                        <input type="text" class="form-control" wire:model="assessment_grade" placeholder="">
+                        @error('assessment_grade') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                        <label class="form-label">Examination Marks</label>
                         <input type="text" class="form-control" wire:model="examination_marks" placeholder="">
                         @error('examination_marks') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Examination Grade</label>
+                        <input type="text" class="form-control" wire:model="grade" placeholder="">
+                        @error('grade') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="form-row">
@@ -63,13 +75,6 @@
                         @error('teacher_initials') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label class="form-label">Grade</label>
-                        <input type="text" class="form-control" wire:model="grade" placeholder="">
-                        @error('grade') <span class="text-danger">{{ $message }}</span> @enderror
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-12">
                         <label class="form-label">Remarks</label>
                         <input type="text" class="form-control" wire:model="remark" placeholder="">
                         @error('remark') <span class="text-danger">{{ $message }}</span> @enderror

@@ -27,7 +27,7 @@
                 <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
                     @include('partials._sort-icon',['field'=>'results.id'])
                 </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Terms
+                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
                     @include('partials._sort-icon',['field'=>'level'])
                 </th>
                 <th>Option</th>

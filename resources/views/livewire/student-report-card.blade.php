@@ -11,6 +11,9 @@
                             </span>
                             <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:50px;">Safeway Junior School</span>
                         </a>
+                        @foreach($student_report_details as $detail)
+                            <img style="width:100px;height:80px;" src="{{asset('storage/Student_photos/'.$detail->photo)}}">
+                        @endforeach
                     </div>
                     <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:36px;">Kawempe- TTula</div>
                     <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:20px;">0772-380547 | 0702-932992</div>
@@ -156,7 +159,7 @@
                             <td class="py-3 font-weight-bold">
                             {{$total_exam_marks}}
                             </td>
-                            <td class="py-3 font-weight-bold text-danger">
+                            <td class="py-3 font-weight-bold text-info">
                             {{$total_aggregate}}
                             </td>
                             <td class="py-3">
@@ -170,7 +173,20 @@
                             </td>
                             <td class="py-3">
                             </td>
-                            <td class="py-3">
+                            <td class="py-3 font-weight-bold">
+                            @if($total_aggregate > 3 && $total_aggregate < 13) 
+                                I
+                            @elseif($total_aggregate > 12 && $total_aggregate < 25 )
+                                II
+                            @elseif($total_aggregate > 24 && $total_aggregate < 31)
+                                III
+                            @elseif($total_aggregate > 30 && $total_aggregate < 35)
+                                IV
+                            @elseif($total_aggregate > 34 && $total_aggregate < 37 )
+                                U
+                            @else
+                                X 
+                            @endif
                             </td>
                             <td class="py-3">
                             </td>
@@ -218,7 +234,9 @@
             </div>
         </div>
         <div class="card-footer text-center">
-            <a href="/reportcard/print-report-card-now/2" target="_blank" class="btn btn-success"><i class="ion ion-md-print"></i>&nbsp; Print</a>
+            @foreach($student_report_details as $detail)
+            <a href="/reportcard/print-report-card-now/{{$detail->student_id}}" target="_blank" class="btn btn-success"><i class="ion ion-md-print"></i>&nbsp; Print</a>
+            @endforeach
         </div>
     </div>
 </div>

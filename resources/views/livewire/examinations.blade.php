@@ -46,6 +46,9 @@
                 <th scope="col" wire:click="sortBy('assessment_marks')" style="cursor: pointer;"> Test Marks
                     @include('partials._sort-icon',['field'=>'assessment_marks'])
                 </th>
+                <th scope="col" wire:click="sortBy('assessment_grade')" style="cursor: pointer;"> Test Grade
+                    @include('partials._sort-icon',['field'=>'assessment_grade'])
+                </th>
                 <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Exams Marks
                     @include('partials._sort-icon',['field'=>'examination_marks'])
                 </th>
@@ -73,6 +76,7 @@
                 <td>{{ $result->subject}}</td>
                 <td>{{ $result->term}}</td>
                 <td>{{$result->assessment_marks}}</td>
+                <td>{{$result->assessment_grade}}</td>
                 <td>{{$result->examination_marks}}</td>
                 <td>{{$result->assessment_marks + $result->examination_marks}}</td>
                 <td>{{$result->grade}}</td>

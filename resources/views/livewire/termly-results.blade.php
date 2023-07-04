@@ -37,7 +37,7 @@
         @foreach($termly_results as $i=>$result)
             <tr>
                 <th scope="row">{{$termly_results->firstitem() + $i}}</th>
-                <td>{{$result->term}}</td>
+                <td>Term {{$result->term}}</td>
                 <td>
                     <a href="/reportcard/view-classes/{{$result->term}}" class="btn btn-info btn-sm">View Classes</a>
                 </td>

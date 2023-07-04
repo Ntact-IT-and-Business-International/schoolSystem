@@ -24,6 +24,7 @@ class Result extends Model
         ->orWhere('subjects.subject','like','%'.$val.'%')
         ->orWhere('term','like','%'.$val.'%')
         ->orWhere('assessment_marks','like','%'.$val.'%')
+        ->orWhere('assessment_grade','like','%'.$val.'%')
         ->orWhere('examination_marks','like','%'.$val.'%')
         ->orWhere('teacher_initials','like','%'.$val.'%')
         ->orWhere('remark','like','%'.$val.'%')
@@ -33,13 +34,14 @@ class Result extends Model
     /**
      * This function creates the Result
      */
-    public static function addResult($student_id,$class_id,$subject_id,$term,$assessment_marks,$examination_marks,$grade,$teacher_initials,$remark){
+    public static function addResult($student_id,$class_id,$subject_id,$term,$assessment_marks,$assessment_grade,$examination_marks,$grade,$teacher_initials,$remark){
         Result::create([
             'student_id'       =>$student_id,
             'class_id'         => $class_id,
             'subject_id'       => $subject_id,
             'term'             =>$term,
             'assessment_marks' => $assessment_marks,
+            'assessment_grade' =>$assessment_grade,
             'examination_marks'=>$examination_marks,
             'grade'            =>$grade,
             'teacher_initials' =>$teacher_initials,
@@ -94,12 +96,13 @@ class Result extends Model
     /**
      * This function gets Class Students for the current Year
      */
-    public static function getTermlyClassStudent($search, $sortBy, $sortDirection, $perPage)
+    public static function getTermlyClassStudent($student_id,$search, $sortBy, $sortDirection, $perPage)
     {
         return Result::join('users', 'users.id', 'results.user_id')
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('student_id',$student_id)
         ->whereYear('results.created_at', '=', Carbon::today())
         //->limit(1)
         ->distinct('students.last_name')
@@ -130,7 +133,7 @@ class Result extends Model
     /**
      * This function updates the edited Result deails
      */
-    public static function updateResultInfo($result_id,$student_id,$class_id,$subject_id,$term,$assessment_marks,$examination_marks,$grade,$teacher_initials,$remark)
+    public static function updateResultInfo($result_id,$student_id,$class_id,$subject_id,$term,$assessment_marks,$assessment_grade,$examination_marks,$grade,$teacher_initials,$remark)
     {
         Result::whereId($result_id)->update([
             'student_id'       =>$student_id,
@@ -138,6 +141,7 @@ class Result extends Model
             'subject_id'       => $subject_id,
             'term'             =>$term,
             'assessment_marks' => $assessment_marks,
+            'assessment_grade' =>$assessment_grade,
             'examination_marks'=>$examination_marks,
             'grade'            =>$grade,
             'teacher_initials' =>$teacher_initials,

@@ -16,6 +16,7 @@ class AddResult extends ModalComponent
         public $subject_id;
         public $term;
         public $assessment_marks;
+        public $assessment_grade;
         public $examination_marks;
         public $grade;
         public $teacher_initials;
@@ -28,6 +29,7 @@ class AddResult extends ModalComponent
         'subject_id'        => 'required',
         'term'              => 'required',
         'assessment_marks'  => '',
+        'assessment_grade'  =>'',
         'examination_marks' => '',
         'grade'             => '',
         'teacher_initials'  => '',
@@ -57,9 +59,10 @@ class AddResult extends ModalComponent
     {
         $this->validate();
         $this->emit('Examinations', 'refreshComponent');
-        Result::addResult($this->student_id,$this->class_id,$this->subject_id,$this->term,$this->assessment_marks,$this->examination_marks,$this->grade,$this->teacher_initials,$this->remark);
+        Result::addResult($this->student_id,$this->class_id,$this->subject_id,$this->term,$this->assessment_marks,$this->assessment_grade,$this->examination_marks,$this->grade,$this->teacher_initials,$this->remark);
         //activity()->log(auth()->user()->name.' Added a new Category called '.$this->category);
         $this->closeModal();
-        Session::flash('msg', 'Operation is successful');
+        // Session::flash('msg', 'Operation is successful');
+        return redirect()->back()->with('msg', 'Operation is successful');
     }
 }

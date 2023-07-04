@@ -33,9 +33,6 @@ class StudentsController extends Controller
      * This function gets the permissions for the students
      */
     public function studentsPermission(){
-        if (! request()->hasValidSignature()) {
-            abort(401);
-        }
         return view('students::pupils_permission');
     }
     /**

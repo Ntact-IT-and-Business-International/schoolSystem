@@ -52,35 +52,37 @@ class ReportCardController extends Controller
         return view('reportcard::pupils_in_class');
     }
     //This function gets page that displays pupils report card
-    public function studentReportCard()
+    public function studentReportCard($student_id)
     {
-        return view('reportcard::report_card');
+        return view('reportcard::report_card',compact('student_id'));
     }
     //This function gets page that displays print pupils report card
-    public function printStudentReportCard()
+    public function printStudentReportCard($student_id)
     {
         $student_report_cards=Result::join('users', 'users.id', 'results.user_id')
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('student_id',$student_id)
         ->whereYear('results.created_at', '=', Carbon::today())
         //->limit(1)
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
                             'students.date_of_birth','students.gender','subjects.subject','results.*']);
-        $student_report_details=$this->getStudentDetails();
+        $student_report_details=$this->getStudentDetails($student_id);
 
         return view('reportcard::print_reportcard_now',compact('student_report_cards','student_report_details'));
     }
-    private function getStudentDetails(){
+    private function getStudentDetails($student_id){
         return Result::join('users', 'users.id', 'results.user_id')
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('student_id',$student_id)
         ->whereYear('results.created_at', '=', Carbon::today())
         ->limit(1)
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
-                            'students.date_of_birth','students.gender','subjects.subject','results.*']);
+                            'students.date_of_birth','students.gender','subjects.subject','results.*','students.photo']);
     }
 }

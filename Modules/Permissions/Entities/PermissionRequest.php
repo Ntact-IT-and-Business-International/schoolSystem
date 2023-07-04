@@ -47,10 +47,11 @@ class PermissionRequest extends Model
         return PermissionRequest::join('users', 'users.id', 'permission_requests.user_id')
         ->join('classes', 'classes.id', 'permission_requests.class_id')
         ->join('students', 'students.id', 'permission_requests.student_id')
+        ->join('user_types','user_types.id','permission_requests.user_type')
         ->search($search)
         ->orderBy($sortBy, $sortDirection)
         ->paginate($perPage, ['permission_requests.*','users.name','classes.level','students.last_name','students.first_name','students.other_names',
-                            'students.contact']);
+                            'students.contact','user_types.category']);
     }
     /**
      * this function get permissions for staff  

@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @livewire('student-report-card')
+    @livewire('student-report-card',['student_id' =>$student_id])
 
 @endsection

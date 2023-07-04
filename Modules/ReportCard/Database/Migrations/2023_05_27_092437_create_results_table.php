@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignId('subject_id');
             $table->string('term');
             $table->string('assessment_marks')->nullable();
+            $table->string('assessment_grade')->nullable();
             $table->string('examination_marks')->nullable();
             $table->string('grade')->nullable();
             $table->string('teacher_initials')->nullable();
