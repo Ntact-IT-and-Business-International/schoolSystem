@@ -137,7 +137,7 @@
                             <td class="py-3 font-weight-bold text-danger">
                             {{$card->grade}}
                             </td>
-                            <td class="py-3">
+                            <td class="py-3" style="text-transform:capitalize;">
                             {{$card->remark}}
                             </td>
                             <td class="py-3">

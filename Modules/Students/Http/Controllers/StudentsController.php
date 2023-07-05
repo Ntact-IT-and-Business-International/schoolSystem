@@ -39,9 +39,6 @@ class StudentsController extends Controller
      * This function gets the students for the particular class
      */
     public function studentsForParticularClass($class_id){
-        if (! request()->hasValidSignature()) {
-            abort(401);
-        }
         return view('students::students_by_class',compact('class_id'));
     }
     /**

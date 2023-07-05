@@ -29,16 +29,10 @@ class StudentsClass extends Component
             'students' =>$this->studentsInAclass()
         ]);
     }
-    public function mount(){
-        $this->distinctYears =Student::query()->distinct()
-        ->join('classes', 'classes.id', 'students.class_id')
-        ->orderBy('students.created_at')
-        ->pluck(\DB::raw('Year(students.class_id) as year'))
-        ->toArray();
-    }
     public function studentsInAclass(){
         return Student::join('classes', 'classes.id', 'students.class_id')->select(DB::raw('Distinct(class_id)'))
-        ->groupBy('class_id')
-        ->get();
+        ->select(DB::raw('Distinct(level)'))
+        ->groupBy('students.class_id','level')
+        ->get(['classes.level','students.class_id']);
     }
 }
