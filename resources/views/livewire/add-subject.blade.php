@@ -4,7 +4,8 @@
         <h6 class="card-header">Add Subject</h6>
         <div class="card-body">
             <form wire:submit.prevent="submit">
-                <div class="form-row">
+                    <div class="form-row">
+                    <div class="form-group col-md-12">
                         <label class="form-label">Subject</label>
                         <input type="text" class="form-control" wire:model="subject" placeholder="Enter Subject">
                         @error('subject') <span class="text-danger">{{ $message }}</span> @enderror
@@ -18,3 +19,5 @@
         </div>
     </div>
 </div>
+
+

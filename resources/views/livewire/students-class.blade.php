@@ -24,20 +24,22 @@
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th scope="col" wire:click="sortBy('students.id')" style="cursor: pointer;">#
+                {{-- <th scope="col" wire:click="sortBy('students.id')" style="cursor: pointer;">#
                     @include('partials._sort-icon',['field'=>'students.id'])
                 </th>
                 <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
                     @include('partials._sort-icon',['field'=>'level'])
-                </th>
+                </th> --}}
+                <th>#</th>
+                <th>Class</th>
                 <th>Option</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($student_classes as $i=>$class)
+        @foreach($students as $i=>$class)
             <tr>
-                <th scope="row">{{$student_classes->firstitem() + $i}}</th>
-                <td>{{$class->level}}</td>
+                <th scope="row">{{$i + 1}}</th>
+                <td>{{$class->class_id}}</td>
                 <td>
                     <a href="{{URL::signedRoute('StudentsList', ['class_id' => $class->class_id])}}" class="btn btn-info btn-md">View Students For This Class</a>
                 </td>
@@ -45,14 +47,14 @@
         @endforeach
         </tbody>
     </table>
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$student_classes->firstItem()}} to {{$student_classes->lastItem()}} out of {{$student_classes->total()}} items
         </div>
         <div class="text-right col-sm-6 mb-2">
             {{$student_classes->links()}}
         </div>
-    </div>
+    </div> --}}
     <div class="row align-items-center m-l-0">
         <div class="col-sm-6">
         </div>

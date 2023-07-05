@@ -154,6 +154,7 @@
                             @php
                                 $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('examination_marks');
                                 $total_aggregate =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('grade');
+                                $grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->get();
                             @endphp
                             @endforeach
                             <td class="py-3 font-weight-bold">
@@ -174,18 +175,20 @@
                             <td class="py-3">
                             </td>
                             <td class="py-3 font-weight-bold">
-                            @if($total_aggregate > 3 && $total_aggregate < 13) 
-                                I
-                            @elseif($total_aggregate > 12 && $total_aggregate < 25 )
-                                II
-                            @elseif($total_aggregate > 24 && $total_aggregate < 31)
-                                III
-                            @elseif($total_aggregate > 30 && $total_aggregate < 35)
-                                IV
-                            @elseif($total_aggregate > 34 && $total_aggregate < 37 )
-                                U
-                            @else
-                                X 
+                            @if($card->grade !== null)
+                                @if($total_aggregate > 3 && $total_aggregate < 13) 
+                                    I
+                                @elseif($total_aggregate > 12 && $total_aggregate < 25)
+                                    II
+                                @elseif($total_aggregate > 24 && $total_aggregate < 31)
+                                    III
+                                @elseif($total_aggregate > 30 && $total_aggregate < 35)
+                                    IV
+                                @else       
+                                    U
+                                @endif
+                                @else
+                                    X
                             @endif
                             </td>
                             <td class="py-3">

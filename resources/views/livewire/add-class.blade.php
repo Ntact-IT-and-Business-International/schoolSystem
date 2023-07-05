@@ -5,8 +5,9 @@
         <div class="card-body">
             <form wire:submit.prevent="submit">
                 <div class="form-row">
+                    <div class="form-group col-md-12">
                         <label class="form-label">Class</label>
-                        <input type="text" class="form-control" wire:model="level" placeholder="Enter Class">
+                            <input type="text" class="form-control" wire:model="level" placeholder="">
                         @error('level') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
@@ -18,3 +19,4 @@
         </div>
     </div>
 </div>
+

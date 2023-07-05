@@ -47,9 +47,9 @@ class ReportCardController extends Controller
         return view('reportcard::records_per_class');
     }
     //This function gets page that displays pupils in a particular class
-    public function classStudents()
+    public function classStudents($class_id)
     {
-        return view('reportcard::pupils_in_class');
+        return view('reportcard::pupils_in_class',compact('class_id'));
     }
     //This function gets page that displays pupils report card
     public function studentReportCard($student_id)

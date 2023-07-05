@@ -2,6 +2,6 @@
 
 @section('content')
 
-    @livewire('termly-class-students')
+    @livewire('termly-class-students',['class_id'=>$class_id])
 
 @endsection

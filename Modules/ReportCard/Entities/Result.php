@@ -88,10 +88,10 @@ class Result extends Model
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
         ->whereYear('results.created_at', '=', Carbon::today())
-        ->distinct('classes.level')
+        ->distinct('results.class_id')
         ->search($search)
         ->orderBy($sortBy, $sortDirection)
-        ->paginate($perPage,['classes.level']);
+        ->paginate($perPage,['classes.level','results.class_id']);
     }
     /**
      * This function gets Class Students for the current Year
@@ -112,12 +112,13 @@ class Result extends Model
     /**
      * This function gets Class Students for the current Year
      */
-    public static function getClassStudent($search, $sortBy, $sortDirection, $perPage)
+    public static function getClassStudent($class_id,$search, $sortBy, $sortDirection, $perPage)
     {
         return Result::join('users', 'users.id', 'results.user_id')
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('results.class_id',$class_id)
         ->whereYear('results.created_at', '=', Carbon::today())
         ->distinct('students.last_name')
         ->paginate($perPage,['students.last_name','students.first_name','students.other_names','results.student_id']);

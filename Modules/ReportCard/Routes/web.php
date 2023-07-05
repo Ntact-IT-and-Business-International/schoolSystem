@@ -18,7 +18,7 @@ Route::group(['prefix' => 'reportcard', 'middleware' => ['auth']], function () {
     Route::get('/examinations', 'ReportCardController@examinations')->name('Examination');
     Route::get('/generate-report-card', 'ReportCardController@generateReportCards')->name('Generate Report Cards');
     Route::get('/view-classes/{term}', 'ReportCardController@termlyClasses')->name('Termly Classes');
-    Route::get('/view-students/{last_name}', 'ReportCardController@classStudents')->name('Class Students');
+    Route::get('/view-students/{class_id}', 'ReportCardController@classStudents')->name('Class Students');
     Route::get('/print-report-card/{student_id}', 'ReportCardController@studentReportCard')->name('Report Card');
     Route::get('/print-report-card-now/{student_id}', 'ReportCardController@printStudentReportCard')->name('Print Report Card');
 });

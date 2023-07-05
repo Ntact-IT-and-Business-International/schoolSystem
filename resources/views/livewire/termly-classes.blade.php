@@ -38,8 +38,11 @@
             <tr>
                 <th scope="row">{{$termly_classes->firstitem() + $i}}</th>
                 <td>{{$clas->level}}</td>
+                @php
+                    $class_id =\Modules\ReportCard\Entities\Result::where('class_id',$clas->level)->get();
+                @endphp
                 <td>
-                    <a href="/reportcard/view-students/{{$clas->level}}" class="btn btn-info btn-sm">View Students</a>
+                    <a href="/reportcard/view-students/{{$clas->class_id}}" class="btn btn-info btn-sm">View Students</a>
                 </td>
             </tr>
         @endforeach

@@ -5,6 +5,7 @@ namespace Modules\Students\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Carbon\Carbon;
+use DB;
 
 class Student extends Model
 {
@@ -100,13 +101,16 @@ class Student extends Model
     /**
      * This function gets Class Students for the current Year
      */
-    public static function getClassStudent($search, $sortBy, $sortDirection, $perPage)
-    {
-        return Student::join('users', 'users.id', 'students.user_id')
-        ->join('classes', 'classes.id', 'students.class_id')
-        ->whereYear('students.created_at', '=', Carbon::today())
-        ->distinct('classes.level')
-        ->paginate($perPage, ['students.*','classes.level']);
+    // public static function getClassStudent($search, $sortBy, $sortDirection, $perPage)
+    // {
+    //     return Student::join('users', 'users.id', 'students.user_id')
+    //     ->join('classes', 'classes.id', 'students.class_id')
+    //     ->whereYear('students.created_at', '=', Carbon::today())
+    //     ->distinct('classes.level')
+    //     ->paginate($perPage, ['students.*','classes.level']);
+    // }
+    public static function getClassStudent(){
+        return Student::join('classes', 'classes.id', 'students.class_id')->select(DB::raw('Distinct(class_id)'))->groupBy('classes.level');
     }
     /**
      * This function gets Class Students for the current Year
