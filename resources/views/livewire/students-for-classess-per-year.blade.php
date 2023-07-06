@@ -1,7 +1,4 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
-</div>
-<div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     <div class="card-header with-elements">
         <h6 class="card-header-title mb-0">
@@ -67,7 +64,6 @@
                 <th scope="col" wire:click="sortBy('photo')" style="cursor: pointer;"> Photo
                     @include('partials._sort-icon',['field'=>'photo'])
                 </th>
-                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -86,10 +82,6 @@
                 <td>{{$student->location}}</td>
                 <td>{{$student->section}}</td>
                 <td><img src="{{ asset('storage/Student_photos/'.$student->photo)}}" style="width:60px; height:40px;"></td>
-                <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
-                </td>
             </tr>
         @endforeach
         </tbody>

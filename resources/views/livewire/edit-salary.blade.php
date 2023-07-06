@@ -14,7 +14,7 @@
                             </select>
                         @error('staff_id') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                     <div class="form-group col-md-6">
+                    <div class="form-group col-md-6">
                         <label class="form-label">Date of Payment</label>
                         <input type="date" class="form-control" wire:model="paid_on_date" placeholder="">
                         @error('paid_on_date') <span class="text-danger">{{ $message }}</span> @enderror

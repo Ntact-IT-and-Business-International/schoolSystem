@@ -24,20 +24,19 @@
     <table class="table table-hover table-bordered">
         <thead>
             <tr>
-                <th scope="col" wire:click="sortBy('students.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'students.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
+                <th>#</th>
+                <th>Class</th>
                 <th>Option</th>
             </tr>
         </thead>
         <tbody>
-        @foreach($classes_per_year as $i=>$class)
+        @foreach($distinctData as $i=>$class)
+            @php
+                $class_level =\Modules\Students\Entities\Student::join('classes', 'classes.id', 'students.class_id')->where('students.class_id',$class->class_id)->value('classes.level');
+            @endphp
             <tr>
-                <th scope="row">{{$classes_per_year->firstitem() + $i}}</th>
-                <td>{{$class->level}}</td>
+                <th scope="row">{{$i + 1}}</th>
+                <td>{{$class_level}}</td>
                 <td>
                     <a href="/students/students-per-class-per-year/{{$class->class_id}}" class="btn btn-success btn-md">View Students For This Class</a>
                 </td>
@@ -45,12 +44,4 @@
         @endforeach
         </tbody>
     </table>
-    <div class="row">
-        <div class="col-sm-6 mb-2">
-            Showing {{$classes_per_year->firstItem()}} to {{$classes_per_year->lastItem()}} out of {{$classes_per_year->total()}} items
-        </div>
-        <div class="text-right col-sm-6 mb-2">
-            {{$classes_per_year->links()}}
-        </div>
-    </div>
 </div>

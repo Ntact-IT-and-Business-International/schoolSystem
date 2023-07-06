@@ -1,7 +1,4 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
-</div>
-<div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     <div class="card-header with-elements">
         <h6 class="card-header-title mb-0">

@@ -1,12 +1,9 @@
 <div>
-    {{-- Success is as dangerous as failure. --}}
-</div>
-<div>
     {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
     <div class="card-header with-elements">
         <h6 class="card-header-title mb-0">
                 <div class="form-group col-sm-6">
-                    <select class="custom-select col-sm-6" wire:model='perPage'>
+                    <select class="custom-select col-sm-6"  wire:model='perPage'>
                         <option>10</option>
                         <option>20</option>
                         <option>30</option>

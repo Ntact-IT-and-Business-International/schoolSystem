@@ -14,7 +14,7 @@ class Students extends Component
     protected $listeners = ['Students' => '$refresh'];
 
     //over ridding sortby from the trait
-    public $sortBy = 'students.last_name';
+    public $sortBy = 'students.id';
 
     //using the bootstrap pagination theme
     protected $paginationTheme = 'bootstrap';

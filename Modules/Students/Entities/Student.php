@@ -126,11 +126,11 @@ class Student extends Model
      * This function gets classes and students for a particular year
      */
     public static function getClassesForYear($year_id,$search, $sortBy, $sortDirection, $perPage){
-        return Student::join('users', 'users.id', 'students.user_id')
-        ->join('classes', 'classes.id', 'students.class_id')
+        return Student::join('classes', 'classes.id', 'students.class_id')->select(DB::raw('Distinct(class_id)'))
+        ->select(DB::raw('Distinct(level)'))
         ->whereYear('students.created_at',$year_id)
-        ->distinct('classes.level')
-        ->paginate($perPage, ['students.*','classes.level']);
+        ->groupBy('students.class_id','level')
+        ->paginate($perPage, ['classes.level','students.*']);
     }
     /**
      * This function gets classes and students for a particular year
