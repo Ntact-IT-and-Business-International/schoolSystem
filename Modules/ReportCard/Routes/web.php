@@ -21,4 +21,6 @@ Route::group(['prefix' => 'reportcard', 'middleware' => ['auth']], function () {
     Route::get('/view-students/{class_id}', 'ReportCardController@classStudents')->name('Class Students');
     Route::get('/print-report-card/{student_id}', 'ReportCardController@studentReportCard')->name('Report Card');
     Route::get('/print-report-card-now/{student_id}', 'ReportCardController@printStudentReportCard')->name('Print Report Card');
+    Route::get('/print-midterm-results/{student_id}', 'ReportCardController@studentMidtremResults')->name('Midterm Results');
+    Route::get('/print-midterm-results-now/{student_id}', 'ReportCardController@printStudentMidtermResults')->name('Midterm results');
 });

@@ -2630,14 +2630,14 @@ input[type="button"].btn-block {
   height: 1.5625rem;
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 0.625rem;
+  padding-left: 5rem;
   font-size: 0.6875rem; }
 
 .custom-select-lg {
   height: 3.125rem;
   padding-top: 0.8125rem;
   padding-bottom: 0.8125rem;
-  padding-left: 1.25rem;
+  padding-left: 5rem;
   font-size: 1rem; }
 
 .custom-file {
@@ -3505,7 +3505,8 @@ input[type="button"].btn-block {
 
 .media {
   display: flex;
-  align-items: flex-start; }
+  align-items: flex-start; 
+  margin-left:90px;}
 
 .media-body {
   flex: 1; }

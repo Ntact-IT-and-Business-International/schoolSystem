@@ -56,6 +56,12 @@ class ReportCardController extends Controller
     {
         return view('reportcard::report_card',compact('student_id'));
     }
+    /**
+     * This function gets midterm results for particular child
+     */
+    public function studentMidtremResults($student_id){
+        return view('reportcard::mid_term_results',compact('student_id'));
+    }
     //This function gets page that displays print pupils report card
     public function printStudentReportCard($student_id)
     {
@@ -84,5 +90,24 @@ class ReportCardController extends Controller
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
                             'students.date_of_birth','students.gender','subjects.subject','results.*','students.photo']);
+    }
+    /**
+     * This function prints all the midterm results only
+     */
+    public function printStudentMidtermResults($student_id){
+        $student_report_cards=Result::join('users', 'users.id', 'results.user_id')
+        ->join('students', 'students.id', 'results.student_id')
+        ->join('classes', 'classes.id', 'results.class_id')
+        ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('student_id',$student_id)
+        ->whereYear('results.created_at', '=', Carbon::today())
+        //->limit(1)
+        ->distinct('students.last_name')
+        ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
+                            'students.date_of_birth','students.gender','subjects.subject','results.*']);
+
+        $student_report_details=$this->getStudentDetails($student_id);
+
+        return view('reportcard::print_midterm_results_now',compact('student_report_cards','student_report_details'));
     }
 }

@@ -26,15 +26,12 @@ class ClassessPerYear extends Component
 
     public function render()
     {
-        return view('livewire.classess-per-year',[
-            'classes_per_year' =>Student::getClassesForYear($this->year_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
-            // 'classes_per_year' =>$this->getAllClassYears($this->year_id)
-        ]);
+        return view('livewire.classess-per-year');
     }
     public function mount($year_id)
     {
         $this->year_id = $year_id;
-        $this->distinctData=Student::join('classes', 'classes.id', 'students.class_id')->distinct('students.class_id')->get('students.class_id','clsses.level');
+        $this->distinctData=Student::join('classes', 'classes.id', 'students.class_id')->whereYear('students.created_at',$year_id)->distinct('students.class_id')->get('students.class_id','clsses.level');
     }
     
 }

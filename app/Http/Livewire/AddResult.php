@@ -49,7 +49,8 @@ class AddResult extends ModalComponent
         return view('livewire.add-result',[
             'subjects'=>Subject::get(),
             'classes' =>Classes::get(),
-            'students'=>Student::get()
+            'p7_students'=>Student::whereClassId(10)->get(),
+            'students'=>Student::whereClassId(9)->get()
         ]);
     }
     /**
