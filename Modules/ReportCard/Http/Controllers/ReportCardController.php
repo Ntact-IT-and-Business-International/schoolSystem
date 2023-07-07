@@ -48,15 +48,15 @@ class ReportCardController extends Controller
         return view('reportcard::nursery_records_per_terms');
     }
     //This function gets page that displays classes for the term
-    public function termlyClasses()
+    public function termlyClasses($term_id)
     {
-        return view('reportcard::records_per_class');
+        return view('reportcard::records_per_class',compact('term_id'));
     }
     /**
      * This function gets nursery classes classes for that term 
      */
-    public function viewNurseryTermlyClasses(){
-        return view('reportcard::nursery_classes_per_term');
+    public function viewNurseryTermlyClasses($term_id){
+        return view('reportcard::nursery_classes_per_term',compact('term_id'));
     }
     //This function gets page that displays pupils in a particular class
     public function classStudents($class_id)

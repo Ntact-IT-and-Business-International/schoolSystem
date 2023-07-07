@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class NurseryTermlyClasses extends Component
 {
     use WithPagination, WithSorting;
+    public $term_id;
     
     //This refreshes this page automatically
     protected $listeners = ['NurseryTermlyClasses' => '$refresh'];
@@ -23,7 +24,10 @@ class NurseryTermlyClasses extends Component
     public function render()
     {
         return view('livewire.nursery-termly-classes',[
-            'nursery_termly_classes'=>Result::getNurseryTermlyClasses($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
+            'nursery_termly_classes'=>Result::getNurseryTermlyClasses($this->term_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
+    }
+    public function mount($term_id){
+        $this->term_id =$term_id;
     }
 }

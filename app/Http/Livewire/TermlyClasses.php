@@ -11,6 +11,8 @@ class TermlyClasses extends Component
 {
     use WithPagination, WithSorting;
     
+    public $term_id;
+    
     //This refreshes this page automatically
     protected $listeners = ['TermlyClasses' => '$refresh'];
 
@@ -23,7 +25,10 @@ class TermlyClasses extends Component
     public function render()
     {
         return view('livewire.termly-classes',[
-            'termly_classes'=>Result::getTermlyClasses($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
+            'termly_classes'=>Result::getTermlyClasses($this->term_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
+    }
+    public function mount($term_id){
+        $this->term_id =$term_id;
     }
 }
