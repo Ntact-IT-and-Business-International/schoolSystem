@@ -13,13 +13,14 @@ class StudentMidtermResults extends Component
     use WithPagination, WithSorting;
     
     //This refreshes this page automatically
-    protected $listeners = ['StaffPermission' => '$refresh'];
+    protected $listeners = ['StudentMidtermResults' => '$refresh'];
 
     //over ridding sortby from the trait
-    public $sortBy = 'students.contact';
+    public $sortBy = 'results.id';
 
     //using the bootstrap pagination theme
     protected $paginationTheme = 'bootstrap';
+
     public function render()
     {
         return view('livewire.student-midterm-results',[

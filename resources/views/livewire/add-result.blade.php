@@ -17,6 +17,10 @@
                                     @foreach ($p7_students as $p7pupil )
                                         <option value="{{$p7pupil->id}}"> &nbsp;&nbsp;{{$p7pupil->last_name}} {{$p7pupil->first_name}} {{$p7pupil->other_names}}</option>
                                     @endforeach
+                                <option class="font-weight-bold ml-5"> &nbsp;&nbsp;All Nursery Top Pupils</option>
+                                @foreach ($top_students as $top )
+                                    <option value="{{$top->id}}"> &nbsp;&nbsp;{{$top->last_name}} {{$top->first_name}} {{$top->other_names}}</option>
+                                @endforeach
                             </select>
                         @error('student_id') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

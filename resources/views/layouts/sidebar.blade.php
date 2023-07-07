@@ -131,8 +131,13 @@
                 </a>
             </li>
             <li class="sidenav-item">
-                <a href="/reportcard/generate-report-card" class="sidenav-link">
-                    <div>Generate Report</div>
+                <a href="/reportcard/generate-primary-report-card" class="sidenav-link">
+                    <div>Primary Report Cards</div>
+                </a>
+            </li>
+            <li class="sidenav-item">
+                <a href="/reportcard/generate-nursery-report-card" class="sidenav-link">
+                    <div>Nursery Report Crads</div>
                 </a>
             </li>
             <li class="sidenav-item">

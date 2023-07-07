@@ -79,6 +79,21 @@ class Result extends Model
         ->paginate($perPage,['results.term']);
     } 
     /**
+     * This function gets termly results for nursery school
+     */
+    public static function getNurseryTermlyResult($search, $sortBy, $sortDirection, $perPage)
+    {
+        return Result::join('users', 'users.id', 'results.user_id')
+        ->join('students', 'students.id', 'results.student_id')
+        ->join('classes', 'classes.id', 'results.class_id')
+        ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->whereYear('results.created_at', '=', Carbon::today())
+        ->distinct('results.term')
+        ->search($search)
+        ->orderBy($sortBy, $sortDirection)
+        ->paginate($perPage,['results.term']);
+    }
+    /**
      * This function gets termly Classes for the current Year
      */
     public static function getTermlyClasses($search, $sortBy, $sortDirection, $perPage)
@@ -87,6 +102,23 @@ class Result extends Model
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->whereIn('results.class_id',[1,2,3,7,8,9,10])
+        ->whereYear('results.created_at', '=', Carbon::today())
+        ->distinct('results.class_id')
+        ->search($search)
+        ->orderBy($sortBy, $sortDirection)
+        ->paginate($perPage,['classes.level','results.class_id']);
+    }
+    /**
+     * This function gets termly Classes for nursery the current Year
+     */
+    public static function getNurseryTermlyClasses($search, $sortBy, $sortDirection, $perPage)
+    {
+        return Result::join('users', 'users.id', 'results.user_id')
+        ->join('students', 'students.id', 'results.student_id')
+        ->join('classes', 'classes.id', 'results.class_id')
+        ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->whereIn('results.class_id',[4,5,6])
         ->whereYear('results.created_at', '=', Carbon::today())
         ->distinct('results.class_id')
         ->search($search)
