@@ -1,7 +1,16 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
+    <style>
+    .borderimg {
+    border: 10px solid transparent;
+    padding: 15px;
+    -webkit-border-image: url(safeway.jpg) 30 round; /* Safari 3.1-5 */
+    -o-border-image: url(safeway.jpg) 30 round; /* Opera 11-12.1 */
+    border-image: url(/safeway.jpg) 30 round;
+    }
+    </style>
     <div class="card">
-        <div class="card-body p-5" style="border:1px solid">
+        <div class="card-body p-5 borderimg">
             <div class="row">
                 <div class="col-sm-12 pb-4 text-center">
                     <div class="media align-items-center mb-1">
