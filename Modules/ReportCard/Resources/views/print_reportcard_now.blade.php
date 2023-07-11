@@ -40,8 +40,8 @@
         .borderimg {
         border: 10px solid transparent;
         padding: 15px;
-        -webkit-border-image: url(safeway.jpg) 30 round; /* Safari 3.1-5 */
-        -o-border-image: url(safeway.jpg) 30 round; /* Opera 11-12.1 */
+        -webkit-border-image: url(/safeway.jpg) 30 round; /* Safari 3.1-5 */
+        -o-border-image: url(/safeway.jpg) 30 round; /* Opera 11-12.1 */
         border-image: url(/safeway.jpg) 30 round;
         }
     </style>
