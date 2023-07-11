@@ -72,18 +72,23 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Home Location</label>
                         <input type="text" class="form-control" wire:model="location" placeholder="">
                         @error('location') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Section</label>
                         <select class="custom-select" wire:model="section">
                                 <option value="Boarding">Boarding</option>
                                 <option value="Day">Day</option>
                         </select>
                         @error('section') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Pay Code (Optional)</label>
+                        <input type="text" class="form-control" wire:model="fees_pay_code" placeholder="">
+                        @error('fees_pay_code') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="text-center">

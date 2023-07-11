@@ -38,15 +38,15 @@
             color: #000 !important;
         }
     </style>
-        <div class="invoice-print p-5">
+        <div class="invoice-print p-5" style="border:1px solid">
             <div class="row">
                 <div class="col-sm-12 pb-4 text-center">
                     <div class="media align-items-center mb-1">
                         <a href="!#" class="navbar-brand app-brand demo py-0 mr-4">
                             <span class="app-brand-logo demo">
-                                <img src="{{ asset('11.png')}}" style="width:120px;height:70px;" alt="Brand Logo" class="img-fluid">
+                                <img src="{{ asset('safeway.jpg')}}" style="width:100px;height:100px;" alt="Brand Logo" class="img-fluid">
                             </span>
-                            <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:50px;">Safeway Junior School</span>
+                            <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:40px;">Safeway Junior School</span>
                         </a>
                         @foreach($student_report_details as $detail)
                             <img style="width:100px;height:80px;" src="{{asset('storage/Student_photos/'.$detail->photo)}}">

@@ -41,13 +41,13 @@
             color:red;
         }
     </style>
-        <div class="invoice-print p-2">
+        <div class="invoice-print p-2" style="border:1px solid">
             <div class="row">
                 <div class="col-sm-12 pb-4 text-center">
                     <div class="media align-items-center mb-1">
                         <a href="!#" class="navbar-brand app-brand demo py-0 mr-4">
                             <span class="app-brand-logo demo">
-                                <img src="{{ asset('11.png')}}" style="width:120px;height:70px;" alt="Brand Logo" class="img-fluid">
+                                <img src="{{ asset('safeway.jpg')}}" style="width:100px;height:100px;" alt="Brand Logo" class="img-fluid">
                             </span>
                             <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:40px;">Safeway Junior School</span>
                         </a>
@@ -89,7 +89,7 @@
             
             @endforeach
             <div class="table-responsive mb-4">
-            <div class="font-weight-bold text-center">MID TERM</div>
+                <div class="font-weight-bold text-center">MID TERM</div>
                 <table class="table m-0 table-bordered">
                     <thead>
                         <tr>
@@ -138,8 +138,7 @@
                 </table>
             </div>
             <div class="table-responsive mb-4">
-            <div class="table-responsive mb-4">
-            <div class="font-weight-bold text-center">END OF TERM EXAM</div>
+                <div class="font-weight-bold text-center">END OF TERM EXAM</div>
                 <table class="table m-0 table-bordered">
                     <thead>
                         <tr>
@@ -184,7 +183,6 @@
                     </tbody>
                 </table>
             </div>
-            <div class="table-responsive mb-4">
             <div class="table-responsive mb-4">
                 <table class="table m-0 table-bordered">
                     <thead>
@@ -307,7 +305,9 @@
                     <div class="font-weight-bold mb-2">Next Term Begins On:...............................................................</div>
                 </div>
                 <div class="col-sm-6 mb-2">
-                    <div class="font-weight-bold mb-2">School Pay Code:..............................................................................</div>
+                    @foreach($student_report_details as $detail)
+                    <div class="font-weight-bold mb-2">School Pay Code: &nbsp; &nbsp; &nbsp; {{$detail->fees_pay_code}}</div>
+                    @endforeach
                 </div>
             </div>
             <div class="text-center" style="font-weight:bold; font-size:20px;font-family: "Times New Roman", Times, serif;">

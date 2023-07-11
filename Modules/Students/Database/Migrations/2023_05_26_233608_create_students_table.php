@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('nin');
             $table->string('location');
             $table->string('section');
+            $table->string('fees_pay_code')->nullable();
             $table->string('photo');
             $table->timestamps();
         });

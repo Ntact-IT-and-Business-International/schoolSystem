@@ -25,8 +25,9 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Class</label>
                         <select class="custom-select" wire:model="class_id">
+                            <option>&nbsp;&nbsp;Choose Class</option>
                             @foreach ($classes as $class )
-                                <option value="{{$class->id}}">{{$class->level}}</option>
+                                <option value="{{$class->id}}">&nbsp;&nbsp;{{$class->level}}</option>
                             @endforeach
                         </select>
                         @error('class_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -34,10 +35,11 @@
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label class="form-label">Gender</label>
+                        <label class="form-label">&nbsp;&nbsp;Gender</label>
                         <select class="custom-select" wire:model="gender">
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
+                                <option>Select Gender</option>
+                                <option value="M">&nbsp;&nbsp;Male</option>
+                                <option value="F">&nbsp;&nbsp;Female</option>
                         </select>
                         @error('gender') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
@@ -72,18 +74,24 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Home Location</label>
                         <input type="text" class="form-control" wire:model="location" placeholder="">
                         @error('location') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Section</label>
                         <select class="custom-select" wire:model="section">
-                                <option value="Boarding">Boarding</option>
-                                <option value="Day">Day</option>
+                                <option>&nbsp;&nbsp;Select Section</option>
+                                <option value="Boarding">&nbsp;&nbsp;Boarding</option>
+                                <option value="Day">&nbsp;&nbsp;Day</option>
                         </select>
                         @error('section') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Pay Code (Optional)</label>
+                        <input type="text" class="form-control" wire:model="fees_pay_code" placeholder="">
+                        @error('fees_pay_code') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="form-row">

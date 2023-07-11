@@ -37,7 +37,7 @@ class StudentReportCard extends Component
         ->whereYear('results.created_at', '=', Carbon::today())
         ->limit(1)
         ->distinct('students.last_name')
-        ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
+        ->get(['students.last_name','students.first_name','students.other_names','students.fees_pay_code','results.student_id','classes.level','results.term',
                             'students.date_of_birth','students.gender','subjects.subject','results.*','students.photo']);
     }
     public function mount($student_id){

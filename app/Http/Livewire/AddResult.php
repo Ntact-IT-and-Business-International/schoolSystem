@@ -49,9 +49,16 @@ class AddResult extends ModalComponent
         return view('livewire.add-result',[
             'subjects'=>Subject::get(),
             'classes' =>Classes::get(),
-            'top_students'=>Student::whereClassId(6)->get(),
-            'p7_students'=>Student::whereClassId(10)->get(),
-            'students'=>Student::whereClassId(9)->get()
+            'baby_students'=>Student::whereClassId(1)->get(),
+            'middle_students'=>Student::whereClassId(2)->get(),
+            'top_students'=>Student::whereClassId(3)->get(),
+            'p1_students'=>Student::whereClassId(4)->get(),
+            'p2_students'=>Student::whereClassId(5)->get(),
+            'p3_students'=>Student::whereClassId(6)->get(),
+            'p4_students'=>Student::whereClassId(7)->get(),
+            'p5_students'=>Student::whereClassId(8)->get(),
+            'p6_students'=>Student::whereClassId(9)->get(),
+            'p7_students'=>Student::whereClassId(10)->get()
         ]);
     }
     /**

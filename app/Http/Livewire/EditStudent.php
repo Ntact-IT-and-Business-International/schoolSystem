@@ -20,6 +20,7 @@ class EditStudent extends Component
     public $nin;
     public $location;
     public $section;
+    public $fees_pay_code;
     public $student_id;
 
     //validate category
@@ -36,6 +37,7 @@ class EditStudent extends Component
         'nin'            => 'required',
         'location'       => 'required',
         'section'        => 'required',
+        'fees_pay_code'  =>'',
     ];
     public function render()
     {
@@ -62,6 +64,7 @@ class EditStudent extends Component
             'nin' => Student::editStudent($this->student_id)->value('nin'),
             'location' => Student::editStudent($this->student_id)->value('location'),
             'section' => Student::editStudent($this->student_id)->value('section'),
+            'fees_pay_code' => Student::editStudent($this->student_id)->value('fees_pay_code'),
         ]);
     }
 
@@ -71,9 +74,9 @@ class EditStudent extends Component
     public function updateStudent()
     {
         $this->validate();
-        Student::updateStudentInfo($this->student_id,$this->first_name,$this->last_name,$this->other_names,$this->class_id,$this->date_of_birth,$this->gender,$this->special_need,$this->parents_name,$this->contact,$this->nin,$this->location,$this->section);
+        Student::updateStudentInfo($this->student_id,$this->first_name,$this->last_name,$this->other_names,$this->class_id,$this->date_of_birth,$this->gender,$this->special_need,$this->parents_name,$this->contact,$this->nin,$this->location,$this->section,$this->fees_pay_code);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
 
-        return redirect()->to(url()->previous())->with('msg', 'Student info has been edited successfully');
+        return redirect()->back()->with('msg', 'Student info has been edited successfully');
     }
 }

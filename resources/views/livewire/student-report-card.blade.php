@@ -1,18 +1,18 @@
 <div>
     {{-- The best athlete wants his opponent at his best. --}}
     <div class="card">
-        <div class="card-body p-5">
+        <div class="card-body p-5" style="border:1px solid">
             <div class="row">
                 <div class="col-sm-12 pb-4 text-center">
                     <div class="media align-items-center mb-1">
                         <a href="!#" class="navbar-brand app-brand demo py-0 mr-4">
                             <span class="app-brand-logo demo">
-                                <img src="{{ asset('11.png')}}" style="width:100px;height:70px;" alt="Brand Logo" class="img-fluid">
+                                <img src="{{ asset('safeway.jpg')}}" style="width:100px;height:100px;" alt="Brand Logo" class="img-fluid">
                             </span>
-                            <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:50px;">Safeway Junior School</span>
+                            <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:40px;">Safeway Junior School</span>
                         </a>
                         @foreach($student_report_details as $detail)
-                            <img style="width:100px;height:80px;" src="{{asset('storage/Student_photos/'.$detail->photo)}}">
+                            <img style="width:100px;height:90px;" src="{{asset('storage/Student_photos/'.$detail->photo)}}">
                         @endforeach
                     </div>
                     <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:36px;">Kawempe- TTula</div>
@@ -229,7 +229,9 @@
                     <div class="font-weight-bold mb-2">Next Term Begins On:...............................................................</div>
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <div class="font-weight-bold mb-2">School Pay Code:..............................................................................</div>
+                    @foreach($student_report_details as $detail)
+                    <div class="font-weight-bold mb-2">School Pay Code: {{$detail->fees_pay_code}}</div>
+                    @endforeach
                 </div>
             </div>
             <div class="text-center" style="font-weight:bold; font-size:20px;font-family: "Times New Roman", Times, serif;">

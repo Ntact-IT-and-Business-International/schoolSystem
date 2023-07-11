@@ -109,7 +109,7 @@ class ReportCardController extends Controller
         //->limit(1)
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
-                            'students.date_of_birth','students.gender','subjects.subject','results.*']);
+                            'students.date_of_birth','students.gender','students.fees_pay_code','subjects.subject','results.*']);
         $student_report_details=$this->getStudentDetails($student_id);
 
         return view('reportcard::print_nursery_reportcard_now',compact('student_report_cards','student_report_details'));
@@ -124,7 +124,7 @@ class ReportCardController extends Controller
         ->limit(1)
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
-                            'students.date_of_birth','students.gender','subjects.subject','results.*','students.photo']);
+                            'students.date_of_birth','students.gender','students.fees_pay_code','subjects.subject','results.*','students.photo']);
     }
     /**
      * This function prints all the midterm results only

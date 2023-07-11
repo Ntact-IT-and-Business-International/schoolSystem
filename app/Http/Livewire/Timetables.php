@@ -27,8 +27,15 @@ class Timetables extends Component
     {
         return view('livewire.timetables',[
             'time_tables'=>TimeTable::getTimeTable($this->search, $this->sortBy, $this->sortDirection, $this->perPage),
-            'days_of_week' =>TimeTable::distinct('day')->get(['day'])
+            'days_of_week' =>TimeTable::distinct('day')->get(['day']),
+            'hours' =>$this->getLessonHours()
         ]);
+    }
+    private function getLessonHours(){
+        return TimeTable::get();
+    }
+    private function getTeachers(){
+        return TimeTable::join('staffs','staffs.id','time_tables.staff_id')->get(['staffs.staff_last_name','staffs.staff_first_name','staffs.staff_other_names']);
     }
 
 }

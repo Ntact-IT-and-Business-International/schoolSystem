@@ -43,6 +43,9 @@
                 <th scope="col" wire:click="sortBy('special_need')" style="cursor: pointer;"> Special Need
                     @include('partials._sort-icon',['field'=>'special_need'])
                 </th>
+                <th scope="col" wire:click="sortBy('fees_pay_code')" style="cursor: pointer;"> Pay Code
+                    @include('partials._sort-icon',['field'=>'fees_pay_code'])
+                </th>
                 <th scope="col" wire:click="sortBy('parents_name')" style="cursor: pointer;"> Parents Name
                     @include('partials._sort-icon',['field'=>'parents_name'])
                 </th>
@@ -73,6 +76,7 @@
                 <td>{{$student->date_of_birth}}</td>
                 <td>{{$student->gender}}</td>
                 <td>{{$student->special_need}}</td>
+                <td>{{$student->fees_pay_code}}</td>
                 <td>{{$student->parents_name}}</td>
                 <td>{{$student->contact}}</td>
                 <td>{{$student->nin}}</td>

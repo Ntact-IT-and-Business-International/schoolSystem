@@ -20,22 +20,21 @@
                         <a class="nav-link active" data-toggle="tab" href="#tasks-projects">Teacher</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#tasks-tags">Tags</a>
+                        <a class="nav-link" data-toggle="tab" href="#tasks-tags">Days</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade show active" id="tasks-projects">
                         <div class="py-3">
                             <div class="py-2 px-3">
-                                <a href="javascript:void(0)" class="text-dark">Website design</a>
+                                <a href="javascript:void(0)" class="text-dark">Okello Julius</a>
                             </div>
                             <div class="py-2 px-3">
-                                <a href="javascript:void(0)" class="text-dark">SEO improvement</a>
+                                <a href="javascript:void(0)" class="text-dark">Ociba James</a>
                             </div>
                             <div class="py-2 px-3">
-                                <a href="javascript:void(0)" class="text-dark">example.com redesign</a>
+                                <a href="javascript:void(0)" class="text-dark">Odongo Robert</a>
                             </div>
-                            <a href="javascript:void(0)" class="d-block text-light small py-2 px-3"><i class="ion ion-md-add"></i>&nbsp; Add project</a>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="tasks-tags">
@@ -52,7 +51,6 @@
                             <div class="py-2 px-3">
                                 <a href="javascript:void(0)" class="text-dark"><span class="badge badge-dot badge-warning"></span> &nbsp; Other</a>
                             </div>
-                            <a href="javascript:void(0)" class="d-block text-light small py-2 px-3"><i class="ion ion-md-add"></i>&nbsp; Add tag</a>
                         </div>
                     </div>
                 </div>
@@ -69,27 +67,23 @@
                             <thead>
                                 <tr>
                                     <th  class="font-weight-bold">DAYS|TIME</th>
-                                    <th  class="font-weight-bold">6:20-7:30am</th>
-                                    <th  class="font-weight-bold">7:30-8:30am</th>
-                                    <th   class="font-weight-bold">8:30-9:30am</th>
-                                    <th  class="font-weight-bold">9:30-10:30am</th>
-                                    <th  class="font-weight-bold">11:00-12:pm</th>
-                                    <th  class="font-weight-bold">12:00-1:00pm</th>
-                                    <th  class="font-weight-bold">1:00-2:00pm</th>
-                                    <th  class="font-weight-bold">2:00-3:00pm</th>
-                                    <th  class="font-weight-bold">3:00-4:00pm</th>
-                                    <th  class="font-weight-bold">4:00-5:00pm</th>
+                                    @foreach($hours as $time)
+                                    <th  class="font-weight-bold">{{$time->starting_time}}-{{$time->end_time}}</th>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($days_of_week as $week)
                                 @php
                                 $subjects=\DB::table('time_tables')->join('subjects','subjects.id','time_tables.subject_id')->distinct('subjects.subject')->get(['subjects.subject']);
+                                $teachers =\DB::table('time_tables')->join('staffs','staffs.id','time_tables.staff_id')->get(['staffs.staff_last_name','staffs.staff_first_name','staffs.staff_other_names']);
                                 @endphp
                                 <tr>
                                     <td class="font-weight-bold">{{$week->day}}</td>
                                     @foreach($subjects as $subject)
-                                    <td>{{$subject->subject}}</td>
+                                    @foreach($teachers as $teacher)
+                                    <td>{{$subject->subject}} {{$teacher->staff_last_name}}</td>
+                                    @endforeach
                                     @endforeach
                                 </tr>
                                 @endforeach

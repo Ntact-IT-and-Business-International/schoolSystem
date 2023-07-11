@@ -31,13 +31,14 @@ class Student extends Model
         ->orWhere('contact', 'like', '%'.$val.'%')
         ->orWhere('nin', 'like', '%'.$val.'%')
         ->orWhere('location', 'like', '%'.$val.'%')
+        ->orWhere('fees_pay_code', 'like', '%'.$val.'%')
         ->orWhere('section', 'like', '%'.$val.'%')
         ->orWhere('users.name', 'like', '%'.$val.'%');
     }
     /**
      * This function creates the student
      */
-    public static function addStudent($first_name,$last_name,$other_names,$class_id,$date_of_birth,$gender,$special_need,$parents_name,$contact,$nin,$location,$section,$photo){
+    public static function addStudent($first_name,$last_name,$other_names,$class_id,$date_of_birth,$gender,$special_need,$parents_name,$contact,$nin,$location,$section,$fees_pay_code,$photo){
         Student::create([
             'first_name'    =>$first_name,
             'last_name'     =>$last_name,
@@ -51,6 +52,7 @@ class Student extends Model
             'nin'           =>$nin,
             'location'      =>$location,
             'section'       =>$section,
+            'fees_pay_code' =>$fees_pay_code,
             'photo'         =>$photo,
             'user_id' =>auth()->user()->id,
         ]);
@@ -79,7 +81,7 @@ class Student extends Model
     /**
      * This function updates the edited student
      */
-    public static function updateStudentInfo($student_id,$first_name,$last_name,$other_names,$class_id,$date_of_birth,$gender,$special_need,$parents_name,$contact,$nin,$location,$section)
+    public static function updateStudentInfo($student_id,$first_name,$last_name,$other_names,$class_id,$date_of_birth,$gender,$special_need,$parents_name,$contact,$nin,$location,$section,$fees_pay_code)
     {
         Student::whereId($student_id)->update([
             'first_name'    => $first_name,
@@ -94,21 +96,14 @@ class Student extends Model
             'nin'           => $nin,
             'location'      => $location,
             'section'       => $section,
+            'fees_pay_code' =>$fees_pay_code,
             'created_at'    =>\Carbon\Carbon::now(),    
             'user_id'       =>auth()->user()->id,
         ]);
     } 
     /**
-     * This function gets Class Students for the current Year
+     * This function gets the students in the class
      */
-    // public static function getClassStudent($search, $sortBy, $sortDirection, $perPage)
-    // {
-    //     return Student::join('users', 'users.id', 'students.user_id')
-    //     ->join('classes', 'classes.id', 'students.class_id')
-    //     ->whereYear('students.created_at', '=', Carbon::today())
-    //     ->distinct('classes.level')
-    //     ->paginate($perPage, ['students.*','classes.level']);
-    // }
     public static function getClassStudent(){
         return Student::join('classes', 'classes.id', 'students.class_id')->select(DB::raw('Distinct(class_id)'))->groupBy('classes.level');
     }
