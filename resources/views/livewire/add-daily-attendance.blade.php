@@ -8,8 +8,9 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Class</label>
                             <select class="custom-select" wire:model="class_id">
+                                <option>&nbsp; &nbsp;Choose Class</option>
                                 @foreach($classes as $class)
-                                    <option value="{{$class->id}}">{{$class->level}}</option>
+                                    <option value="{{$class->id}}">&nbsp; &nbsp;{{$class->level}}</option>
                                 @endforeach
                             </select>
                         @error('class_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -24,9 +25,10 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Term</label>
                             <select class="custom-select" wire:model="term">
-                                    <option value="1">Term 1</option>
-                                    <option value="2">Term 2</option>
-                                    <option value="3">Term 3</option>
+                                    <option>&nbsp; &nbsp;Select Term</option>
+                                    <option value="1">&nbsp; &nbsp;Term 1</option>
+                                    <option value="2">&nbsp; &nbsp;Term 2</option>
+                                    <option value="3">&nbsp; &nbsp;Term 3</option>
                             </select>
                         @error('term') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

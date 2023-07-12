@@ -149,7 +149,7 @@
                     <div class="demo-navbar-user nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                             <span class="d-inline-flex flex-lg-row-reverse align-items-center align-middle">
-                                <img src="{{asset('storage/user_photos/'.auth()->user()->getLoggedInUserLogo())}}" style="border-radius:50%;width:40px;" alt class="d-block  rounded-circle">
+                                <img src="{{asset('storage/user_photos/'.auth()->user()->getLoggedInUserLogo())}}" style="border-radius:50%; height:40px;width:40px;" alt class="d-block  rounded-circle">
                                 <span class="px-1 mr-lg-2 ml-2 ml-lg-0">{{auth()->user()->name}}</span>
                             </span>
                         </a>

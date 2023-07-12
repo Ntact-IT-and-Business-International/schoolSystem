@@ -198,6 +198,8 @@
                             @php
                                 $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('examination_marks');
                                 $total_aggregate =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('grade');
+                                $mathematic_with_nine =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 1)->where('results.subject_id',9)->exists();
+                                $english_with_nine =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 2)->where('results.subject_id',9)->exists();
                             @endphp
                             @endforeach
                             <td class="py-3 font-weight-bold">
@@ -220,8 +222,12 @@
                             <td class="py-3 font-weight-bold">
                             @if($total_aggregate > 3 && $total_aggregate < 13) 
                                 I
+                            @elseif($total_aggregate > 3 && $total_aggregate < 13 && $mathematic_with_nine || $english_with_nine)
+                                II
                             @elseif($total_aggregate > 12 && $total_aggregate < 25 )
                                 II
+                            @elseif($total_aggregate > 12 && $total_aggregate < 25 && $mathematic_with_nine || $english_with_nine)
+                                III
                             @elseif($total_aggregate > 24 && $total_aggregate < 31)
                                 III
                             @elseif($total_aggregate > 30 && $total_aggregate < 35)

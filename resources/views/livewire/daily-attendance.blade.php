@@ -46,7 +46,7 @@
                 <th scope="col" wire:click="sortBy('date')" style="cursor: pointer;"> Date
                     @include('partials._sort-icon',['field'=>'date'])
                 </th>
-                <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Name
+                <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Teacher On Duty
                     @include('partials._sort-icon',['field'=>'name'])
                 </th>
                 <th>Option</th>
@@ -64,8 +64,13 @@
                 <td>{{$attendance->date}}</td>
                 <td>{{$attendance->name}}</td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="#!" class="btn btn-success btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

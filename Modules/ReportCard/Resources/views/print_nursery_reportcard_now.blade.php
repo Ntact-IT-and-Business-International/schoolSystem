@@ -40,8 +40,15 @@
         .text-danger{
             color:red;
         }
+        .borderimg {
+        border: 10px solid transparent;
+        padding: 15px;
+        -webkit-border-image: url(safeway.jpg) 30 round; /* Safari 3.1-5 */
+        -o-border-image: url(safeway.jpg) 30 round; /* Opera 11-12.1 */
+        border-image: url(/safeway.jpg) 30 round;
+        }
     </style>
-        <div class="invoice-print p-2" style="border:1px solid">
+        <div class="invoice-print p-2 borderimg">
             <div class="row">
                 <div class="col-sm-12 pb-4 text-center">
                     <div class="media align-items-center mb-1">
@@ -127,12 +134,7 @@
                             <td class="py-2">
                                 GRADE
                             </td>
-                            <td rowspan="4"></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td colspan="6"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -259,7 +261,7 @@
                             
                             </td>
                         </tr>
-                        <tr class="font-weight-bold" rowspan="4">
+                        <tr class="font-weight-bold" style="border-style: none;">
                             <td class="py-2">
                                 A-EXCELLENCE
                             </td>
