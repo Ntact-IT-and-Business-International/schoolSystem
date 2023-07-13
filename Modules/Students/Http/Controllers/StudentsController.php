@@ -62,4 +62,22 @@ class StudentsController extends Controller
         }
         return view('students::edit_student',compact('student_id'));
     }
+    /**
+     * This function gets more students information
+     */
+    public function studentsMoreInformation($student_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('students::students_more_details',compact('student_id'));
+    }
+    /**
+     * This function gets form to update students photo
+     */
+    public function uploadStudentsPhoto($student_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('students::upload_students_photo',compact('student_id'));
+    }
 }

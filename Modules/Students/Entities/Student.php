@@ -136,4 +136,23 @@ class Student extends Model
         ->whereClassId($class_id)
         ->paginate($perPage, ['students.*','classes.level']);
     }
+    /**
+     * This function gets classes and students for a particular year
+     */
+    public static function getMoreStudentInformation($student_id){
+        return Student::join('users', 'users.id', 'students.user_id')
+        ->join('classes', 'classes.id', 'students.class_id')
+        ->where('students.id',$student_id)
+        ->get(['students.*','classes.level']);
+    }
+    /**
+     * This function updates the edited student photo
+     */
+    public static function updateStudentPhoto($student_id,$photo)
+    {
+        Student::whereId($student_id)->update([
+            'photo'         => $photo,  
+            'user_id'       =>auth()->user()->id,
+        ]);
+    } 
 }

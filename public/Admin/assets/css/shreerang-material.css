@@ -1622,7 +1622,9 @@ label.btn {
   .mega-dropdown > .dropdown-menu {
     left: 0 !important;
     right: 0 !important; }
-
+.btn-size {
+  width:20px;
+}
 .dropdown-item {
   line-height: 1.54; }
 

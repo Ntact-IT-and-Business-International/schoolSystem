@@ -34,14 +34,8 @@
                 <th scope="col" wire:click="sortBy('date_of_birth')" style="cursor: pointer;"> Class
                     @include('partials._sort-icon',['field'=>'date_of_birth'])
                 </th>
-                <th scope="col" wire:click="sortBy('date_of_birth')" style="cursor: pointer;"> DOB
-                    @include('partials._sort-icon',['field'=>'date_of_birth'])
-                </th>
                 <th scope="col" wire:click="sortBy('gender')" style="cursor: pointer;"> Gender
                     @include('partials._sort-icon',['field'=>'gender'])
-                </th>
-                <th scope="col" wire:click="sortBy('special_need')" style="cursor: pointer;"> Special Need
-                    @include('partials._sort-icon',['field'=>'special_need'])
                 </th>
                 <th scope="col" wire:click="sortBy('fees_pay_code')" style="cursor: pointer;"> Pay Code
                     @include('partials._sort-icon',['field'=>'fees_pay_code'])
@@ -51,15 +45,6 @@
                 </th>
                 <th scope="col" wire:click="sortBy('contact')" style="cursor: pointer;"> Contact
                     @include('partials._sort-icon',['field'=>'contact'])
-                </th>
-                <th scope="col" wire:click="sortBy('nin')" style="cursor: pointer;"> Nin
-                    @include('partials._sort-icon',['field'=>'nin'])
-                </th>
-                <th scope="col" wire:click="sortBy('location')" style="cursor: pointer;"> Location
-                    @include('partials._sort-icon',['field'=>'location'])
-                </th>
-                <th scope="col" wire:click="sortBy('section')" style="cursor: pointer;"> Section
-                    @include('partials._sort-icon',['field'=>'section'])
                 </th>
                 <th scope="col" wire:click="sortBy('photo')" style="cursor: pointer;"> Photo
                     @include('partials._sort-icon',['field'=>'photo'])
@@ -73,19 +58,21 @@
                 <th scope="row">{{$students->firstitem() + $i}}</th>
                 <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
                 <td>{{$student->level}}</td>
-                <td>{{$student->date_of_birth}}</td>
                 <td>{{$student->gender}}</td>
-                <td>{{$student->special_need}}</td>
                 <td>{{$student->fees_pay_code}}</td>
                 <td>{{$student->parents_name}}</td>
                 <td>{{$student->contact}}</td>
-                <td>{{$student->nin}}</td>
-                <td>{{$student->location}}</td>
-                <td>{{$student->section}}</td>
                 <td><img src="{{ asset('storage/Student_photos/'.$student->photo)}}" style="width:60px; height:40px;"></td>
                 <td>
-                    <a href="{{URL::signedRoute('EditStudent', ['student_id' => $student->id])}}" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="{{URL::signedRoute('EditStudent', ['student_id' => $student->id])}}" class="btn btn-info btn-sm  dropdown-item mb-1">Edit Student</a>
+                            <a href="{{URL::signedRoute('StudentDetails', ['student_id' => $student->id])}}" class="btn btn-secondary btn-sm dropdown-item mb-1">View More</a>
+                            <a href="{{URL::signedRoute('UploadStudentPhoto', ['student_id' => $student->id])}}" class="btn btn-success btn-sm dropdown-item mb-1">Upload Photo</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete Student</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

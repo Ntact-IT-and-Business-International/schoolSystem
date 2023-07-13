@@ -20,4 +20,6 @@ Route::group(['prefix' => 'students', 'middleware' => ['auth']], function () {
     Route::get('/year-class/{year_id}', 'StudentsController@studentsForParticularYearClass')->name('Class Years'); 
     Route::get('/students-per-class-per-year/{class_id}', 'StudentsController@studentsPerYearPerClass')->name('Students Per Class Per Years');
     Route::get('/edit-student/{student_id}', 'StudentsController@editStudent')->name('EditStudent');
+    Route::get('/view-more/{student_id}', 'StudentsController@studentsMoreInformation')->name('StudentDetails');
+    Route::get('/upload-photo/{student_id}', 'StudentsController@uploadStudentsPhoto')->name('UploadStudentPhoto');
 });
