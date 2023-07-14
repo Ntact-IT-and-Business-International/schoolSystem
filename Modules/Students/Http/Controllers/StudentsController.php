@@ -80,4 +80,13 @@ class StudentsController extends Controller
         }
         return view('students::upload_students_photo',compact('student_id'));
     }
+    /**
+     * This funtion gets edit daily attendace form
+     */
+    public function editDailyAttendance($attendance_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('students::edit_daily_attendance',compact('attendance_id'));
+    }
 }

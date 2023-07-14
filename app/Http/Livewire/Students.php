@@ -29,4 +29,12 @@ class Students extends Component
     {
         $this->class_id = $class_id;
     }
+    /**
+     * This function deletes the Students
+     */
+    public static function deleteStudent($student_id)
+    {
+        Student::whereId($student_id)->delete();
+        session()->flash('success', 'You have successfully deleted user');
+    }
 }

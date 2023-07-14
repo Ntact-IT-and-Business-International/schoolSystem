@@ -22,4 +22,5 @@ Route::group(['prefix' => 'students', 'middleware' => ['auth']], function () {
     Route::get('/edit-student/{student_id}', 'StudentsController@editStudent')->name('EditStudent');
     Route::get('/view-more/{student_id}', 'StudentsController@studentsMoreInformation')->name('StudentDetails');
     Route::get('/upload-photo/{student_id}', 'StudentsController@uploadStudentsPhoto')->name('UploadStudentPhoto');
+    Route::get('/edit-daily-attendance/{attendance_id}', 'StudentsController@editDailyAttendance')->name('EditDailyAttendance');
 });

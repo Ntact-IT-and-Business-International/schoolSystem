@@ -54,17 +54,17 @@ class Attendance extends Model
      */
     public static function editAttendance($attendance_id)
     {
-        return Attendance::whereId($attendance_ids)->get();
+        return Attendance::whereId($attendance_id)->get();
     }
 
     /**
      * This function updates the edited Dos details
      */
-    public static function updateAttendanceInfo($attendance_id,$class_id,$term,$date,$boys,$girls){
+    public static function updateAttendanceInfo($attendance_id,$term,$date,$boys,$girls){
         Attendance::whereId($attendance_id)->update([
             'term'   =>$term,
             'date'   =>$date,
-            'boys'   =>$girls,
+            'boys'   =>$boys,
             'girls'  =>$girls,
             'user_id'       =>auth()->user()->id,
         ]);

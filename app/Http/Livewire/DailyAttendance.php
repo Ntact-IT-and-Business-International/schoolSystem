@@ -25,4 +25,12 @@ class DailyAttendance extends Component
             'attendances'=>Attendance::getAttendance($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
     }
+    /**
+     * This function deletes the daily Attendance
+     */
+    public static function deleteDailyAttendance($attendance_id)
+    {
+        Attendance::whereId($attendance_id)->delete();
+        session()->flash('success', 'Operation Successful');
+    }
 }

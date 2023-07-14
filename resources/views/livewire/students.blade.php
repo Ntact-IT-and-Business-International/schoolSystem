@@ -70,7 +70,7 @@
                             <a href="{{URL::signedRoute('EditStudent', ['student_id' => $student->id])}}" class="btn btn-info btn-sm  dropdown-item mb-1">Edit Student</a>
                             <a href="{{URL::signedRoute('StudentDetails', ['student_id' => $student->id])}}" class="btn btn-secondary btn-sm dropdown-item mb-1">View More</a>
                             <a href="{{URL::signedRoute('UploadStudentPhoto', ['student_id' => $student->id])}}" class="btn btn-success btn-sm dropdown-item mb-1">Upload Photo</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete Student</a>
+                            <button wire:click="deleteStudent({{ $student->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete Student</button>
                         </div>
                     </div>
                 </td>

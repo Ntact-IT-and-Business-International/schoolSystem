@@ -31,6 +31,7 @@ class AddDailyAttendance extends ModalComponent
     protected $messages = [
         'class_id.required' => 'Item is required',
         'date.required' => 'Date is required',
+        'boys.required' => 'Boys is required',
         'term.required' => 'Term is required',
         'girls.required' => 'girls is required',
     ];

@@ -29,6 +29,9 @@
                         <th scope="col" wire:click="sortBy('permission_requests.id')" style="cursor: pointer;">#
                             @include('partials._sort-icon',['field'=>'permission_requests.id'])
                         </th>
+                        <th scope="col" wire:click="sortBy('first_name')" style="cursor: pointer;"> Pupils Name
+                            @include('partials._sort-icon',['field'=>'first_name'])
+                        </th>
                         <th scope="col" wire:click="sortBy('category')" style="cursor: pointer;"> Office
                             @include('partials._sort-icon',['field'=>'category'])
                         </th>
@@ -51,6 +54,7 @@
                     @foreach($permissions as $i=>$permission)
                         <tr>
                             <th scope="row">{{$permissions->firstitem() + $i}}</th>
+                            <td>{{$permission->last_name}} {{$permission->first_name}} {{$permission->other_names}}</td>
                             <td>{{$permission->category}}</td>
                             <td>{{$permission->reason}}</td>
                             <td>{{$permission->reply}} By <span style="color:blue;">{{$permission->name}}</span></td>
@@ -68,8 +72,7 @@
                                         <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
                                         <div class="dropdown-menu">
                                             <a href="{{URL::signedRoute('forwardPermission', ['permission_id' => $permission->id])}}" class="btn btn-warning btn-sm dropdown-item btn-square mb-1">Forward</a>
-                                            <a href="#!" class="btn btn-success btn-sm dropdown-item mb-1">Edit</a>
-                                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                                            <button wire:click="deletePupilsPermision({{ $permission->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
                                         </div>
                                 </div>
                             </td>

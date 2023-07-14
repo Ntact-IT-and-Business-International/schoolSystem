@@ -24,4 +24,11 @@ class PupilsPermission extends Component
             'permissions' =>PermissionRequest::getPupilsPermissions($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
     }
+    /**
+     * This function deletes the pupils permission
+     */
+    public static function deletePupilsPermision($permission_id){
+        PermissionRequest::whereId($permission_id)->delete();
+        session()->flash('success', 'Operation Successful');
+    }
 }
