@@ -37,29 +37,14 @@
                 <th scope="col" wire:click="sortBy('subject')" style="cursor: pointer;"> Subject
                     @include('partials._sort-icon',['field'=>'subject'])
                 </th>
-                <th scope="col" wire:click="sortBy('date_of_birth')" style="cursor: pointer;"> DOB
-                    @include('partials._sort-icon',['field'=>'date_of_birth'])
-                </th>
-                <th scope="col" wire:click="sortBy('gender')" style="cursor: pointer;"> Gender
-                    @include('partials._sort-icon',['field'=>'gender'])
-                </th>
                 <th scope="col" wire:click="sortBy('phone_number')" style="cursor: pointer;"> Phone Number
                     @include('partials._sort-icon',['field'=>'phone_number'])
-                </th>
-                <th scope="col" wire:click="sortBy('staff_email')" style="cursor: pointer;"> Email
-                    @include('partials._sort-icon',['field'=>'staff_email'])
-                </th>
-                <th scope="col" wire:click="sortBy('qualification')" style="cursor: pointer;"> Qualification
-                    @include('partials._sort-icon',['field'=>'qualification'])
                 </th>
                 <th scope="col" wire:click="sortBy('registration_number')" style="cursor: pointer;"> Reg No
                     @include('partials._sort-icon',['field'=>'registration_number'])
                 </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th scope="col" wire:click="sortBy('documents')" style="cursor: pointer;"> Documents
-                    @include('partials._sort-icon',['field'=>'documents'])
+                <th scope="col" wire:click="sortBy('qualification')" style="cursor: pointer;"> Documents
+                    @include('partials._sort-icon',['field'=>'qualification'])
                 </th>
                 <th scope="col" wire:click="sortBy('salary')" style="cursor: pointer;"> Salary
                     @include('partials._sort-icon',['field'=>'salary'])
@@ -77,19 +62,20 @@
                 <td>{{$staff->staff_last_name}} {{$staff->staff_first_name}} {{$staff->staff_other_names}}</td>
                 <td>{{$staff->level}}</td>
                 <td>{{$staff->subject}}</td>
-                <td>{{$staff->date_of_birth}}</td>
-                <td>{{$staff->gender}}</td>
                 <td>{{$staff->phone_number}}</td>
-                <td>{{$staff->staff_email}}</td>
-                <td>{{$staff->qualification}}</td>
                 <td>{{$staff->registration_number}}</td>
-                <td>{{$staff->title}}</td>
                 <td style="color:blue;"><a href="{{ asset('storage/Staff_document/'.$staff->documents)}}" style="width:60px; height:40px;" target="_blank">Documents</a></td>
                 <td>{{ number_format($staff->salary)}}</td>
                 <td><img src="{{ asset('storage/Staff_photos/'.$staff->photo)}}" style="width:60px; height:40px;"></td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="{{URL::signedRoute('MoreStaffInfo', ['staff_id' => $staff->id])}}" class="btn btn-success btn-sm dropdown-item btn-square mb-1">More Info</a>
+                                <a href="{{URL::signedRoute('EditStaff', ['staff_id' => $staff->id])}}" class="btn btn-warning btn-sm dropdown-item btn-square mb-1">Edit</a>
+                                <button wire:click="deletePupilsStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
+                            </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

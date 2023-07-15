@@ -113,4 +113,14 @@ class Staffs extends Model
             'user_id'             =>auth()->user()->id,
         ]);
     }
+    /**
+     * This function gets more staff information
+     */
+    public static function getStaffMoreInformation($staff_id){
+        return Staffs::join('users', 'users.id', 'staffs.user_id')
+        ->join('classes', 'classes.id', 'staffs.class_id')
+        ->join('subjects', 'subjects.id', 'staffs.subject_id')
+        ->where('staffs.id',$staff_id)
+        ->get(['staffs.*','users.name','classes.level','subjects.subject']);
+    }
 }

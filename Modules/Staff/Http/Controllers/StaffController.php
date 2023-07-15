@@ -35,4 +35,22 @@ class StaffController extends Controller
     public function myPermissionRequest(){
         return view('staff::my_requested_permissions');
     }
+    /**
+     * This function displays more staff information 
+     */
+    public function moreStaffInformation($staff_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('staff::more_staff_information',compact('staff_id'));
+    }
+    /**
+     * This function displays edit staff details form 
+     */
+    public function editStaff($staff_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('staff::edit_staff_information',compact('staff_id'));
+    }
 }
