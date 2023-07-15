@@ -73,7 +73,7 @@
                             <div class="dropdown-menu">
                                 <a href="{{URL::signedRoute('MoreStaffInfo', ['staff_id' => $staff->id])}}" class="btn btn-success btn-sm dropdown-item btn-square mb-1">More Info</a>
                                 <a href="{{URL::signedRoute('EditStaff', ['staff_id' => $staff->id])}}" class="btn btn-warning btn-sm dropdown-item btn-square mb-1">Edit</a>
-                                <button wire:click="deletePupilsStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
+                                <button wire:click="deleteStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
                             </div>
                     </div>
                 </td>

@@ -23,6 +23,8 @@
                 </div>
             </div>
             <div class="card-footer border-0 text-center p-0">
+            
+                @foreach($more_staff_information as $staff)
                 <div class="row no-gutters row-bordered row-border-light">
                     <a href="#" class="d-flex col flex-column text-dark py-3">
                         <div class="font-weight-bold">Class</div>
@@ -79,6 +81,7 @@
                         <div class="text-muted small">{{$staff->created_at}}</div>
                     </a>
                 </div>
+                @endforeach
             </div>
         </div>
     </div>

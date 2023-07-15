@@ -123,4 +123,11 @@ class Staffs extends Model
         ->where('staffs.id',$staff_id)
         ->get(['staffs.*','users.name','classes.level','subjects.subject']);
     }
+    /**
+     * This function gets all details of the non teaching staff
+     */
+    public static function getMoreNonTeachingStaffInfo($staff_id){
+        return Staffs::where('staffs.id',$staff_id)
+        ->get();
+    }
 }

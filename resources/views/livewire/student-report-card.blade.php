@@ -164,8 +164,8 @@
                                 $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('examination_marks');
                                 $total_aggregate =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('grade');
                                 $grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->get();
-                                $mathematic_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('student_id',$card->student_id)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 1)->where('results.grade',9)->get();
-                                $english_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('student_id',$card->student_id)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 2)->where('results.grade',9)->exists();
+                                $mathematic_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('student_id',$card->student_id)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 1)->where('results.examination_marks','<', 35)->exists();
+                                $english_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('student_id',$card->student_id)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 2)->where('results.examination_marks','<', 35)->exists();
                             @endphp
                             @endforeach
                             <td class="py-3 font-weight-bold">
@@ -189,11 +189,11 @@
                             @if($card->grade !== null)
                                 @if($total_aggregate > 3 && $total_aggregate < 13) 
                                     I
-                                @elseif($total_aggregate > 3 && $total_aggregate < 13 && \DB::table('results')->join('subjects','subjects.id','results.subject_id')->where('results.student_id',$card->student_id)->where('results.grade',9)->exists())
+                                @elseif($total_aggregate > 3 && $total_aggregate < 13 && $mathematic_with_nine || $english_with_nine)
                                     II
-                                @elseif($total_aggregate > 12 && $total_aggregate < 25 && $mathematic_with_nine)
+                                @elseif($total_aggregate > 12 && $total_aggregate < 25)
                                     II
-                                @elseif($total_aggregate > 12 && $total_aggregate < 25 || \DB::table('results')->where('student_id',$card->student_id)->where('grade',9)->exists())
+                                @elseif($total_aggregate > 12 && $total_aggregate < 25 && $mathematic_with_nine || $english_with_nine )
                                     III
                                 @elseif($total_aggregate > 24 && $total_aggregate < 31)
                                     III

@@ -31,12 +31,6 @@
                 <th scope="col" wire:click="sortBy('staff_last_name')" style="cursor: pointer;"> Name
                     @include('partials._sort-icon',['field'=>'staff_last_name'])
                 </th>
-                <th scope="col" wire:click="sortBy('nin')" style="cursor: pointer;"> NIN
-                    @include('partials._sort-icon',['field'=>'nin'])
-                </th>
-                <th scope="col" wire:click="sortBy('date_of_birth')" style="cursor: pointer;"> DOB
-                    @include('partials._sort-icon',['field'=>'date_of_birth'])
-                </th>
                 <th scope="col" wire:click="sortBy('gender')" style="cursor: pointer;"> Sex
                     @include('partials._sort-icon',['field'=>'gender'])
                 </th>
@@ -66,8 +60,6 @@
             <tr>
                 <th scope="row">{{$non_teaching_staffs->firstitem() + $i}}</th>
                 <td>{{$staff->staff_last_name}} {{$staff->staff_first_name}} {{$staff->staff_other_names}}</td>
-                <td>{{$staff->nin}}</td>
-                <td>{{$staff->date_of_birth}}</td>
                 <td>{{$staff->gender}}</td>
                 <td>{{$staff->phone_number}}</td>
                 <td>{{$staff->qualification}}</td>
@@ -76,9 +68,15 @@
                 <td>{{ number_format($staff->salary)}}</td>
                 <td><img src="{{ asset('storage/Staff_photos/'.$staff->photo)}}" style="width:60px; height:40px;"></td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                    <div class="dropdown-menu">
+                        <a href="{{URL::signedRoute('MoreStaffInfo', ['staff_id' => $staff->id])}}" class="btn btn-success btn-sm dropdown-item btn-square mb-1">More Info</a>
+                        <a href="{{URL::signedRoute('EditStaff', ['staff_id' => $staff->id])}}" class="btn btn-warning btn-sm dropdown-item btn-square mb-1">Edit</a>
+                        <button wire:click="deleteStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
+                    </div>
                 </td>
+                </div>
             </tr>
         @endforeach
         </tbody>

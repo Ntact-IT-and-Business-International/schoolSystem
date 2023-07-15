@@ -23,4 +23,11 @@ class Staff extends Component
             'teaching_staffs' =>Staffs::getStaff($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
     }
+    /**
+     * This function deletes staff
+     */
+    public static function deleteStaff($staff_id){
+        Staffs::whereId($staff_id)->delete();
+        session()->flash('success', 'You have successfully deleted user');
+    }
 }
