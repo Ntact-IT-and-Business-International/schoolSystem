@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('ple_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->int('div1');
-            $table->int('div2');
-            $table->int('div3');
-            $table->int('div4');
-            $table->int('U');
-            $table->int('X');
-            $table->int('total');
+            $table->integer('div1');
+            $table->integer('div2');
+            $table->integer('div3');
+            $table->integer('div4');
+            $table->integer('U');
+            $table->integer('X');
+            $table->integer('total');
             $table->string('year');
             $table->string('result');
             $table->timestamps();
