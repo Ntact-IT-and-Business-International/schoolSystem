@@ -120,7 +120,7 @@
                             </td>
                             @foreach($student_report_cards as $card)
                             @php
-                                $total_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_marks');
+                                $total_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_marks');
                             @endphp
                             <td class="py-3">
                             {{$card->assessment_marks}}
@@ -135,7 +135,7 @@
                             </td>
                             @foreach($student_report_cards as $card)
                             @php
-                                $total_assessment_grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_grade');
+                                $total_assessment_grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_grade');
                             @endphp
                             <td class="py-3" style="color:red;">
                             {{$card->assessment_grade}}
@@ -196,11 +196,12 @@
                             </td>
                             @foreach($student_report_cards as $card)
                             @php
-                                $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('examination_marks');
-                                $total_aggregate =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('grade');
-                                $mathematic_with_nine =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 1)->where('results.subject_id',9)->exists();
-                                $english_with_nine =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 2)->where('results.subject_id',9)->exists();
-                            @endphp
+                                $grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->get();
+                                $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('examination_marks');
+                                $total_aggregate =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('grade');
+                                $mathematic_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('term',$card->term)->where('student_id',$card->student_id)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 1)->where('results.grade',9)->exists();
+                                $english_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('term',$card->term)->where('student_id',$card->student_id)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 2)->where('results.grade',9)->exists();                        
+                                @endphp
                             @endforeach
                             <td class="py-3 font-weight-bold">
                             {{$total_exam_marks}}
@@ -220,23 +221,30 @@
                             <td class="py-3">
                             </td>
                             <td class="py-3 font-weight-bold">
-                            @if($total_aggregate > 3 && $total_aggregate < 13) 
-                                I
-                            @elseif($total_aggregate > 3 && $total_aggregate < 13 && $mathematic_with_nine || $english_with_nine)
-                                II
-                            @elseif($total_aggregate > 12 && $total_aggregate < 25 )
-                                II
-                            @elseif($total_aggregate > 12 && $total_aggregate < 25 && $mathematic_with_nine || $english_with_nine)
-                                III
-                            @elseif($total_aggregate > 24 && $total_aggregate < 31)
-                                III
-                            @elseif($total_aggregate > 30 && $total_aggregate < 35)
-                                IV
-                            @elseif($total_aggregate > 34 && $total_aggregate < 37 )
-                                U
-                            @else
-                                X 
-                            @endif
+                            @if($card->grade !== null)
+                            @switch(true)
+                                    @case($total_aggregate > 3 && $total_aggregate < 13)
+                                        @if($mathematic_with_nine == 1 || $english_with_nine == 1 ) 
+                                            II
+                                        @else
+                                            I
+                                        @endif
+                                    @break
+                                    @case(($total_aggregate > 3 && $total_aggregate < 13 || $total_aggregate > 12 && $total_aggregate < 25) && !($mathematic_with_nine || $english_with_nine))
+                                        II
+                                    @break
+                                    @case($total_aggregate > 12 && $total_aggregate < 25 || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine || $english_with_nine)))
+                                        III
+                                    @break
+                                    @case($total_aggregate > 24 && $total_aggregate < 31 || ($total_aggregate > 30 && $total_aggregate < 35 && ($mathematic_with_nine || $english_with_nine)))
+                                        IV
+                                    @break
+                                    @default
+                                        U
+                                    @endswitch 
+                                    @else
+                                        X
+                                    @endif 
                             </td>
                             <td class="py-3">
                             </td>

@@ -20,6 +20,7 @@ class Result extends Model
     {
     return $query
         ->where('students.first_name', 'like', '%'.$val.'%')
+        ->orwhere('students.last_name', 'like', '%'.$val.'%')
         ->orWhere('classes.level', 'like', '%'.$val.'%')
         ->orWhere('subjects.subject','like','%'.$val.'%')
         ->orWhere('term','like','%'.$val.'%')
@@ -108,7 +109,7 @@ class Result extends Model
         ->distinct('results.class_id')
         ->search($search)
         ->orderBy($sortBy, $sortDirection)
-        ->paginate($perPage,['classes.level','results.class_id']);
+        ->paginate($perPage,['classes.level','results.class_id','results.term']);
     }
     /**
      * This function gets termly Classes for nursery the current Year
@@ -125,37 +126,39 @@ class Result extends Model
         ->distinct('results.class_id')
         ->search($search)
         ->orderBy($sortBy, $sortDirection)
-        ->paginate($perPage,['classes.level','results.class_id']);
+        ->paginate($perPage,['classes.level','results.class_id','results.term']);
     }
     /**
      * This function gets Class Students for the current Year
      */
-    public static function getTermlyClassStudent($student_id,$search, $sortBy, $sortDirection, $perPage)
+    public static function getTermlyClassStudent($student_id,$term,$search, $sortBy, $sortDirection, $perPage)
     {
         return Result::join('users', 'users.id', 'results.user_id')
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
         ->where('student_id',$student_id)
+        ->where('results.term',$term)
         ->whereYear('results.created_at', '=', Carbon::today())
         //->limit(1)
         ->distinct('students.last_name')
-        ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level','results.term',
+        ->get(['students.last_name','students.first_name','students.other_names','results.student_id','classes.level',
                             'students.date_of_birth','students.gender','subjects.subject','results.*']);
     }
     /**
      * This function gets Class Students for the current Year
      */
-    public static function getClassStudent($class_id,$search, $sortBy, $sortDirection, $perPage)
+    public static function getClassStudent($class_id,$term,$search, $sortBy, $sortDirection, $perPage)
     {
         return Result::join('users', 'users.id', 'results.user_id')
         ->join('students', 'students.id', 'results.student_id')
         ->join('classes', 'classes.id', 'results.class_id')
         ->join('subjects', 'subjects.id', 'results.subject_id')
         ->where('results.class_id',$class_id)
+        ->where('results.term',$term)
         ->whereYear('results.created_at', '=', Carbon::today())
         ->distinct('students.last_name')
-        ->paginate($perPage,['students.last_name','students.first_name','students.other_names','results.student_id']);
+        ->paginate($perPage,['students.last_name','students.first_name','students.other_names','results.student_id','results.term']);
     }
     /**
      * This function gets form for editing Result information

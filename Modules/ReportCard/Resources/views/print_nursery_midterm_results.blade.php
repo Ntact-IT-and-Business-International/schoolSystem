@@ -144,7 +144,7 @@
                             </td>
                             @foreach($student_report_cards as $card)
                             @php
-                                $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_marks');
+                                $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_marks');
                             @endphp
                             @endforeach
                             <td class="py-3 font-weight-bold">

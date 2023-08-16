@@ -49,9 +49,9 @@
                 <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Exams Marks
                     @include('partials._sort-icon',['field'=>'examination_marks'])
                 </th>
-                <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Total Marks
+                {{-- <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Total Marks
                     @include('partials._sort-icon',['field'=>'examination_marks'])
-                </th>
+                </th> --}}
                 <th scope="col" wire:click="sortBy('grade')" style="cursor: pointer;"> Grade
                     @include('partials._sort-icon',['field'=>'grade'])
                 </th>
@@ -75,7 +75,7 @@
                 <td>{{$result->assessment_marks}}</td>
                 <td>{{$result->assessment_grade}}</td>
                 <td>{{$result->examination_marks}}</td>
-                <td>{{$result->assessment_marks + $result->examination_marks}}</td>
+                {{-- <td>{{$result->assessment_marks + $result->examination_marks}}</td> --}}
                 <td>{{$result->grade}}</td>
                 <td>{{$result->teacher_initials}}</td>
                 <td>{{$result->remark}}</td>

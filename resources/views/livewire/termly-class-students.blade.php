@@ -39,8 +39,8 @@
                 <th scope="row">{{$students->firstitem() + $i}}</th>
                 <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
                 <td>
-                    <a href="/reportcard/print-midterm-results/{{$student->student_id}}" class="btn btn-success btn-sm">Generate Midterm Results</a>
-                    <a href="/reportcard/print-report-card/{{$student->student_id}}" class="btn btn-info btn-sm">Generate Report Card</a>
+                    <a href="/reportcard/print-midterm-results/{{$student->student_id}}/{{$student->term}}" class="btn btn-success btn-sm">Generate Midterm Results</a>
+                    <a href="/reportcard/print-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-info btn-sm">Generate Report Card</a>
                 </td>
             </tr>
         @endforeach

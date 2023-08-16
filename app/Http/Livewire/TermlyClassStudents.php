@@ -24,10 +24,11 @@ class TermlyClassStudents extends Component
     public function render()
     {
         return view('livewire.termly-class-students',[
-            'students'=>Result::getClassStudent($this->class_id,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
+            'students'=>Result::getClassStudent($this->class_id,$this->term,$this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
     }
-    public function mount($class_id){
+    public function mount($class_id,$term){
         $this->class_id =$class_id;
+        $this->term =$term;
     }
 }

@@ -120,7 +120,7 @@
                             </td>
                             @foreach($student_report_cards as $card)
                             @php
-                                $total_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_marks');
+                                $total_marks =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_marks');
                             @endphp
                             <td class="py-3">
                             {{$card->assessment_marks}}
@@ -135,7 +135,7 @@
                             </td>
                             @foreach($student_report_cards as $card)
                             @php
-                                $total_assessment_grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_grade');
+                                $total_assessment_grade =\Modules\ReportCard\Entities\Result::where('student_id',$card->student_id)->where('term',$card->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('assessment_grade');
                             @endphp
                             <td class="py-3" style="color:red;">
                             {{$card->assessment_grade}}

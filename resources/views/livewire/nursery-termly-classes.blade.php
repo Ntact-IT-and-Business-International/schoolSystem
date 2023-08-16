@@ -42,7 +42,7 @@
                     $class_id =\Modules\ReportCard\Entities\Result::where('class_id',$clas->level)->get();
                 @endphp
                 <td>
-                    <a href="/reportcard/view-nursery-students/{{$clas->class_id}}" class="btn btn-info btn-sm">View Students</a>
+                    <a href="/reportcard/view-nursery-students/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-info btn-sm">View Students</a>
                 </td>
             </tr>
         @endforeach
