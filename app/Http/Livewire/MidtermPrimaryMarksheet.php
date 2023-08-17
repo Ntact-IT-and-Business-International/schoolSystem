@@ -6,11 +6,11 @@ use Livewire\Component;
 use Modules\ReportCard\Entities\Result;
 use Carbon\Carbon;
 
-class PrimaryMarksheet extends Component
+class MidtermPrimaryMarksheet extends Component
 {
     public function render()
     {
-        return view('livewire.primary-marksheet',[
+        return view('livewire.midterm-primary-marksheet',[
             'student_report_details'=>$this->getStudentDetails($this->class_id,$this->term)
         ]);
     }
