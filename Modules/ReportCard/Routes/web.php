@@ -28,5 +28,5 @@ Route::group(['prefix' => 'reportcard', 'middleware' => ['auth']], function () {
     Route::get('/print-midterm-results-now/{student_id}/{term}', 'ReportCardController@printStudentMidtermResults')->name('Midterm Results');
     Route::get('/print-nursery-midterm-results/{student_id}/{term}', 'ReportCardController@printNurseryMidtermResults')->name('Nursery Midterm Results');
     Route::get('/print-nursery-report-card/{student_id}/{term}', 'ReportCardController@printNurseryReportCard')->name('Print Nursery Report Card');
-    Route::get('/marksheet', 'ReportCardController@generatePrimaryMarksheet')->name('Primary Marksheet');
+    Route::get('/marksheet/{class_id}/{term}', 'ReportCardController@generatePrimaryMarksheet')->name('Primary Marksheet');
 });

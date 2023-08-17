@@ -46,19 +46,4 @@ class StudentReportCard extends Component
         $this->student_id =$student_id;
         $this->term =$term;
     }
-    private  function changeDivision($student_id){
-        $total_aggregate =Result::where('student_id',$student_id)->whereYear('created_at', '=', Carbon::today())->sum('grade');
-        if(Result::join('subjects','subjects.id','results.subject_id')->where('subjects.id', 1)->orwhere('subjects.id', 2)->where('results.grade',9) && ($total_aggregate >= 4 && $total_aggregate < 13) ){
-            return II;
-        }elseif (Result::join('subjects','subjects.id','results.subject_id')->where('subjects.id', 1)->orwhere('subjects.id', 2)->where('results.grade','!==',9) && ($total_aggregate >= 4 && $total_aggregate < 13) ){
-            return I;
-        // }elseif (Result::join('subjects','subjects.id','results.subject_id')->where('subjects.id', 1)->orwhere('subjects.id', 2)->where('results.grade',9) && ($total_aggregate > 12 && $total_aggregate < 25) ){
-        //     return III;
-    //    } elseif (Result::join('subjects','subjects.id','results.subject_id')->where('subjects.id', 1)->orwhere('subjects.id', 2)->where('results.grade','!==',9) && ($total_aggregate > 12 && $total_aggregate < 25) ){
-    //         return II;
-        
-        }else{
-            return X;
-        }
-    }
 }

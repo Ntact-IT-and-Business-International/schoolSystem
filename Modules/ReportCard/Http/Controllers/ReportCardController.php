@@ -171,7 +171,7 @@ class ReportCardController extends Controller
     /**
      * This function gets primary marksheet
      */
-    public function generatePrimaryMarksheet(){
-        return view('reportcard::primary_marksheet');
+    public function generatePrimaryMarksheet($class_id,$term){
+        return view('reportcard::primary_marksheet',compact('class_id','term'));
     } 
 }
