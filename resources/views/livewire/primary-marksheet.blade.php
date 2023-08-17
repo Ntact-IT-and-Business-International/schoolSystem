@@ -2,6 +2,25 @@
     {{-- Care about people's approval and you will be their prisoner. --}}
     <div class="row">
         <div class="col-sm-12">
+        <div class="row">
+                <div class="col-sm-12 pb-4 text-center">
+                    <div class="media align-items-center mb-1">
+                        <a href="!#" class="navbar-brand app-brand demo py-0 mr-4">
+                            <span class="app-brand-logo demo">
+                                <img src="{{ asset('safeway.jpg')}}" style="width:100px;height:100px;" alt="Brand Logo" class="img-fluid">
+                            </span>
+                            <span class="app-brand-text demo font-weight-bold text-dark ml-4" style="text-transform:uppercase;font-size:40px;">Safeway Junior School</span>
+                        </a>
+                    </div>
+                    <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:25px;">Kawempe- TTula</div>
+                    <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:20px;">0772-380547 | 0702-932992</div>
+                    @php
+                        $term =\Modules\ReportCard\Entities\Result::where('student_id',$this->class_id)->where('term',$this->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->value('term');
+                    @endphp
+                    <div style="box-shadow: 0 0 0 1px #8897AA inset; font-weight:bold;">EXAMINATIONS MARKSHEET TERM {{$term}} {{date('Y')}}</div>
+                    
+                </div>
+            </div>
             <div class="">
                 <div class="card-body">
                     <div class="table-responsive">
@@ -78,8 +97,17 @@
                                         @case(($total_aggregate > 3 && $total_aggregate < 13 || $total_aggregate > 12 && $total_aggregate < 25) && !($mathematic_with_nine || $english_with_nine))
                                             II
                                         @break
-                                        @case($total_aggregate > 12 && $total_aggregate < 25 || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine || $english_with_nine)))
+                                        @case($total_aggregate > 12 && $total_aggregate < 25 || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine == 1|| $english_with_nine ==0)) || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine==0 || $english_with_nine == 1)))
                                             III
+                                        @break
+                                        @case($total_aggregate > 12 && $total_aggregate < 25 || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine || $english_with_nine)) || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine ==1 || $english_with_nine==0)) || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine==0 || $english_with_nine==1)))
+                                            III
+                                        @break
+                                        @case($total_aggregate > 12 && $total_aggregate < 25 || ($total_aggregate > 24 && $total_aggregate < 31 && ($mathematic_with_nine || $english_with_nine)))
+                                            IV
+                                        @break
+                                        @case($total_aggregate > 24 && $total_aggregate < 31 || ($total_aggregate > 30 && $total_aggregate < 35 && ($mathematic_with_nine || $english_with_nine)) || ($total_aggregate > 30 && $total_aggregate < 35 && ($mathematic_with_nine== 1 || $english_with_nine == 0)) || ($total_aggregate > 30 && $total_aggregate < 35 && ($mathematic_with_nine == 0 || $english_with_nine== 1)))
+                                            IV
                                         @break
                                         @case($total_aggregate > 24 && $total_aggregate < 31 || ($total_aggregate > 30 && $total_aggregate < 35 && ($mathematic_with_nine || $english_with_nine)))
                                             IV

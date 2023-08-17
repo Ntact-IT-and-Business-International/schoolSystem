@@ -40,13 +40,13 @@
                 <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
                     @include('partials._sort-icon',['field'=>'term'])
                 </th>
-                <th scope="col" wire:click="sortBy('assessment_marks')" style="cursor: pointer;"> Test Marks
+                <th scope="col" wire:click="sortBy('assessment_marks')" style="cursor: pointer;"> Test
                     @include('partials._sort-icon',['field'=>'assessment_marks'])
                 </th>
-                <th scope="col" wire:click="sortBy('assessment_grade')" style="cursor: pointer;"> Test Grade
+                <th scope="col" wire:click="sortBy('assessment_grade')" style="cursor: pointer;"> Grade
                     @include('partials._sort-icon',['field'=>'assessment_grade'])
                 </th>
-                <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Exams Marks
+                <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Exams
                     @include('partials._sort-icon',['field'=>'examination_marks'])
                 </th>
                 {{-- <th scope="col" wire:click="sortBy('examination_marks')" style="cursor: pointer;"> Total Marks
@@ -73,15 +73,21 @@
                 <td>{{ $result->subject}}</td>
                 <td>{{ $result->term}}</td>
                 <td>{{$result->assessment_marks}}</td>
-                <td>{{$result->assessment_grade}}</td>
+                <td style="color:red; font-weight:bold;">{{$result->assessment_grade}}</td>
                 <td>{{$result->examination_marks}}</td>
                 {{-- <td>{{$result->assessment_marks + $result->examination_marks}}</td> --}}
-                <td>{{$result->grade}}</td>
+                <td style="color:red; font-weight:bold;">{{$result->grade}}</td>
                 <td>{{$result->teacher_initials}}</td>
                 <td>{{$result->remark}}</td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="#!" class="btn btn-info dropdown-item  mb-1 btn-sm">Edit</a>
+                                <a href="#!" class="btn btn-danger dropdown-item  btn-sm">Delete</a>
+                                {{-- <button wire:click="deleteStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button> --}}
+                            </div>
+                    </div>
                 </td>
             </tr>
         @endforeach
