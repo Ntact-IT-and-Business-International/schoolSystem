@@ -1,6 +1,55 @@
-<div>
-    {{-- Care about people's approval and you will be their prisoner. --}}
-    <div class="row">
+ <!DOCTYPE html>
+
+<html lang="en" class="default-style layout-fixed layout-navbar-fixed">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+    <!-- Icon fonts -->
+    <link rel="stylesheet" href="{{ asset('Admin/assets/fonts/fontawesome.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/fonts/ionicons.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/fonts/linearicons.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/fonts/open-iconic.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/fonts/pe-icon-7-stroke.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/fonts/feather.css')}}">
+
+    <!-- Core stylesheets -->
+    <link rel="stylesheet" href="{{ asset('Admin/assets/css/bootstrap-material.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/css/shreerang-material.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/css/uikit.css')}}">
+
+    <!-- Libs -->
+    <link rel="stylesheet" href="{{ asset('Admin/assets/libs/perfect-scrollbar/perfect-scrollbar.css')}}">
+    <style>
+        html,
+        body {
+            background: #fff !important;
+        }
+
+        body> :not(.invoice-print) {
+            display: none !important;
+        }
+
+        .invoice-print {
+            min-width: 768px !important;
+            font-size: 15px !important;
+        }
+
+        .invoice-print * {
+            border-color: #aaa !important;
+            color: #000 !important;
+        }
+        .text-danger{
+            color:red;
+        }
+        .borderimg {
+        border: 10px solid transparent;
+        padding: 15px;
+        -webkit-border-image: url(safeway.jpg) 30 round; /* Safari 3.1-5 */
+        -o-border-image: url(safeway.jpg) 30 round; /* Opera 11-12.1 */
+        border-image: url(/safeway.jpg) 30 round;
+        }
+    </style>
+        <div class="invoice-print p-2">
+        <div class="row">
         <div class="col-sm-12">
         <div class="row">
                 <div class="col-sm-12 pb-4 text-center">
@@ -14,10 +63,10 @@
                     </div>
                     <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:25px;">Kawempe- TTula</div>
                     <div class="mb-1" style="font-weight:bold; text-transform:uppercase;font-size:20px;">0772-380547 | 0702-932992</div>
-                    @php
-                        $term =\Modules\ReportCard\Entities\Result::where('class_id',$this->class_id)->where('term',$this->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->value('term');
-                    @endphp
-                    <div style="box-shadow: 0 0 0 1px #8897AA inset; font-weight:bold;">EXAMINATIONS MARKSHEET TERM {{$term}} {{date('Y')}}</div>
+                    
+                    @foreach($student_report_details as $result)
+                    <div style="box-shadow: 0 0 0 1px #8897AA inset; font-weight:bold;"><u>EXAMINATIONS MARKSHEET TERM {{$result->term}} {{date('Y')}}</u></div>
+                    @endforeach
                     
                 </div>
             </div>
@@ -84,15 +133,40 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="card-footer text-center">
-                        @php
-                            $class_id =\Modules\ReportCard\Entities\Result::where('class_id',$this->class_id)->get();
-                        @endphp
-                            <a href="/reportcard/print-nursery-midterm-marksheet-now/{{$this->class_id}}/{{$this->term}}" target="_blank" class="btn btn-success"><i class="ion ion-md-print"></i>&nbsp; Print Marksheet</a>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    </div>
+    <script src="{{ asset('Admin/assets/js/pace.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/jquery-3.3.1.min.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/popper/popper.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/bootstrap.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/sidenav.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/layout-helpers.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/material-ripple.js')}}"></script>
+
+        <!-- Libs -->
+        <script src="{{ asset('Admin/assets/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/eve/eve.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/flot/flot.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/flot/curvedLines.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/chart-am4/core.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/chart-am4/charts.js')}}"></script>
+        <script src="{{ asset('Admin/assets/libs/chart-am4/animated.js')}}"></script>
+
+        <!-- Demo -->
+        <script src="{{ asset('Admin/assets/js/demo.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/analytics.js')}}"></script>
+        <script src="{{ asset('Admin/assets/js/pages/dashboards_index.js')}}"></script>
+            <script>
+                // -------------------------------------------------------------------------
+                // Print on window load
+
+                $(function() {
+                    window.print();
+                });
+        </script>
+    </body>
+</html>

@@ -222,4 +222,34 @@ class ReportCardController extends Controller
     public function nurseryExamMarksheet($class_id,$term){ 
         return view('reportcard::exam_nursery_marksheet',compact('class_id','term'));
     }
+    /**
+     * This function gets nursery midterm printing
+     */
+    public function printNurseryMidtermMarksheet($class_id,$term){
+        $student_report_details =Result::join('users', 'users.id', 'results.user_id')
+        ->join('students', 'students.id', 'results.student_id')
+        ->join('classes', 'classes.id', 'results.class_id')
+        ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('results.class_id',$class_id)
+        ->where('results.term',$term)
+        ->whereYear('results.created_at', '=', Carbon::today())
+        ->distinct('students.last_name')
+        ->get(['students.last_name','students.first_name','students.other_names','results.student_id','results.term']);
+        return view('reportcard::print_nursery_midterm_marksheet_now',compact('student_report_details'));
+    }
+    /**
+     * This function gets nursery midterm printing
+     */
+    public function printNurseryExamMarksheet($class_id,$term){
+        $student_report_details =Result::join('users', 'users.id', 'results.user_id')
+        ->join('students', 'students.id', 'results.student_id')
+        ->join('classes', 'classes.id', 'results.class_id')
+        ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('results.class_id',$class_id)
+        ->where('results.term',$term)
+        ->whereYear('results.created_at', '=', Carbon::today())
+        ->distinct('students.last_name')
+        ->get(['students.last_name','students.first_name','students.other_names','results.student_id','results.term']);
+        return view('reportcard::print_nursery_exam_marksheet_now',compact('student_report_details'));
+    }
 }
