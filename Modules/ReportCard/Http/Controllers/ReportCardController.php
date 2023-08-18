@@ -196,7 +196,7 @@ class ReportCardController extends Controller
         return view('reportcard::midterm_primary_marksheet',compact('class_id','term'));
     } 
     /**
-     * This function print primary mark sheet
+     * This function print primary midterm mark sheet 
      */
     public function printMidermPrimaryMarksheet($class_id,$term){
         $student_report_details =Result::join('users', 'users.id', 'results.user_id')
@@ -209,5 +209,17 @@ class ReportCardController extends Controller
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','results.term']);
         return view('reportcard::print_midterm_primary_marksheet_now',compact('student_report_details'));
+    }
+    /**
+     * This function gets midterm nursery marksheet
+     */
+    public function nurseryMidermMarksheet($class_id,$term){ 
+        return view('reportcard::midterm_nursery_marksheet',compact('class_id','term'));
+    }
+    /**
+     * This function gets exam nursery marksheet
+     */
+    public function nurseryExamMarksheet($class_id,$term){ 
+        return view('reportcard::exam_nursery_marksheet',compact('class_id','term'));
     }
 }

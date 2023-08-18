@@ -32,4 +32,6 @@ Route::group(['prefix' => 'reportcard', 'middleware' => ['auth']], function () {
     Route::get('/print-marksheet-now/{class_id}/{term}', 'ReportCardController@printPrimaryMarksheet');
     Route::get('/miderm-marksheet/{class_id}/{term}', 'ReportCardController@generateMidtermPrimaryMarksheet')->name('Midterm Primary Marksheet');
     Route::get('/print-midterm-marksheet-now/{class_id}/{term}', 'ReportCardController@printMidermPrimaryMarksheet');
+    Route::get('/nursery-midterm-marksheet/{class_id}/{term}', 'ReportCardController@nurseryMidermMarksheet')->name('Nursery Midterm Marksheet');
+    Route::get('/nursery-exam-marksheet/{class_id}/{term}', 'ReportCardController@nurseryExamMarksheet')->name('Nursery Midterm Marksheet');
 });

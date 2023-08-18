@@ -43,6 +43,8 @@
                 @endphp
                 <td>
                     <a href="/reportcard/view-nursery-students/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-info btn-sm">View Students</a>
+                    <a href="/reportcard/nursery-midterm-marksheet/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-secondary btn-sm">Midterm Marksheet</a>
+                    <a href="/reportcard/nursery-exam-marksheet/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-success btn-sm">Exams Marksheet</a>
                 </td>
             </tr>
         @endforeach

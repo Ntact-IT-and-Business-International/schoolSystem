@@ -127,7 +127,7 @@
                         @php
                             $class_id =\Modules\ReportCard\Entities\Result::where('class_id',$this->class_id)->get();
                         @endphp
-                            <a href="/reportcard/print-midterm-marksheet-now/{{$this->class_id}}/{{$this->term}}" target="_blank" class="btn btn-success"><i class="ion ion-md-print"></i>&nbsp; Print Exams Marksheet</a>
+                            <a href="/reportcard/print-midterm-marksheet-now/{{$this->class_id}}/{{$this->term}}" target="_blank" class="btn btn-success"><i class="ion ion-md-print"></i>&nbsp; Print Midterm Marksheet</a>
                         </div>
                     </div>
                 </div>
