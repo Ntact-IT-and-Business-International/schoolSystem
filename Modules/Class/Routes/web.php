@@ -13,4 +13,5 @@
 
 Route::group(['prefix' => 'class', 'middleware' => ['auth']], function () { 
     Route::get('/classes', 'ClassController@index')->name('Classes');
+    Route::get('/edit-class/{class_id}', 'ClassController@edit')->name('editClass');
 });

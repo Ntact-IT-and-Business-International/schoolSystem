@@ -51,7 +51,7 @@ class Classes extends Model
     /**
      * This function updates the edited class
      */
-    public static function updateClass($class_id,$level)
+    public static function updateClasses($class_id,$level)
     {
         Classes::whereId($class_id)->update([
             'level'    => $level,

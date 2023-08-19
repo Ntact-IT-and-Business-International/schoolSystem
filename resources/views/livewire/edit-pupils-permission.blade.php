@@ -1,7 +1,7 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <div class="card mb-4">
-        <h6 class="card-header">Update Pupils Permission</h6>
+        <h6 class="card-header">Update Permission</h6>
         <div class="card-body">
             <form wire:submit.prevent="updatePupilsPermission">
                 <div class="form-row">

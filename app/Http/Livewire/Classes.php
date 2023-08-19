@@ -25,4 +25,11 @@ class Classes extends Component
             'classes' =>Classs::getClasses($this->search, $this->sortBy, $this->sortDirection, $this->perPage)
         ]);
     }
+    /**
+     * This function deletes the class
+     */
+    public static function deleteClass($class_id){
+        Classs::whereId($class_id)->delete();
+        session()->flash('success', 'Operation Successful');
+    }
 }

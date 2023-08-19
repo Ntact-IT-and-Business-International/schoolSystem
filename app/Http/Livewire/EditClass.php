@@ -10,9 +10,10 @@ class EditClass extends Component
 {
     public $class;
     public $class_id;
+    public $level;
 
     protected $rules = [
-        'class' => 'required:unique:classes',
+        'level' => 'required:unique:classes',
     ];
     public function render()
     {
@@ -26,7 +27,7 @@ class EditClass extends Component
     public function mount($class_id)
     {
         $this->fill([
-            'class' => Classes::editClass($this->class_id)->value('class'),
+            'level' => Classes::editClass($this->class_id)->value('level'),
         ]);
     }
 
@@ -36,9 +37,9 @@ class EditClass extends Component
     public function updateClass()
     {
         $this->validate();
-        Classes::updateClass($this->class_id, $this->class);
+        Classes::updateClasses($this->class_id, $this->level);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
 
-        return redirect()->to(url()->previous())->with('msg', 'Your Class info has been edited successfully');
+        return redirect()->to('/class/classes')->with('msg', 'Your Class info has been edited successfully');
     }
 }

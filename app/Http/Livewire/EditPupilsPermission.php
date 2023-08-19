@@ -13,7 +13,7 @@ class EditPupilsPermission extends Component
 
     //validate category
     protected $rules = [
-        'destination'        => 'required',
+        'destination'        => '',
         'reason'              => 'required',
     ];
 
@@ -22,7 +22,6 @@ class EditPupilsPermission extends Component
      */
     protected $messages = [        'class_id.required' => 'Class is required',
         'reason.required' => 'Reason eason required',
-        'destination.required'       => 'Destination is required',
     ];
     public function render()
     {
@@ -49,7 +48,7 @@ class EditPupilsPermission extends Component
         $this->validate();
         PermissionRequest::updatePermissionRequestInfo($this->permission_id,$this->destination,$this->reason);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
-
-        return redirect()->to('/staff/request-for-permission')->with('msg', 'Your Permission Request Updated successfully');
+        
+        return redirect()->back()->with('msg', 'Your Permission Request Updated successfully');
     }
 }
