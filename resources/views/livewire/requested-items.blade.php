@@ -60,16 +60,21 @@
                     @endif
                 </td>
                 <td>
-                    @if($item->status== "pending")
-                        {{-- <button wire:click="approveRequest({{ $item->id }})" class="btn btn-success mb-1" style="text-transform: capitalize;padding:4px;">Approve</button> --}}
-                        <a href="/mark-as-approved/{{$item->id}}" class="btn btn-success btn-sm">Approve</a>
-                    @else
-                        {{-- <span wire:click="rejectRequest({{ $item->id }})" class="btn btn-danger"  style="text-transform: capitalize;padding:4px;">Activate</span> --}}
-                        <a href="/mark-as-rejected/{{$item->id}}" class="btn btn-primary btn-sm">Reject</a>
-                    @endif 
-                    <a href="#!" class="btn btn-secondary btn-sm">Reply</a>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            @if($item->status== "pending")
+                            {{-- <button wire:click="approveRequest({{ $item->id }})" class="btn btn-success mb-1" style="text-transform: capitalize;padding:4px;">Approve</button> --}}
+                            <a href="/mark-as-approved/{{$item->id}}" class="btn btn-success btn-sm dropdown-item mb-1">Approve</a>
+                            @else
+                                {{-- <span wire:click="rejectRequest({{ $item->id }})" class="btn btn-danger"  style="text-transform: capitalize;padding:4px;">Activate</span> --}}
+                                <a href="/mark-as-rejected/{{$item->id}}" class="btn btn-primary btn-sm dropdown-item mb-1">Reject</a>
+                            @endif 
+                            <a href="#!" class="btn btn-secondary btn-sm mb-1">Reply</a>
+                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

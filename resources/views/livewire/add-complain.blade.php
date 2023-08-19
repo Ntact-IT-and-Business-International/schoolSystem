@@ -9,7 +9,7 @@
                         <label class="form-label">Name of Student</label>
                             <select class="custom-select" wire:model="student_id">
                                 @foreach($students as $student)
-                                    <option value="{{$student->id}}">{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</option>
+                                    <option value="{{$student->id}}">&nbsp; &nbsp;{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</option>
                                 @endforeach
                             </select>
                         @error('student_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -18,7 +18,7 @@
                         <label class="form-label">Class</label>
                             <select class="custom-select" wire:model="class_id">
                                 @foreach($classes as $class)
-                                    <option value="{{$class->id}}">{{$class->level}}</option>
+                                    <option value="{{$class->id}}">&nbsp;&nbsp;{{$class->level}}</option>
                                 @endforeach
                             </select>
                         @error('class_id') <span class="text-danger">{{ $message }}</span> @enderror

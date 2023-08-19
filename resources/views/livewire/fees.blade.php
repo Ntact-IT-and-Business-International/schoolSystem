@@ -170,7 +170,7 @@
                 <td>{{$fee->payment_code}}</td>
                 <td>
                     <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
                         <div class="dropdown-menu">
                             <a href="/fees/generate-receipt/{{$fee->id}}" class="btn btn-success btn-sm dropdown-item mb-1">Print Receipt</a>
                             <a href="/fees/clear-payments/{{$fee->id}}" class="btn btn-warning btn-sm dropdown-item mb-1">Clear Payments</a>

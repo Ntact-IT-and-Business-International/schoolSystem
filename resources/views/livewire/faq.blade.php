@@ -43,8 +43,13 @@
                 <td>{{$faq->heading}}</td>
                 <td>{{$faq->question}}</td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

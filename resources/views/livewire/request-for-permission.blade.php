@@ -8,7 +8,7 @@
                     <div class="form-group col-md-4">
                         <label class="form-label">Student</label>
                             <select class="custom-select" wire:model="student_id">
-                                <option value="Null">Null</option>
+                                <option value="Null"> &nbsp;&nbsp;Null</option>
                                 @foreach($students as $student)
                                     <option value="{{$student->id}}"> &nbsp;&nbsp;{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</option>
                                 @endforeach
@@ -18,7 +18,7 @@
                     <div class="form-group col-md-4">
                     <label class="form-label">Staff</label>
                             <select class="custom-select" wire:model="staff_id">
-                                <option value="Null">Null</option>
+                                <option value="Null">&nbsp;&nbsp;Null</option>
                                 @foreach($staffs as $staff)
                                     <option value="{{$staff->id}}"> &nbsp;&nbsp;{{$staff->staff_last_name}} {{$staff->staff_first_name}}  {{$staff->staff_other_names}}</option>
                                 @endforeach
@@ -28,9 +28,9 @@
                     <div class="form-group col-md-4">
                         <label class="form-label">Category</label>
                             <select class="custom-select" wire:model="user_type">
-                                <option value="Null">Null</option>
+                                <option value="Null">&nbsp;&nbsp;Null</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->category}}</option>
+                                    <option value="{{$category->id}}"> &nbsp;&nbsp;{{$category->category}}</option>
                                 @endforeach
                             </select>
                         @error('user_type') <span class="text-danger">{{ $message }}</span> @enderror
@@ -40,7 +40,7 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Class (Optional for Only Non-teaching)</label>
                             <select class="custom-select" wire:model="class_id">
-                                <option value="Null">Null</option>
+                                <option value="Null">&nbsp;&nbsp;Null</option>
                                 @foreach($classes as $class)
                                     <option value="{{$class->id}}"> &nbsp;&nbsp;{{$class->level}}</option>
                                 @endforeach

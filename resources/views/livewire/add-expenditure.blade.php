@@ -33,7 +33,7 @@
                         <label class="form-label">Office in Charge</label>
                             <select class="custom-select" wire:model="user_type_id">
                                 @foreach($user_types as $type)
-                                    <option value="{{$type->id}}">{{$type->category}}</option>
+                                    <option value="{{$type->id}}">&nbsp;&nbsp;{{$type->category}}</option>
                                 @endforeach
                             </select>
                         @error('user_type_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -46,9 +46,9 @@
                     <div class="form-group col-md-4">
                         <label class="form-label">Term</label>
                         <select class="custom-select" wire:model="term">
-                                    <option value="1">Term 1</option>
-                                    <option value="2">Term 2</option>
-                                    <option value="3">Term 2</option>
+                                    <option value="1">&nbsp;&nbsp;Term 1</option>
+                                    <option value="2">&nbsp;&nbsp;Term 2</option>
+                                    <option value="3">&nbsp;&nbsp;Term 2</option>
                             </select>
                         @error('term') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

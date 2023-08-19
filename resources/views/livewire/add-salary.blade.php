@@ -1,7 +1,7 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <div class="card mb-4">
-        <h6 class="card-header">Add Fees Payment</h6>
+        <h6 class="card-header">Add Workers Salary Payment</h6>
         <div class="card-body">
             <form wire:submit.prevent="submit">
                 <div class="form-row">
@@ -9,7 +9,7 @@
                         <label class="form-label">Name of Staff</label>
                             <select class="custom-select" wire:model="staff_id">
                                 @foreach ($staffs as $staff )
-                                    <option value="{{$staff->id}}">{{$staff->staff_last_name}} {{$staff->staff_first_name}} {{$staff->staff_other_names}}</option>
+                                    <option value="{{$staff->id}}">&nbsp;&nbsp;{{$staff->staff_last_name}} {{$staff->staff_first_name}} {{$staff->staff_other_names}}</option>
                                 @endforeach
                             </select>
                         @error('staff_id') <span class="text-danger">{{ $message }}</span> @enderror

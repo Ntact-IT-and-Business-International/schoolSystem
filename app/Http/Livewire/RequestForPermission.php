@@ -57,4 +57,5 @@ class RequestForPermission extends ModalComponent
         $this->closeModal();
         Session::flash('msg', 'Permission Request Sent successfully');
     }
+    
 }

@@ -54,18 +54,23 @@
                 <td>{{$permission->reason}}</td>
                 <td>{{$permission->reply}} By <span style="color:blue;">{{$permission->name}}</span></td>
                     @if($permission->permission_status =='pending')
-                <td><span class="badge badge-info btn-md" style="padding:5px;">{{$permission->permission_status}}</span></td>
+                <td><span class="badge badge-info btn-sm" style="padding:5px;">{{$permission->permission_status}}</span></td>
                 @elseif($permission->permission_status =='rejected')
-                <td><span class="badge badge-danger btn-md">{{$permission->permission_status}}</span></td>
+                <td><span class="badge badge-danger btn-sm">{{$permission->permission_status}}</span></td>
                 @else
-                <td ><span class="badge badge-success btn-md">{{$permission->permission_status}}</span></td>
+                <td ><span class="badge badge-success btn-sm">{{$permission->permission_status}}</span></td>
                 @endif
                 
                 <td>{{$permission->created_at}}</td>
                 <td>
-                    <a href="{{URL::signedRoute('forwardPermission', ['permission_id' => $permission->id])}}" class="btn btn-warning btn-sm  btn-square">Forward</a>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="{{URL::signedRoute('forwardPermission', ['permission_id' => $permission->id])}}" class="btn btn-warning dropdown-item mb-1 btn-sm  btn-square">Forward</a>
+                            <a href="{{URL::signedRoute('editStaffPermission', ['permission_id' => $permission->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                            <button wire:click="deletePupilsPermision({{ $permission->id }})" class="btn btn-danger btn-sm  dropdown-item mb-1 btn-square"  style="text-transform: capitalize">Delete</button>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

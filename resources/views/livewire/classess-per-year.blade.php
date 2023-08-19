@@ -38,7 +38,7 @@
                 <th scope="row">{{$i + 1}}</th>
                 <td>{{$class_level}}</td>
                 <td>
-                    <a href="/students/students-per-class-per-year/{{$class->class_id}}" class="btn btn-success btn-md">View Students For This Class</a>
+                    <a href="/students/students-per-class-per-year/{{$class->class_id}}" class="btn btn-success btn-sm">View Students For This Class</a>
                 </td>
             </tr>
         @endforeach

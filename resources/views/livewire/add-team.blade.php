@@ -9,7 +9,7 @@
                         <label class="form-label">Name of Team</label>
                             <select class="custom-select" wire:model="staff_id">
                                 @foreach ($staffs as $staff )
-                                    <option value="{{$staff->id}}"> {{$staff->name}}</option>
+                                    <option value="{{$staff->id}}"> &nbsp;&nbsp;{{$staff->name}}</option>
                                 @endforeach
                             </select>
                         @error('staff_id') <span class="text-danger">{{ $message }}</span> @enderror

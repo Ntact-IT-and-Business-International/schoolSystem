@@ -70,7 +70,7 @@
                 <td>{{$permission->destination}}</td>
                 
                     @if($permission->permission_status =='pending')
-                <td><span class="badge badge-info btn-md" style="padding:10px;">{{$permission->permission_status}}</span></td>
+                <td><span class="badge badge-info btn-sm">{{$permission->permission_status}}</span></td>
                 @elseif($permission->permission_status =='rejected')
                 <td><span class="badge badge-danger btn-md">{{$permission->permission_status}}</span></td>
                 @else

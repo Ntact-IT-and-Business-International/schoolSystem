@@ -9,7 +9,7 @@
                         <label class="form-label">Name of Item</label>
                             <select class="custom-select" wire:model="item_id">
                                 @foreach ($items as $item )
-                                    <option value="{{$item->id}}">{{$item->item_name}}</option>
+                                    <option value="{{$item->id}}">&nbsp;&nbsp;{{$item->item_name}}</option>
                                 @endforeach
                             </select>
                         @error('item_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -18,7 +18,7 @@
                         <label class="form-label">Office</label>
                             <select class="custom-select" wire:model="office">
                                 @foreach ($offices as $office )
-                                    <option value="{{$office->id}}">{{$office->category}}</option>
+                                    <option value="{{$office->id}}">&nbsp;&nbsp;{{$office->category}}</option>
                                 @endforeach
                             </select>
                         @error('item_id') <span class="text-danger">{{ $message }}</span> @enderror

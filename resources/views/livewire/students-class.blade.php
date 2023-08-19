@@ -38,7 +38,7 @@
                     $get_class_id =\Modules\Students\Entities\Student::join('classes', 'classes.id', 'students.class_id')->where('classes.level',$clas->level)->value('class_id')
                 @endphp
                 <td>
-                    <a href="/students/view-students-for-this-class/{{$get_class_id}}" class="btn btn-info btn-md">View Students For This Class</a>
+                    <a href="/students/view-students-for-this-class/{{$get_class_id}}" class="btn btn-info btn-sm">View Students For This Class</a>
                 </td>
             </tr>
         @endforeach

@@ -9,7 +9,7 @@
                         <label class="form-label">Item</label>
                             <select class="custom-select" wire:model="itemm_id">
                                 @foreach($items as $item)
-                                    <option value="{{$item->id}}">{{$item->item_name}}</option>
+                                    <option value="{{$item->id}}">&nbsp;&nbsp;{{$item->item_name}}</option>
                                 @endforeach
                             </select>
                         @error('itemm_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -24,25 +24,25 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Term</label>
                             <select class="custom-select" wire:model="term">
-                                    <option value="1">Term 1</option>
-                                    <option value="2">Term 2</option>
-                                    <option value="3">Term 3</option>
+                                    <option value="1">&nbsp;&nbsp;Term 1</option>
+                                    <option value="2">&nbsp;&nbsp;Term 2</option>
+                                    <option value="3">&nbsp;&nbsp;Term 3</option>
                             </select>
                         @error('term') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group col-md-6">
                         <label class="form-label">Units</label>
                             <select class="custom-select" wire:model="unit">
-                                    <option value="kg">Kg</option>
-                                    <option value="grams">grams</option>
-                                    <option value="cups">Cups</option>
-                                    <option value="basin">Basin</option>
-                                    <option value="bulb">Bulbs</option>
-                                    <option value="tomatoes">Tomatoes</option>
-                                    <option value="green pepper">Green Paper</option>
-                                    <option value="boxes">Boxes</option>
-                                    <option value="dozen">Dozen</option>
-                                    <option value="yams">Yams</option>
+                                    <option value="kg">&nbsp;&nbsp;Kg</option>
+                                    <option value="grams">&nbsp;&nbsp;grams</option>
+                                    <option value="cups">&nbsp;&nbsp;Cups</option>
+                                    <option value="basin">&nbsp;&nbsp;Basin</option>
+                                    <option value="bulb">&nbsp;&nbsp;Bulbs</option>
+                                    <option value="tomatoes">&nbsp;&nbsp;Tomatoes</option>
+                                    <option value="green pepper">&nbsp;&nbsp;Green Paper</option>
+                                    <option value="boxes">&nbsp;&nbsp;Boxes</option>
+                                    <option value="dozen">&nbsp;&nbsp;Dozen</option>
+                                    <option value="yams">&nbsp;&nbsp;Yams</option>
                             </select>
                         @error('unit') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

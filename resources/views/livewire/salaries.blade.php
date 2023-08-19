@@ -60,8 +60,13 @@
                 <td>{{ number_format($salary->actual_salary-$salary->amount)}}</td>
                 <td>{{$salary->paid_on_date}}</td>
                 <td>
-                    <a href="{{URL::signedRoute('Salary', ['salary_id' => $salary->id])}}" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="{{URL::signedRoute('Salary', ['salary_id' => $salary->id])}}" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach
@@ -80,7 +85,7 @@
         <div class="col-sm-6">
         </div>
         <div class="col-sm-6 text-right">
-            <button class="btn btn-success btn-sm mb-3 btn-square" onclick="Livewire.emit('openModal', 'add-salary')"><i class="feather icon-plus"></i> Add Fee (s)</button>
+            <button class="btn btn-success btn-sm mb-3 btn-square" onclick="Livewire.emit('openModal', 'add-salary')"><i class="feather icon-plus"></i> Add Salaries Payment (s)</button>
         </div>
     </div>
 </div>

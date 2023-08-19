@@ -56,9 +56,14 @@
                 <td>{{$complain->reply}}</td>
                 <td>{{$complain->name}}</td>
                 <td>
-                    <a href="/contact/reply-complain/{{$complain->id}}" class="btn btn-success btn-sm">Reply Complain</a>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="/contact/reply-complain/{{$complain->id}}" class="btn btn-success btn-sm mb-1">Reply Complain</a>
+                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         @endforeach

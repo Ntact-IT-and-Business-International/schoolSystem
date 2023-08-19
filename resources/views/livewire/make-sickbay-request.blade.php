@@ -9,7 +9,7 @@
                         <label class="form-label">Name of Medicine</label>
                             <select class="custom-select" wire:model="medicine_id">
                                 @foreach ($sickbay_requests as $sickbay )
-                                    <option value="{{$sickbay->id}}">{{$sickbay->medicine_name}}</option>
+                                    <option value="{{$sickbay->id}}">&nbsp;&nbsp;{{$sickbay->medicine_name}}</option>
                                 @endforeach
                             </select>
                         @error('medicine_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -29,14 +29,14 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Types</label>
                             <select class="custom-select" wire:model="type">
-                                    <option value="Tablets">Tablets</option>
-                                    <option value="Syrup">Syrup</option>
-                                    <option value="Capsules">Capsules</option>
-                                    <option value="Injection">Injection</option>
-                                    <option value="Intranenous">Iv</option>
-                                    <option value="Cream">Cream</option>
-                                    <option value="Drops">Drops</option>
-                                    <option value="Solution">Solution</option>
+                                    <option value="Tablets">&nbsp;&nbsp;Tablets</option>
+                                    <option value="Syrup">&nbsp;&nbsp;Syrup</option>
+                                    <option value="Capsules">&nbsp;&nbsp;Capsules</option>
+                                    <option value="Injection">&nbsp;&nbsp;Injection</option>
+                                    <option value="Intranenous">&nbsp;&nbsp;Iv</option>
+                                    <option value="Cream">&nbsp;&nbsp;Cream</option>
+                                    <option value="Drops">&nbsp;&nbsp;Drops</option>
+                                    <option value="Solution">&nbsp;&nbsp;Solution</option>
                             </select>
                         @error('type') <span class="text-danger">{{ $message }}</span> @enderror
                     </div> 
@@ -46,7 +46,7 @@
                         <label class="form-label">Office InCharge</label>
                             <select class="custom-select" wire:model="office_incharge_id">
                                 @foreach ($user_types as $type )
-                                    <option value="{{$type->id}}">{{$type->category}}</option>
+                                    <option value="{{$type->id}}">&nbsp;&nbsp;{{$type->category}}</option>
                                 @endforeach
                             </select>
                         @error('office_incharge_id') <span class="text-danger">{{ $message }}</span> @enderror

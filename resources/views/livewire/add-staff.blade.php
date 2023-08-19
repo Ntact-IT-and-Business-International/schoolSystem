@@ -26,7 +26,7 @@
                         <label class="form-label">Class</label>
                         <select class="custom-select" wire:model="class_id">
                             @foreach ($classes as $class )
-                                <option value="{{$class->id}}">{{$class->level}}</option>
+                                <option value="{{$class->id}}"> &nbsp;&nbsp;{{$class->level}}</option>
                             @endforeach
                         </select>
                         @error('class_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -37,7 +37,7 @@
                         <label class="form-label">Subject (Opional)</label>
                         <select class="custom-select" wire:model="subject_id">
                             @foreach ($subjects as $subject )
-                                <option value="{{$subject->id}}">{{$subject->subject}}</option>
+                                <option value="{{$subject->id}}"> &nbsp;&nbsp;{{$subject->subject}}</option>
                             @endforeach
                         </select>
                         @error('subject_id') <span class="text-danger">{{ $message }}</span> @enderror
@@ -46,7 +46,7 @@
                         <label class="form-label">Category</label>
                         <select class="custom-select" wire:model="user_type">
                             @foreach ($categories as $category )
-                                <option value="{{$category->id}}">{{$category->category}}</option>
+                                <option value="{{$category->id}}"> &nbsp;&nbsp;{{$category->category}}</option>
                             @endforeach
                         </select>
                         @error('user_type') <span class="text-danger">{{ $message }}</span> @enderror
@@ -56,8 +56,8 @@
                     <div class="form-group col-md-6">
                         <label class="form-label">Gender</label>
                         <select class="custom-select" wire:model="gender">
-                                <option value="M">Male</option>
-                                <option value="F">Female</option>
+                                <option value="M">&nbsp;&nbsp;Male</option>
+                                <option value="F">&nbsp;&nbsp;Female</option>
                         </select>
                         @error('gender') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>

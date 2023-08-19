@@ -59,11 +59,11 @@
                             <td>{{$permission->reason}}</td>
                             <td>{{$permission->reply}} By <span style="color:blue;">{{$permission->name}}</span></td>
                                 @if($permission->permission_status =='pending')
-                            <td><span class="badge badge-info btn-md" style="padding:5px;">{{$permission->permission_status}}</span></td>
+                            <td><span class="badge badge-info btn-sm" style="padding:5px;">{{$permission->permission_status}}</span></td>
                             @elseif($permission->permission_status =='rejected')
-                            <td><span class="badge badge-danger btn-md">{{$permission->permission_status}}</span></td>
+                            <td><span class="badge badge-danger btn-sm">{{$permission->permission_status}}</span></td>
                             @else
-                            <td ><span class="badge badge-success btn-md">{{$permission->permission_status}}</span></td>
+                            <td ><span class="badge badge-success btn-sm">{{$permission->permission_status}}</span></td>
                             @endif
                             
                             <td>{{$permission->created_at}}</td>

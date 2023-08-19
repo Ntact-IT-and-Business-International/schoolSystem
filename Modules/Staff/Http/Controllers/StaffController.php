@@ -53,4 +53,13 @@ class StaffController extends Controller
         }
         return view('staff::edit_staff_information',compact('staff_id'));
     }
+    /**
+     * This function displays edit pupils details form 
+     */
+    public function editPupilPermission($permission_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('staff::edit_permission_information',compact('permission_id'));
+    }
 }

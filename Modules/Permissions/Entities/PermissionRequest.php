@@ -108,7 +108,7 @@ class PermissionRequest extends Model
     /**
      * This function updates the edited Permissions Requests details
      */
-    public static function updatePermissionRequestInfo($destination,$reason){
+    public static function updatePermissionRequestInfo($permission_id,$destination,$reason){
         PermissionRequest::whereId($permission_id)->update([
             'destination' =>$destination,
             'reason'      =>$reason,
