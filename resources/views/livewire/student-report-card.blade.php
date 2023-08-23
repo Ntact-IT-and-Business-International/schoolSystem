@@ -30,7 +30,7 @@
                 </div>
             </div>
             <hr class="mb-4">
-            
+
             @foreach($student_report_details as $detail)
             <div class="row">
                 <div class="col-sm-4 mb-4">
@@ -57,7 +57,7 @@
                     <div class="font-weight-bold mb-2">Date:&nbsp; <span class="text-muted">{{$today}}</span></div>
                 </div>
             </div>
-            
+
             @endforeach
             <div class="table-responsive mb-4">
             <div class="font-weight-bold text-center">MID TERM</div>
@@ -75,7 +75,7 @@
                         <th class="py-3">
                             TOTAL
                         </th>
-                        
+
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +91,7 @@
                             {{$card->assessment_marks}}
                             </td>
                             @endforeach
-                            
+
                             <td class="font-weight-bold">{{$total_marks}}</td>
                         </tr>
                         <tr>
@@ -134,7 +134,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    
+
                         @foreach($student_report_cards as $card)
                         <tr>
                             <td class="py-3">
@@ -155,7 +155,7 @@
                         </tr>
                         @endforeach
                         <tr>
-                            
+
                             <td class="py-3">
                                 AVERAGE
                             </td>
@@ -181,7 +181,7 @@
                         </tr>
                         <tr>
                             <td class="py-3">
-                                DIVISION 
+                                DIVISION
                             </td>
                             <td class="py-3">
                             </td>
@@ -255,7 +255,7 @@
                 </div>
             </div>
             <div class="text-center" style="font-weight:bold; font-size:20px;font-family: "Times New Roman", Times, serif;">
-                <strong>'Aim at excellence'</strong> 
+                <strong>'Aim at excellence'</strong>
             </div>
         </div>
         <div class="card-footer text-center">

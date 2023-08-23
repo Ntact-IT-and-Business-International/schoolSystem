@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route; 
-use App\Http\Controllers\FrontPagesController; 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontPagesController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
@@ -31,7 +31,7 @@ Route::get('/register',function(){ return redirect('/');});
 
 Route::get('/send-message',[FrontPagesController::Class,'sendMessage']);
 
-Route::group(['middleware' => ['auth']], function () { 
+Route::group(['middleware' => ['auth']], function () {
 Route::get('/dashboard',[DashboardController::Class,'adminDashboard'])->name('Dashboard');
 Route::get('/logout',[LogoutController::Class,'logoutUser']);
 Route::get('/mark-as-approved/{request_id}',[AdminController::Class,'approveRequest']);
