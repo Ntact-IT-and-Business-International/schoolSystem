@@ -76,17 +76,28 @@
                                 <table id="report-table" class="clients-table table table-hover table-bordered m-0"><thead>
                                         <tr class="text-center">
                                             <th>#</th>
-                                            <th>Name</th>
-                                            <th>ENG <br><span class="font-weight-bold">Marks Grade</span></th>
-                                            <th>MTC <br><span class="font-weight-bold">Marks Grade</span></th>
-                                            <th>SCI <br><span class="font-weight-bold">Marks Grade</span></th>
-                                            <th>SST <br><span class="font-weight-bold">Marks Grade</span></th>
-                                            <th>TOTAL MKS</th>
-                                            <th>AGG</th>
-                                            <th>DIV</th>
+                                            <th rowspan="2">Name</th>
+                                            <th colspan="2">ENG</th>
+                                            <th colspan="2">MTC</th>
+                                            <th colspan="2">SCI</th>
+                                            <th colspan="2">SST</th>
+                                            <th rowspan="2">TOTAL MKS</th>
+                                            <th rowspan="2">AGG</th>
+                                            <th rowspan="2">DIV</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr class="font-weight-bold">
+                                            <th colspan="2"></th>
+                                            <th>Marks</th>
+                                            <th>Grade</th>
+                                            <th>Marks</th>
+                                            <th>Grade</th>
+                                            <th>Marks</th>
+                                            <th>Grade</th>
+                                            <th>Marks</th>
+                                            <th>Grade</th>
+                                        </tr>
                                         @foreach($student_report_details as $i=> $result)
                                         @php
                                         $english_examination_marks =\Modules\ReportCard\Entities\Result::where('student_id',$result->student_id)->where('term',$result->term)->where('subject_id',2)->whereYear('created_at', '=', \Carbon\Carbon::today())->value('examination_marks');
@@ -116,16 +127,28 @@
                                                 {{$result->last_name}} {{$result->first_name}} {{$result->other_names}}
                                             </td>
                                             <td class="align-middle py-3 text-center">
-                                                {{$english_examination_marks}} <span class="text-danger font-weight-bold">{{$english_examination_grade}}</span>
+                                                {{$english_examination_marks}} 
                                             </td>
                                             <td class="align-middle py-3 text-center">
-                                                {{$mtc_examination_marks}} <span class="text-danger font-weight-bold">{{$mtc_examination_grade}}</span>
+                                                <span class="text-danger font-weight-bold">{{$english_examination_grade}}</span>
                                             </td>
                                             <td class="align-middle py-3 text-center">
-                                                {{$sci_examination_marks}} <span class="text-danger font-weight-bold">{{$sci_examination_grade}}</span>
+                                                {{$mtc_examination_marks}}
                                             </td>
                                             <td class="align-middle py-3 text-center">
-                                                {{$sst_examination_marks}} <span class="text-danger font-weight-bold">{{$sst_examination_grade}}</span>
+                                                <span class="text-danger font-weight-bold">{{$mtc_examination_grade}}</span>
+                                            </td>
+                                            <td class="align-middle py-3 text-center">
+                                                {{$sci_examination_marks}}
+                                            </td>
+                                            <td class="align-middle py-3 text-center">
+                                                <span class="text-danger font-weight-bold">{{$sci_examination_grade}}</span>
+                                            </td>
+                                            <td class="align-middle py-3 text-center">
+                                                {{$sst_examination_marks}}
+                                            </td>
+                                            <td class="align-middle py-3 text-center">
+                                                <span class="text-danger font-weight-bold">{{$sst_examination_grade}}</span>
                                             </td>
                                             <td class="align-middle py-3 text-center">
                                                 <span class="font-weight-bold">{{$total_exam_marks}}</span>
