@@ -91,7 +91,7 @@ class AddStudent extends ModalComponent
     {
         $this->validate();
 
-        $this->emit('Students', 'refreshComponent'); 
+        $this->emit('StudentsClass', 'refreshComponent'); 
         $this->createAccount($this->name, $this->email, $this->user_type,$this->password,'Student_photos/'.$this->profile_photo_path);
         Student::addStudent($this->first_name,$this->last_name,$this->other_names,$this->class_id,$this->date_of_birth,$this->gender,$this->special_need,$this->parents_name,$this->contact,$this->nin,$this->location,$this->section,$this->fees_pay_code,$this->saveItemToFolder('Student_photos', $this->photo));
         $this->closeModal();

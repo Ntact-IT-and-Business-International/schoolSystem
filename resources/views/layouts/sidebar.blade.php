@@ -1,11 +1,17 @@
 <ul class="sidenav-inner py-1">
 
     <!-- Dashboards -->
-    <li class="sidenav-item open active">
+    {{-- <li @if(\Request::route()->getName() == "Dashboard") class="sidenav-item active" @else class="" @endif>
             <a href="/dashboard" class="sidenav-link">
                 <i class="sidenav-icon feather icon-home"></i>
                 <div>Dashboard</div>
             </a>
+    </li> --}}
+    <li @if(\Request::route()->getName() == "Dashboard") class="sidenav-item active" @else class="" @endif>
+        <a href="/dashboard" class="sidenav-link">
+            <i class="sidenav-icon feather icon-home"></i>
+            <div>Dashboard</div>
+        </a>
     </li>
     <li class="sidenav-item">
         <a href="javascript:" class="sidenav-link sidenav-toggle">
@@ -13,22 +19,22 @@
             <div>Students</div>
         </a>
         <ul class="sidenav-menu">
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Students") class="sidenav-item active" @else class="" @endif>
                 <a href="/students/class" class="sidenav-link">
                     <div>Class</div>
                 </a>
             </li>
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Students Year") class="sidenav-item active" @else class="" @endif>
                 <a href="/students/year" class="sidenav-link">
                     <div>Year</div>
                 </a>
             </li>
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Attendance") class="sidenav-item active" @else class="" @endif>
                 <a href="/students/attendance" class="sidenav-link">
                     <div>Daily Attendence</div>
                 </a>
             </li>
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Students Permission") class="sidenav-item active" @else class="" @endif>
                 <a href="/students/pupils-permission" class="sidenav-link">
                     <div>Pupil Permission</div>
                 </a>
@@ -41,24 +47,24 @@
             <div>Staff</div>
         </a>
         <ul class="sidenav-menu">
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Teaching Staff") class="sidenav-item active" @else class="" @endif>
                 <a href="/staff/teaching-staff" class="sidenav-link">
                     <div>Teaching Staff</div>
                 </a>
             </li>
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Non Teaching Staff") class="sidenav-item active" @else class="" @endif>
                 <a href="/staff/non-teaching-staff" class="sidenav-link">
                     <div>Non Teaching Staff</div>
                 </a>
             </li>
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Staff Permission Requests") class="sidenav-item active" @else class="" @endif>
                 <a href="/permissions/all-staff-permission-requests" class="sidenav-link">
-                    <div>All Staff Permissions Requests</div>
+                    <div>Staff Permissions</div>
                 </a>
             </li>
-            <li class="sidenav-item">
+            <li @if(\Request::route()->getName() == "Students Permission Requests") class="sidenav-item active" @else class="" @endif>
                 <a href="/permissions/all-students-permission-requests" class="sidenav-link">
-                    <div>All Students Permissions Requests</div>
+                    <div>Students Permissions</div>
                 </a>
             </li>
             <li class="sidenav-item">

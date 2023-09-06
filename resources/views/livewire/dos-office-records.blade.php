@@ -1,7 +1,7 @@
 <div>
     {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
     <div class="card mb-4">
-        <h6 class="card-header">Add Food Item Used</h6>
+        <h6 class="card-header">Add Item Used</h6>
         <div class="card-body">
             <form wire:submit.prevent="submit"> 
                 <div class="form-row">
