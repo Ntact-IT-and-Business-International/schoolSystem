@@ -65,11 +65,13 @@
                                 $sst_examination_grade =\Modules\ReportCard\Entities\Result::where('student_id',$result->student_id)->where('term',$result->term)->where('subject_id',4)->whereYear('created_at', '=', \Carbon\Carbon::today())->value('grade');
 
                                 $grade =\Modules\ReportCard\Entities\Result::where('student_id',$result->student_id)->where('term',$result->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->get();
-                                $total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$result->student_id)->where('term',$result->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('examination_marks');
+                                //$total_exam_marks =\Modules\ReportCard\Entities\Result::where('student_id',$result->student_id)->where('term',$result->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->orderByDesc('total_exam_marks')->sum('examination_marks');
                                 $total_aggregate =\Modules\ReportCard\Entities\Result::where('student_id',$result->student_id)->where('term',$result->term)->whereYear('created_at', '=', \Carbon\Carbon::today())->sum('grade');
 
                                 $mathematic_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('student_id',$result->student_id)->where('term',$result->term)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 1)->where('results.grade',9)->exists();
                                 $english_with_nine =\Modules\ReportCard\Entities\Result::join('subjects','subjects.id','results.subject_id')->where('student_id',$result->student_id)->where('term',$result->term)->whereYear('results.created_at', '=', \Carbon\Carbon::today())->where('subjects.id', 2)->where('results.grade',9)->exists();    
+
+                                
                                 @endphp
                                 <tr>
                                     <td class="align-middle py-3 text-center">
@@ -103,7 +105,7 @@
                                         <span class="text-danger font-weight-bold">{{$sst_examination_grade}}</span>
                                     </td>
                                     <td class="align-middle py-3 text-center">
-                                        <span class="font-weight-bold">{{$total_exam_marks}}</span>
+                                        <span class="font-weight-bold">{{$result->total_exam_marks}}</span>
                                     </td>
                                     <td class="align-middle py-3 text-center">
                                         <span class="text-danger font-weight-bold">{{$total_aggregate}}</span>
@@ -142,8 +144,8 @@
                                         @else
                                             X
                                         @endif 
-                                    </td>
-                                    <td></td>
+                                    </td>                                    
+                                    <td>{{$i + 1 }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
