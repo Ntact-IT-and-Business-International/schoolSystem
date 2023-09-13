@@ -54,7 +54,7 @@
                 <div class="col-lg-6">
                     <div class="copyright">
                         <p>
-                            <span>&copy; Mukono Primary School 2020 - {{date('Y')}} &nbsp; All right reserved. Designed By </span><a href="#" target="_blank">Ociba James</a>
+                            <span>&copy; Safeway Junior School-Kawempe-Ttula 2020 - {{date('Y')}} &nbsp; All right reserved. Designed By </span><a href="https://ntactit.com/" target="_blank">Ntactit-Kampala</a>
                         </p>
                     </div>
                 </div>

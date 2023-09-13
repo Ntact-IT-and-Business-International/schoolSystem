@@ -1,1 +1,1 @@
-<title>Mukono Primary Schoool -Mukono</title>
+<title>Safeway Junior School -Kawempe-Ttula</title>
