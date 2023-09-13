@@ -25,7 +25,6 @@
         <div class="bg-primary"></div>
     </div>
     <!-- [ Preloader ] End -->
-
     <!-- [ Layout wrapper ] Start -->
     <div class="layout-wrapper layout-2">
         <div class="layout-inner">
