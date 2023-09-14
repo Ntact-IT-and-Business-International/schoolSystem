@@ -21,7 +21,7 @@
 		<div class="container content">		
         <!-- Service Blcoks -->
         <div class="row service-v1 margin-bottom-40">
-            <p>we take pride in offering a comprehensive range of services that enhance the educational experience of our students and provide support to parents and the school community. Our commitment to excellence extends beyond the classroom, and we are dedicated to providing services that foster a well-rounded education. </p>
+            <p>We take pride in offering a comprehensive range of services that enhance the educational experience of our students and provide support to parents and the school community. Our commitment to excellence extends beyond the classroom, and we are dedicated to providing services that foster a well-rounded education. </p>
             <div class="col-md-4 md-margin-bottom-40">
                 <img class="img-responsive" src="{{ asset('Front/img/service1.jpg')}}" alt="">   
                 <h2>Academic Excellence</h2>
@@ -41,31 +41,6 @@
         <!-- End Service Blcoks -->
 
         <hr class="margin-bottom-50">
-
-        <!-- Info Blcoks -->
-        {{-- <div class="row">
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-bell-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Extracurricular Activities</h3>
-                    <p>We offer a variety of extracurricular activities, including sports, arts, music, drama, and clubs. These activities allow students to explore their interests, develop new skills, and foster teamwork.</p>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-hdd-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Special Education Services</h3>
-                    <p>Our special education department provides support for students with unique learning needs. We offer individualized education plans (IEPs) and tailored assistance to help every student succeed.</p>
-                </div>
-            </div>
-            <div class="col-sm-4 info-blocks">
-                <i class="icon-info-blocks fa fa-lightbulb-o"></i>
-                <div class="info-blocks-in">
-                    <h3>Library and Learning Resources</h3>
-                    <p>Our well-equipped library offers a vast collection of books and digital resources to encourage reading and research. We provide a conducive space for independent learning and exploration.</p>
-                </div>
-            </div>
-        </div> --}}
-        <!-- End Info Blcoks -->
         <!-- Info Blcoks -->
         <div class="row">
             <div class="col-sm-4 info-blocks">
