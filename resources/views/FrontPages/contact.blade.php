@@ -56,21 +56,21 @@
                             <i class="icon-info-blocks fa fa-map-marker"></i>
                             <div class="info-blocks-in">
                                 <h3>Address</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+                                <p>Safeway Junior School. P.O BoX 9558 Kawempe-Ttula.Kampala -Uganda</p>
                             </div>
                         </div>
                         <div class="info-blocks">
                             <i class="icon-info-blocks fa fa-phone"></i>
                             <div class="info-blocks-in">
                                 <h3>Phone Numbers</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+                                <p>0775401793 OR 0753926367</p>
                             </div>
                         </div>
                         <div class="info-blocks">
                             <i class="icon-info-blocks fa fa-envelope"></i>
                             <div class="info-blocks-in">
                                 <h3>Email</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores quae porro consequatur aliquam, incidunt</p>
+                                <p>safewayjuniorschool@gmail.com</p>
                             </div>
                         </div>
                     </div>

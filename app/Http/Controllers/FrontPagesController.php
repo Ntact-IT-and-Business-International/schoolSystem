@@ -77,5 +77,11 @@ class FrontPagesController extends Controller
 
         return Redirect()->back()->with('msg','Your Message is sent successfully');
     }
+    public function admission(){
+            if (! request()->hasValidSignature()) {
+                abort(401);
+            }
+            return view('FrontPages.admissions');
+        }
     
 }

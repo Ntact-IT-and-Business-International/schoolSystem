@@ -15,6 +15,7 @@
                     <li @if(\Request::route()->getName() == "About Us") class="active" @else class="" @endif><a href="{{URL::signedRoute('About Us')}}">About Us</a></li>
                     <li @if(\Request::route()->getName() == "Services") class="active" @else class="" @endif><a href="{{URL::signedRoute('Services')}}">Services</a></li>
                     <li @if(\Request::route()->getName() == "Our Portfolio") class="active" @else class="" @endif><a href="{{URL::signedRoute('Our Portfolio')}}">Portfolio</a></li>
+                    <li @if(\Request::route()->getName() == "Our Admission") class="active" @else class="" @endif><a href="{{URL::signedRoute('Our Admission')}}">Admissions</a></li>
                     <li @if(\Request::route()->getName() == "Our PLE Results") class="active" @else class="" @endif><a href="{{URL::signedRoute('Our PLE Results')}}">PLE Results</a></li>
                     <li @if(\Request::route()->getName() == "Our Contact") class="active" @else class="" @endif><a href="{{URL::signedRoute('Our Contact')}}">Contact</a></li>
                     <li @if(\Request::route()->getName() == "Our Jobs") class="active" @else class="" @endif><a href="{{URL::signedRoute('Our Jobs')}}">Jobs</a></li>

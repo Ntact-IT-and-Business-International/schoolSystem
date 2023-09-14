@@ -23,25 +23,25 @@
                 </ol>
                 <div class="carousel-inner">
                     <div class="item">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p>"We couldn't be happier with our decision to enroll our children at [School Name]. The caring and dedicated staff have created a warm and supportive environment where our kids feel valued and excited to learn."</p>
                         <p>
-                            <b>- Mark John -</b>
+                            <b>- Mark John Father -</b>
                         </p>
                     </div>
                     <div class="item">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p>"The teachers at Safeway Junior School are exceptional. They go above and beyond to ensure that each child's individual needs are met. My daughter has thrived academically and personally here."</p>
                         <p>
                             <b>- Jaison Warner -</b>
                         </p>
                     </div>
                     <div class="item active">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p>"The extracurricular activities and clubs at [School Name] have helped our son develop a well-rounded personality. He's not only excelling in academics but also gaining valuable life skills."</p>
                         <p>
                             <b>- Tony Antonio -</b>
                         </p>
                     </div>
                     <div class="item">
-                        <p>Blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                        <p>"We appreciate the school's focus on character development. Our daughter has become more responsible, respectful, and empathetic, thanks to the school's values-based education."</p>
                         <p>
                             <b>- Leena Doe -</b>
                         </p>

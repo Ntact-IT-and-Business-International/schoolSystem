@@ -5,12 +5,12 @@
                 <div class="widget">
                     <h5 class="widgetheading">Our Contact</h5>
                     <address>
-                    <strong>Target company Inc</strong><br>
-                    JC Main Road, Near Silnile tower<br>
-                    Pin-21542 NewYork US.</address>
+                    <strong>Safeway Junior School</strong><br>
+                    Kawempe-Ttula, Few metres from Ttula roundabout<br>
+                    P.O Box 9558 Kawempe-Ttula Kampala.</address>
                     <p>
-                        <i class="icon-phone"></i> (123) 456-789 - 1255-12584 <br>
-                        <i class="icon-envelope-alt"></i> email@domainname.com
+                        <i class="icon-phone"></i> <a href="tel:0775401793">0775401793</a> Or <a href="tel:0753926367">0753926367</a><br>
+                        <i class="icon-envelope-alt"></i> <a href="mailto:safewayjuniorschool@gmail.com">safewayjuniorschool@gmail.com</a>
                     </p>
                 </div>
             </div>
@@ -30,9 +30,9 @@
                 <div class="widget">
                     <h5 class="widgetheading">Latest posts</h5>
                     <ul class="link-list">
-                        <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                        <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-                        <li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
+                        <li><a href="#">Swimming will be there every week on Thursday.</a></li>
+                        <li><a href="#">Visitation day will be on Sunday 30th October,2023.</a></li>
+                        <li><a href="#">Study Tour is scheduled to take Place on 5th October, 2023.</a></li>
                     </ul>
                 </div>
             </div>
@@ -40,9 +40,9 @@
                 <div class="widget">
                     <h5 class="widgetheading">Recent News</h5>
                     <ul class="link-list">
-                        <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                        <li><a href="#">Pellentesque et pulvinar enim. Quisque at tempor ligula</a></li>
-                        <li><a href="#">Natus error sit voluptatem accusantium doloremque</a></li>
+                        <li><a href="#">We participated in Music competetions and we were among the best schools..</a></li>
+                        <li><a href="#">We appreciate all the prents for thier endeavour to pay school fees in time.</a></li>
+                        <li><a href="#">Third term will officially be closed on 3rd January 2023.</a></li>
                     </ul>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                 <div class="col-lg-6">
                     <div class="copyright">
                         <p>
-                            <span>&copy; Safeway Junior School-Kawempe-Ttula 2020 - {{date('Y')}} &nbsp; All right reserved. Designed By </span><a href="https://ntactit.com/" target="_blank">Ntactit-Kampala</a>
+                            <span>&copy; Safeway Junior School 2020 - {{date('Y')}} &nbsp; All right reserved. Designed By </span><a href="https://ntactit.com/" target="_blank">Ntactit-Kampala</a>
                         </p>
                     </div>
                 </div>

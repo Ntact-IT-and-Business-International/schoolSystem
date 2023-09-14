@@ -27,6 +27,7 @@ Route::get('/our-portfolio',[FrontPagesController::Class,'portfolio'])->name('Ou
 Route::get('/ple-results',[FrontPagesController::Class,'results'])->name('Our PLE Results');
 Route::get('/our-jobs',[FrontPagesController::Class,'jobs'])->name('Our Jobs');
 Route::get('/our-contacts',[FrontPagesController::Class,'contact'])->name('Our Contact');
+Route::get('/our-admissions',[FrontPagesController::Class,'admission'])->name('Our Admission');
 Route::get('/register',function(){ return redirect('/');});
 
 Route::get('/send-message',[FrontPagesController::Class,'sendMessage']);
