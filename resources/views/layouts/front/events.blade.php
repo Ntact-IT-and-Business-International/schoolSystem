@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="aligncenter"><h2 class="aligncenter">Our Events</h2>Safeway Junior School, believes that learning extends beyond the classroom. That's why we organize a variety of engaging and educational events throughout the year to enrich the lives of our students and bring our school community closer together. Here's a glimpse of the exciting events we have in store:</div>
+                <div class="aligncenter"><h2 class="aligncenter">Our Events</h2>School Management System, believes that learning extends beyond the classroom. That's why we organize a variety of engaging and educational events throughout the year to enrich the lives of our students and bring our school community closer together. Here's a glimpse of the exciting events we have in store:</div>
                 <br>
             </div>
         </div>

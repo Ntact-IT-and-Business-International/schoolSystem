@@ -56,7 +56,7 @@
                                             <ul>
                                                 <li>Download <a href="{{ asset('public/Front/produce_local_nd_english_names.pdf')}}" download>Application Form</a>,</li>
                                                 <li>Fill the form</li>
-                                                <li>Email the filled form to <a href="mailto:safewayjuniorschool.com">safewayjuniorschool.com</a></li>
+                                                <li>Email the filled form to <a href="mailto:School Management System@gmail.com">schoolmanagementschool@gmail.com</a></li>
                                                 <li class="btn-sm btn-success btn"><a href="{{ asset('public/Front/produce_local_nd_english_names.pdf')}}" download style="color:#fff">Download Application Now</li>
                                             </ul>
                                         </ul>

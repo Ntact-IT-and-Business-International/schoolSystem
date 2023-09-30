@@ -50,8 +50,8 @@
                     <div class="btn-group" id="hover-dropdown-demo">
                         <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
                         <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            <a href="{{URL::signedRoute('editUser', ['user_id' => $user->id])}}" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                            <button wire:click="deleteUser({{ $user->id }})" class="btn btn-danger btn-sm mb-1 dropdown-item">Delete</button>
                         </div>
                     </div>
                 </td>

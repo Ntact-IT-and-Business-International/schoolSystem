@@ -1,1 +1,1 @@
-<title>Safeway Junior School -Kawempe-Ttula</title>
+<title>School Management School -SMS</title>

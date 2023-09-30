@@ -13,7 +13,7 @@ class AddClass extends ModalComponent
 
     //validate category
     protected $rules = [
-        'level'       => 'required',
+        'level'       => 'required|unique:classes',
     ];
 
     /**

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="aligncenter"><h1 class="aligncenter">WHAT WE OFFER?</h1>At Safeway Junior School, we are committed to providing a vibrant and nurturing learning environment for your child. Our primary school program is designed to empower young minds, foster a love for learning, and prepare students for a bright future. Here's a glimpse of what we offer:.</div>
+                <div class="aligncenter"><h1 class="aligncenter">WHAT WE OFFER?</h1>At School Management System, we are committed to providing a vibrant and nurturing learning environment for your child. Our primary school program is designed to empower young minds, foster a love for learning, and prepare students for a bright future. Here's a glimpse of what we offer:.</div>
                 
             </div>
         </div>

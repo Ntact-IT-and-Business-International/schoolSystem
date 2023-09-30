@@ -7,10 +7,16 @@
                 <div>Dashboard</div>
             </a>
     </li> --}}
-    <li @if(\Request::route()->getName() == "Dashboard") class="sidenav-item active" @else class="" @endif>
+    {{-- <li @if(\Request::route()->getName() == "Dashboard") class="sidenav-item active" @else class="" @endif>
         <a href="/dashboard" class="sidenav-link">
             <i class="sidenav-icon feather icon-home"></i>
             <div>Dashboard</div>
+        </a>
+    </li> --}}
+    <li @if (\Request::route()->getName() == 'Dashboard') class="sidenav-item active" @else class="sidenav-item" @endif>
+        <a href="/dashboard" class="sidenav-link">
+            <i class="sidenav-icon feather icon-home"></i>
+            <div>Dashboards</div>
         </a>
     </li>
     <li class="sidenav-item">

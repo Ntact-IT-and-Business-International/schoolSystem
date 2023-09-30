@@ -36,21 +36,44 @@ class Result extends Model
      * This function creates the Result
      */
     public static function addResult($student_id,$class_id,$subject_id,$term,$assessment_marks,$assessment_grade,$examination_marks,$grade,$teacher_initials,$remark){
+        
+       // Check if the student is registered in a different class for the current year
+        if (Result::where('student_id', request()->student_id)
+        ->where('class_id', '!=', request()->class_id)
+        ->whereYear('created_at', Carbon::now()->year)
+        ->exists()) {
+
+        return redirect()->back()->withInput()->withErrors('The student belongs to another class.');
+
+        } else {
+        // Assuming you have the necessary variables declared here
+        // $student_id = request()->student_id;
+        // $class_id = request()->class_id;
+        // $subject_id = request()->subject_id;
+        // $term = request()->term;
+        // $assessment_marks = request()->assessment_marks;
+        // $assessment_grade = request()->assessment_grade;
+        // $examination_marks = request()->examination_marks;
+        // $grade = request()->grade;
+        // $teacher_initials = request()->teacher_initials;
+        // $remark = request()->remark;
+
+        // Create a new Result record
         Result::create([
-            'student_id'       =>$student_id,
-            'class_id'         => $class_id,
-            'subject_id'       => $subject_id,
-            'term'             =>$term,
+            'student_id' => $student_id,
+            'class_id' => $class_id,
+            'subject_id' => $subject_id,
+            'term' => $term,
             'assessment_marks' => $assessment_marks,
-            'assessment_grade' =>$assessment_grade,
-            'examination_marks'=>$examination_marks,
-            'grade'            =>$grade,
-            'teacher_initials' =>$teacher_initials,
-            'remark'           => $remark,
-            'user_id'          =>auth()->user()->id,
+            'assessment_grade' => $assessment_grade,
+            'examination_marks' => $examination_marks,
+            'grade' => $grade,
+            'teacher_initials' => $teacher_initials,
+            'remark' => $remark,
+            'user_id' => auth()->user()->id,
         ]);
     }
-
+    }
     /**
      * this function gets Result
      */

@@ -32,4 +32,10 @@ class AccountSettingsController extends Controller
     public function changePassword(){
         return view('accountsettings::change_password');
     }
+    /**
+     * This function edit the users details
+     */
+    public function editUsers($user_id){
+        return view('accountsettings::edit_user', compact('user_id'));
+    }
 }

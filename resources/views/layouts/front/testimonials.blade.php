@@ -29,7 +29,7 @@
                         </p>
                     </div>
                     <div class="item">
-                        <p>"The teachers at Safeway Junior School are exceptional. They go above and beyond to ensure that each child's individual needs are met. My daughter has thrived academically and personally here."</p>
+                        <p>"The teachers at School Management System are exceptional. They go above and beyond to ensure that each child's individual needs are met. My daughter has thrived academically and personally here."</p>
                         <p>
                             <b>- Jaison Warner -</b>
                         </p>

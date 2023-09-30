@@ -56,7 +56,7 @@
                             <i class="icon-info-blocks fa fa-map-marker"></i>
                             <div class="info-blocks-in">
                                 <h3>Address</h3>
-                                <p>Safeway Junior School. P.O BoX 9558 Kawempe-Ttula.Kampala -Uganda</p>
+                                <p>School Management System. P.O BoX 9558 Kawempe-Ttula.Kampala -Uganda</p>
                             </div>
                         </div>
                         <div class="info-blocks">
@@ -70,7 +70,7 @@
                             <i class="icon-info-blocks fa fa-envelope"></i>
                             <div class="info-blocks-in">
                                 <h3>Email</h3>
-                                <p>safewayjuniorschool@gmail.com</p>
+                                <p><a href="mailto:schoolmanagentschool.com">schoolmanagementschool@gmail.com</a></p>
                             </div>
                         </div>
                     </div>

@@ -7,7 +7,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"><img src="{{ asset('Front/img/logo.png')}}" alt="logo"/></a>
+                {{-- <a class="navbar-brand" href="/" style="color:#fff;"><img src="{{ asset('Front/img/logo.png')}}" alt="logo"/> School Management System</a> --}}
+                <a class="navbar-brand" href="/" style="color:#fff; font-size:18px; margin-top:25px;"> School Management System</a>
             </div>
             <div class="navbar-collapse collapse ">
                 <ul class="nav navbar-nav">

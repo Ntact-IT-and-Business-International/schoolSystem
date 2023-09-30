@@ -48,7 +48,7 @@
 										
 										</ul>
 										<p><h3>Join Us</h3></p>
-										<p>We invite you to be a part of the Safeway Junior School community. Whether you're a parent looking for a nurturing and academically enriching environment for your child or an educator seeking a fulfilling teaching career, we welcome you to explore what our school has to offer.we are more than an educational institution; we are a family that supports, inspires, and empowers. Join us on this journey of learning and growth, and together, we can shape a brighter future for our children.</p>
+										<p>We invite you to be a part of the School Management System community. Whether you're a parent looking for a nurturing and academically enriching environment for your child or an educator seeking a fulfilling teaching career, we welcome you to explore what our school has to offer.we are more than an educational institution; we are a family that supports, inspires, and empowers. Join us on this journey of learning and growth, and together, we can shape a brighter future for our children.</p>
 									</div>
 								</div> 
 							</div>
@@ -78,7 +78,7 @@
 										<div class="panel-heading">
 											<h4 class="panel-title">
 											<a data-toggle="collapse" data-parent="#accordion-alt3" href="#collapseOne-alt3">
-												<i class="fa fa-angle-right"></i> Qn: What is the admission process for enrolling my child in Safeway Junior School?
+												<i class="fa fa-angle-right"></i> Qn: What is the admission process for enrolling my child in School Management System?
 											</a>
 											</h4>
 										</div>

@@ -256,5 +256,20 @@ class User extends Authenticatable
     public function countNumberOfSpecialNeeds(){
         return DB::table('students')->whereYear('created_at', date('Y'))->whereNotNull('special_need')->count();
     }
-    
+    /**
+     * This function get the users tobe edited
+     */
+    public static function editUser($user_id){
+        return User::whereId($user_id)->get();
+    }
+    /**
+     * This function updates user information
+     */
+    public static function updateUser($user_id,$name,$email,$user_type){
+        User::whereId($user_id)->update([
+            'name'         => $name,
+            'email'        => $email,
+            'user_type'    => $user_type,
+        ]);
+    }
 }
