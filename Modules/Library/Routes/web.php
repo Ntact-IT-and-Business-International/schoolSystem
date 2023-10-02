@@ -13,4 +13,5 @@
 
 Route::group(['prefix' => 'library', 'middleware' => ['auth']], function () { 
     Route::get('/library', 'LibraryController@index')->name('Library');
+    Route::get('/edit-library/{library_id}', 'LibraryController@editLibrary')->name('EditLibrary');
 });

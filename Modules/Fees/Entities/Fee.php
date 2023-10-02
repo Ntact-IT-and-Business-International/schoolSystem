@@ -75,10 +75,10 @@ class Fee extends Model
     /**
      * This function updates the edited payments
      */
-    public static function updateFeesInfo($fee_id,$student_id,$amount_paid,$balance,$mode_of_payment,$payment_code,$date_of_payment,$term)
+    public static function updateFeesInfo($fee_id,$class_id,$balance,$mode_of_payment,$payment_code,$date_of_payment,$amount_paid,$term)
     {
         Fee::whereId($fee_id)->update([
-            'student_id'      => $student_id,
+            'class_id'        =>$class_id,
             'amount_paid'     => $amount_paid,
             'balance'         => $balance,
             'mode_of_payment' => $mode_of_payment,

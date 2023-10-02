@@ -59,23 +59,23 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($ple_results as $i=>$results)
+        @foreach($ple_results as $i=>$result)
             <tr>
                 <th scope="row">{{$ple_results->firstitem() + $i}}</th>
-                <td>{{$results->div1}}</td>
-                <td>{{$results->div2}}</td>
-                <td>{{ $results->div3}}</td>
-                <td>{{$results->div4}}</td>
-                <td>{{$results->U}}</td>
-                <td>{{$results->X}}</td>
-                <td>{{$results->total}}</td>
-                <td>{{$results->year}}</td>
-                <td><a href="{{ asset('storage/Ple_Results/'.$results->result)}}" style="color:blue;" target="_blank">View Results</a></td>
+                <td>{{$result->div1}}</td>
+                <td>{{$result->div2}}</td>
+                <td>{{$result->div3}}</td>
+                <td>{{$result->div4}}</td>
+                <td>{{$result->U}}</td>
+                <td>{{$result->X}}</td>
+                <td>{{$result->total}}</td>
+                <td>{{$result->year}}</td>
+                <td><a href="{{ asset('storage/Ple_Results/'.$result->result)}}" style="color:blue;" target="_blank">View Results</a></td>
                 <td>
                     <div class="btn-group" id="hover-dropdown-demo">
                         <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
                         <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="{{URL::signedRoute('EditPleResults', ['ple_result_id' => $result->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
                             <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
                         </div>
                     </div>

@@ -155,4 +155,13 @@ class FeesController extends Controller
     public function clearPayment($payment_id){
         return view('fees::clear_payments_form',compact('payment_id'));
     }
+    /**
+     * This function gets form for editing fees 
+     */
+    public function editFee($fee_id){
+        if (! request()->hasValidSignature()) {
+            abort(401);
+        }
+        return view('fees::edit_fee',compact('fee_id'));
+    }
 }

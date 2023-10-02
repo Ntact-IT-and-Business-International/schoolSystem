@@ -194,10 +194,9 @@ class Result extends Model
     /**
      * This function updates the edited Result deails
      */
-    public static function updateResultInfo($result_id,$student_id,$class_id,$subject_id,$term,$assessment_marks,$assessment_grade,$examination_marks,$grade,$teacher_initials,$remark)
+    public static function updateResultInfo($result_id,$class_id,$subject_id,$term,$assessment_marks,$assessment_grade,$examination_marks,$grade,$teacher_initials,$remark)
     {
         Result::whereId($result_id)->update([
-            'student_id'       =>$student_id,
             'class_id'         => $class_id,
             'subject_id'       => $subject_id,
             'term'             =>$term,

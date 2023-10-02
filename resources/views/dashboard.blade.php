@@ -13,9 +13,9 @@
     <meta name="author" content="" />
     @include('layouts.css')
     <!-- Core stylesheets -->
-    <link rel="stylesheet" href="{{ asset('Admin/assets/css/bootstrap-material.css')}}">
+    {{-- <link rel="stylesheet" href="{{ asset('Admin/assets/css/bootstrap-material.css')}}">
     <link rel="stylesheet" href="{{ asset('Admin/assets/css/shreerang-material.css')}}">
-    <link rel="stylesheet" href="{{ asset('Admin/assets/css/uikit.css')}}">
+    <link rel="stylesheet" href="{{ asset('Admin/assets/css/uikit.css')}}"> --}}
 
 </head>
 

@@ -251,5 +251,17 @@ class ReportCardController extends Controller
         ->distinct('students.last_name')
         ->get(['students.last_name','students.first_name','students.other_names','results.student_id','results.term']);
         return view('reportcard::print_nursery_exam_marksheet_now',compact('student_report_details'));
+    } 
+    /**
+     * This function edits results
+     */
+    public function editResults($result_id){
+        return view('reportcard::edit_results',compact('result_id'));
+    }
+    /**
+     * This function edits ple results
+     */
+    public function editPleResults($ple_result_id){
+        return view('reportcard::edit_ple_results',compact('ple_result_id'));
     }
 }

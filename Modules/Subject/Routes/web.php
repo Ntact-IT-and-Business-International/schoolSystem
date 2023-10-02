@@ -13,4 +13,5 @@
 
 Route::group(['prefix' => 'subject', 'middleware' => ['auth']], function () { 
     Route::get('/subjects', 'SubjectController@index')->name('subjects');
+    Route::get('/edit-subject/{subject_id}', 'SubjectController@editSubject')->name('EditSubject');
 });

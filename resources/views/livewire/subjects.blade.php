@@ -39,8 +39,8 @@
                 <th scope="row">{{$subjects->firstitem() + $i}}</th>
                 <td>{{$subject->subject}}</td>
                 <td>
-                    <a href="#!" class="btn btn-info btn-sm">Edit</a>
-                    <a href="#!" class="btn btn-danger btn-sm">Delete</a>
+                    <a href="{{URL::signedRoute('EditSubject', ['subject_id' => $subject->id])}}" class="btn btn-info btn-sm">Edit</a>
+                    <button wire:click="deleteSubject({{ $subject->id }})" class="btn btn-danger btn-sm">Delete</a>
                 </td>
             </tr>
         @endforeach

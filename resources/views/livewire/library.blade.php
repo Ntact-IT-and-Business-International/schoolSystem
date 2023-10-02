@@ -63,7 +63,7 @@
                     <div class="btn-group" id="hover-dropdown-demo">
                         <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
                         <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                            <a href="{{URL::signedRoute('EditLibrary', ['library_id' => $library->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
                             <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
                         </div>
                     </div>

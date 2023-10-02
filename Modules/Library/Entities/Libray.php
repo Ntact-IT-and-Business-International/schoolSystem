@@ -60,12 +60,15 @@ class Libray extends Model
     /**
      * This function updates the edited Library details
      */
-    public static function updateLibrary($title,$number_of_books,$date_of_entry)
+    public static function updateLibraryInfo($library_id,$subject_id,$class_id,$title,$number_of_books,$date_of_entry,$status)
     {
         Libray::whereId($library_id)->update([
+            'subject_id'       =>$subject_id,
+            'class_id'        =>$class_id,
             'title'           => $title,
             'number_of_books' => $number_of_books,
             'date_of_entry'   => $date_of_entry,
+            'status'          =>$status,
             'user_id'    =>auth()->user()->id,
         ]);
     }

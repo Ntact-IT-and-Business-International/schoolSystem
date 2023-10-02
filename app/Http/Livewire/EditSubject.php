@@ -12,7 +12,7 @@ class EditSubject extends Component
     public $subject_id;
 
     protected $rules = [
-        'subject' => 'required:unique:classes',
+        'subject' => 'required:unique:subjects',
     ];
 
     public function render()
@@ -40,6 +40,6 @@ class EditSubject extends Component
         Subject::updateSubject($this->subject_id, $this->subject);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
 
-        return redirect()->to(url()->previous())->with('msg', 'Your Subject info has been edited successfully');
+        return redirect()->to('/subject/subjects')->with('msg', 'Your Subject info has been edited successfully');
     }
 }

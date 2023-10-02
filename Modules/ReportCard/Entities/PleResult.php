@@ -59,17 +59,17 @@ class PleResult extends Model
     /**
      * This function gets form for editing ple results information
      */
-    public static function editPleResults($ple_results_id)
+    public static function editPleResults($ple_result_id)
     {
-        return PleResult::whereId($ple_results_id)->get();
+        return PleResult::whereId($ple_result_id)->get();
     }
 
     /**
      * This function updates the edited ple results details
      */
-    public static function updatePleResultsInfo($ple_results_id,$div1,$div2,$div3,$div4,$U,$X,$total,$year)
+    public static function updatePleResultsInfo($ple_result_id,$div1,$div2,$div3,$div4,$U,$X,$total,$year)
     {
-        PleResult::whereId($ple_results_id)->update([
+        PleResult::whereId($ple_result_id)->update([
             'div1'      =>$div1,
             'div2'      => $div2,
             'div3'      => $div3,
