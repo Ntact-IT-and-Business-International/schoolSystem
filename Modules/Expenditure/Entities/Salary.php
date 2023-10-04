@@ -18,8 +18,9 @@ class Salary extends Model
     public function scopeSearch($query, $val)
     {
     return $query
-        ->where('staff_first_name', 'like', '%'.$val.'%')
+        ->where('staff_first_name', 'like', '%'.$val.'%') 
         ->orWhere('quantity', 'like', '%'.$val.'%')
+        ->orWhere('term', 'like', '%'.$val.'%')
         ->orWhere('amount', 'like', '%'.$val.'%')
         ->orWhere('paid_on_date', 'like', '%'.$val.'%') 
         ->orWhere('users.name', 'like', '%'.$val.'%');
@@ -27,12 +28,13 @@ class Salary extends Model
     /**
      * This function creates the Salary
      */
-    public static function addSalary($staff_id,$quantity,$actual_salary,$amount,$paid_on_date){
+    public static function addSalary($staff_id,$quantity,$actual_salary,$amount,$term,$paid_on_date){
         Salary::create([
             'staff_id'      =>$staff_id,
             'quantity'      =>$quantity,
             'actual_salary' =>$actual_salary,
             'amount'        =>$amount,
+            'term'          =>$term,
             'paid_on_date'  =>$paid_on_date,
             'user_id' =>auth()->user()->id,
         ]);
@@ -59,12 +61,13 @@ class Salary extends Model
     /**
      * This function updates the edited Salary
      */
-    public static function updateSalaryInfo($salary_id,$staff_id,$actual_salary,$amount,$paid_on_date)
+    public static function updateSalaryInfo($salary_id,$staff_id,$actual_salary,$amount,$term,$paid_on_date)
     {
         Salary::whereId($salary_id)->update([
             'staff_id'       => $staff_id,
             'actual_salary'  =>$actual_salary,
             'amount'         => $amount,
+            'term'           => $term,
             'paid_on_date'   =>$paid_on_date,
             'user_id'        =>auth()->user()->id,
         ]);

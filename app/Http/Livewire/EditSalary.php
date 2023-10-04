@@ -13,11 +13,13 @@ class EditSalary extends Component
     public $salary_id;
     public $paid_on_date;
     public $staff_id;
+    public $term;
     //validate category
     protected $rules = [
         'actual_salary' => 'required',
         'amount'        => 'required',
         'paid_on_date'  => 'required',
+        'term'          => 'required',
     ];
 
     /**
@@ -26,6 +28,7 @@ class EditSalary extends Component
     protected $messages = [
         'actual_salary.required' => 'Actual Salary is required',
         'amount.required' => 'Amount is required',
+        'term.required'    => 'Term is required',
         'paid_on_date.required' => 'Date of Payment is required',
     ];
     public function render()
@@ -43,6 +46,7 @@ class EditSalary extends Component
         $this->fill([
             'staff_id' => Salary::editSalary($this->salary_id)->value('staff_id'),
             'amount' => Salary::editSalary($this->salary_id)->value('amount'),
+            'term' => Salary::editSalary($this->salary_id)->value('term'),
             'actual_salary' => Salary::editSalary($this->salary_id)->value('actual_salary'),
             'paid_on_date' => Salary::editSalary($this->salary_id)->value('paid_on_date'),
         ]);
@@ -54,7 +58,7 @@ class EditSalary extends Component
     public function updateSalary()
     {
         $this->validate();
-        Salary::updateSalaryInfo($this->salary_id,$this->staff_id,$this->actual_salary,$this->amount,$this->paid_on_date);
+        Salary::updateSalaryInfo($this->salary_id,$this->staff_id,$this->actual_salary,$this->amount,$this->term,$this->paid_on_date);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
 
         return redirect()->to('/expenditure/salaries')->with('msg', 'Your Salary info has been edited successfully');

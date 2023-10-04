@@ -43,6 +43,9 @@
                 <th scope="col" wire:click="sortBy('balance')" style="cursor: pointer;"> Balance
                     @include('partials._sort-icon',['field'=>'balance'])
                 </th>
+                <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
+                    @include('partials._sort-icon',['field'=>'term'])
+                </th>
                 <th scope="col" wire:click="sortBy('paid_on_date')" style="cursor: pointer;"> Payment Date
                     @include('partials._sort-icon',['field'=>'paid_on_date'])
                 </th>
@@ -58,6 +61,7 @@
                 <td>{{ number_format($salary->actual_salary)}}</td>
                 <td>{{ number_format($salary->amount)}}</td>
                 <td>{{ number_format($salary->actual_salary-$salary->amount)}}</td>
+                <td>{{$salary->term}}</td>
                 <td>{{$salary->paid_on_date}}</td>
                 <td>
                     <div class="btn-group" id="hover-dropdown-demo">

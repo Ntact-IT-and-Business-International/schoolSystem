@@ -6,6 +6,7 @@ use App\Traits\WithSorting;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Carbon\Carbon;
+use Modules\Expenditure\Entities\Salary;
 
 class Expenditure extends Component
 {
@@ -58,10 +59,22 @@ class Expenditure extends Component
         return Expenses::whereYear('created_at', date('Y'))->whereTerm(1)->sum('amount');
     }
     /**
+     * This function gets total salary paid this term, this year
+     */
+    private function getSalaryThisTerm(){
+        return Salary::whereYear('created_at', date('Y'))->whereTerm(1)->sum('amount');
+    }
+    /**
      * This function gets total amount collected this term 2, this year
      */
     private function getExpenditureTerm2(){
         return Expenses::whereYear('created_at', date('Y'))->whereTerm(2)->sum('amount');
+    }
+    /**
+     * This function gets total salary paid this 2 term, this year
+     */
+    private function getSalarySecondTerm(){
+        return Salary::whereYear('created_at', date('Y'))->whereTerm(2)->sum('amount');
     }
     /**
      * This function gets total amount collected this term 3, this year
@@ -70,9 +83,15 @@ class Expenditure extends Component
         return Expenses::whereYear('created_at', date('Y'))->whereTerm(3)->sum('amount');
     }
     /**
+     * This function gets total salary paid this 3 term, this year
+     */
+    private function getSalaryThirdTerm(){
+        return Salary::whereYear('created_at', date('Y'))->whereTerm(3)->sum('amount');
+    }
+    /**
      * This function gets total of all terma expenditure  this year
      */
     private function getExpenditureThisYear(){
-        return $this->getExpenditureThisTerm()+$this->getExpenditureTerm2() + $this->getExpenditureTerm3();
+        return $this->getExpenditureThisTerm()+$this->getExpenditureTerm2() + $this->getExpenditureTerm3()+ $this->getSalaryThisTerm()+ $this->getSalarySecondTerm() + $this->getSalaryThirdTerm() ;
     }
 }

@@ -15,14 +15,16 @@ class AddSalary extends ModalComponent
     public $amount;
     public $paid_on_date;
     public $actual_salary;
+    public $term;
 
     //validate category
     protected $rules = [
         'staff_id'       => 'required',
         'quantity'       => 'required',
-        'actual_salary'   => 'required',
-        'amount'     => 'required',
-        'paid_on_date'  => 'required',
+        'actual_salary'  => 'required',
+        'amount'         => 'required',
+        'term'           => 'required',
+        'paid_on_date'   => 'required',
     ];
 
     /**
@@ -33,6 +35,7 @@ class AddSalary extends ModalComponent
         'quantity.required' => 'Quantity is required',
         'actual_salary.required' => 'Actual Salary is required',
         'amount.required' => 'Amount is required',
+        'term.required'    => 'Term is required',
         'paid_on_date.required' => 'Date of Payment is required',
     ];
 
@@ -49,7 +52,7 @@ class AddSalary extends ModalComponent
     {
         $this->validate();
         $this->emit('Salaries', 'refreshComponent');
-        Salary::addSalary($this->staff_id,$this->quantity,$this->actual_salary,$this->amount,$this->paid_on_date);
+        Salary::addSalary($this->staff_id,$this->quantity,$this->actual_salary,$this->amount,$term,$this->paid_on_date);
         //activity()->log(auth()->user()->name.' Added a new Category called '.$this->category);
         $this->closeModal();
         Session::flash('msg', 'Salaries creation is successful');

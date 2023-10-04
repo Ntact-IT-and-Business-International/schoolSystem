@@ -68,4 +68,10 @@ class ExpenditureController extends Controller
     public function rejectRequestedItem($request_id){
         return view('expenditure::reject_item_requested',compact('request_id'));
     }
+    /**
+     * This function edits expenditure
+     */
+    public function editExpenditure($expenditure_id){
+        return view('expenditure::edit_expenditure',compact('expenditure_id'));
+    }
 }

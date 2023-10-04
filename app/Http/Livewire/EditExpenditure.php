@@ -13,6 +13,8 @@ class EditExpenditure extends Component
     public $unit_price;
     public $amount;
     public $signed_by;
+    public $expenditure_id;
+    public $term;
 
     //validate category
     protected $rules = [
@@ -21,6 +23,7 @@ class EditExpenditure extends Component
         'unit_price' => 'required',
         'amount'     => 'required',
         'signed_by'  => 'required',
+        'term'  => 'required',
     ];
 
     /**
@@ -32,6 +35,7 @@ class EditExpenditure extends Component
         'unit_price.required' => 'Unit Price is required',
         'amount.required' => 'Amount is required',
         'signed_by.required' => 'Name is required',
+        'term.required' => 'Term is required',
     ];
     public function render()
     {
@@ -50,6 +54,7 @@ class EditExpenditure extends Component
             'unit_price' => Expenditure::editExpenditure($this->expenditure_id)->value('unit_price'),
             'amount' => Expenditure::editExpenditure($this->expenditure_id)->value('amount'),
             'signed_by' => Expenditure::editExpenditure($this->expenditure_id)->value('signed_by'),
+            'term' => Expenditure::editExpenditure($this->expenditure_id)->value('term'),
         ]);
     }
 
@@ -59,9 +64,9 @@ class EditExpenditure extends Component
     public function updateExpenditure()
     {
         $this->validate();
-        Expenditure::updatExpenditureInfo($this->expenditure_id,$this->item,$quantity,$this->unit_price,$this->amount,$this->signed_by);
+        Expenditure::updatExpenditureInfo($this->expenditure_id,$this->item,$this->quantity,$this->unit_price,$this->amount,$this->signed_by,$this->term);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
 
-        return redirect()->to(url()->previous())->with('msg', 'Your Expenditure info has been edited successfully');
+        return redirect()->to('/expenditure/expenditure')->with('msg', 'Your Expenditure info has been edited successfully');
     }
 }

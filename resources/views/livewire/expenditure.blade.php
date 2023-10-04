@@ -57,9 +57,9 @@
                 </div>
                 <div class="card-body">
                     <div class="text-center">
-                        <p class="mb-0 font-weight-bold">Term 1:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureThisTerm())}}</span></p>
-                        <p class="mb-0 font-weight-bold">Term 2:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureTerm2())}}</span></p>
-                        <p class="mb-0 font-weight-bold">Term 3:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureTerm3())}}</span></p>
+                        <p class="mb-0 font-weight-bold">Term 1:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureThisTerm() + $this->getSalaryThisTerm())}}</span></p>
+                        <p class="mb-0 font-weight-bold">Term 2:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureTerm2() + $this->getSalarySecondTerm())}}</span></p>
+                        <p class="mb-0 font-weight-bold">Term 3:<span style="color:blue;">Ugx:&nbsp;{{ number_format($this->getExpenditureTerm3() + $this->getSalaryThirdTerm())}}</span></p>
                         <h6>Shillings</h6>
                         
                     </div>
@@ -114,6 +114,9 @@
                 <th scope="col" wire:click="sortBy('amount')" style="cursor: pointer;"> Amount
                     @include('partials._sort-icon',['field'=>'amount'])
                 </th>
+                <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
+                    @include('partials._sort-icon',['field'=>'term'])
+                </th>
                 <th scope="col" wire:click="sortBy('signed_by')" style="cursor: pointer;"> Signed By
                     @include('partials._sort-icon',['field'=>'signed_by'])
                 </th>
@@ -129,12 +132,13 @@
                 <td>{{$expenses->category}}</td>
                 <td>{{ number_format($expenses->unit_price)}}</td>
                 <td>{{ number_format($expenses->amount)}}</td>
+                <td>{{ $expenses->term}}</td>
                 <td>{{$expenses->signed_by}}</td>
                 <td>
                     <div class="btn-group" id="hover-dropdown-demo">
                         <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                        <div class="dropdown-menu"> 
+                            <a href="{{URL::signedRoute('EditExpenditure', ['expenditure_id' => $expenses->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
                             <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
                         </div>
                     </div>

@@ -21,4 +21,5 @@ Route::group(['prefix' => 'expenditure', 'middleware' => ['auth']], function () 
     Route::get('/edit-item/{scholastic_id}', 'ExpenditureController@editItem')->name('EditItem');
     Route::get('/edit-requested-item/{request_id}', 'ExpenditureController@editRequestedItem')->name('EditItemRequested');
     Route::get('/reject-requested-item/{request_id}', 'ExpenditureController@rejectRequestedItem')->name('RejectRequestedItem');
+    Route::get('/edit-expenditure/{expenditure_id}', 'ExpenditureController@editExpenditure')->name('EditExpenditure');
 });

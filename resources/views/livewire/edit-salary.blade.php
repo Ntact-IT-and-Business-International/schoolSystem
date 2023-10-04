@@ -21,15 +21,20 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Actual Salary Amount</label>
                         <input type="number" class="form-control" wire:model="actual_salary" placeholder="">
                         @error('actual_salary') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label class="form-label">Amount Paid</label>
                             <input type="number" class="form-control" wire:model="amount" placeholder="">
                         @error('amount') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label class="form-label">Term</label>
+                            <input type="number" class="form-control" wire:model="term" placeholder="">
+                        @error('term') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                 </div>
                 <div class="text-center">

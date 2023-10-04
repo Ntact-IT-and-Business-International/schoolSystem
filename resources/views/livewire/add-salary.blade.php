@@ -33,11 +33,17 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="form-group col-md-6">
                         <label class="form-label">Date of Payment</label>
                         <input type="date" class="form-control" wire:model="paid_on_date" placeholder="">
                         @error('paid_on_date') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <div class="form-group col-md-6">
+                        <label class="form-label">Term</label>
+                        <input type="number" class="form-control" wire:model="term" placeholder="">
+                        @error('term') <span class="text-danger">{{ $message }}</span> @enderror
+                    </div>
+                </div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary">Submit</button>
