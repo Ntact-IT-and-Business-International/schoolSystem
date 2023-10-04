@@ -18,4 +18,7 @@ Route::group(['prefix' => 'expenditure', 'middleware' => ['auth']], function () 
     Route::get('/my-item-requests', 'ExpenditureController@itemsRequest')->name('Items Requested');
     Route::get('/requested-items-in-your-office', 'ExpenditureController@specificitemsRequest')->name('Office Items Requested');
     Route::get('/edit-salary/{salary_id}', 'ExpenditureController@editSalary')->name('Salary');
+    Route::get('/edit-item/{scholastic_id}', 'ExpenditureController@editItem')->name('EditItem');
+    Route::get('/edit-requested-item/{request_id}', 'ExpenditureController@editRequestedItem')->name('EditItemRequested');
+    Route::get('/reject-requested-item/{request_id}', 'ExpenditureController@rejectRequestedItem')->name('RejectRequestedItem');
 });

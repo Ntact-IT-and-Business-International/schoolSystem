@@ -37,6 +37,12 @@
                 <th scope="col" wire:click="sortBy('number_of_items')" style="cursor: pointer;"> Number of Items
                     @include('partials._sort-icon',['field'=>'number_of_items'])
                 </th>
+                <th scope="col" wire:click="sortBy('comment')" style="cursor: pointer;"> Comment
+                    @include('partials._sort-icon',['field'=>'number_of_items'])
+                </th>
+                <th scope="col" wire:click="sortBy('replied_on')" style="cursor: pointer;"> Replied On
+                    @include('partials._sort-icon',['field'=>'number_of_items'])
+                </th>
                 <th scope="col" wire:click="sortBy('status')" style="cursor: pointer;"> Status
                     @include('partials._sort-icon',['field'=>'status'])
                 </th>
@@ -50,31 +56,35 @@
                 <td>{{$item->name}}</td>
                 <td>{{$item->item_name}}</td>
                 <td>{{$item->number_of_items}}</td>
+                @if($item->status == 'rejected')
+                <td>{{$item->comment}}</td>
+                @else
+                <td></td>
+                @endif
+                @if($item->status == 'rejected')
+                <td>{{$item->replied_on}}</td>
+                @else
+                <td></td>
+                @endif
                 <td>
                     @if($item->status == 'pending')
                         <a href="#!" class="badge badge-warning btn-sm btn" style="text-transform:capitalize;">{{$item->status}}</a>
                     @elseif($item->status =='approved')
                         <a href="#!" class="badge badge-success btn-sm btn" style="text-transform:capitalize;">{{$item->status}}</a>
                     @else
-                    <a href="#!" class="badge badge-pending btn-sm btn" style="text-transform:capitalize;">{{$item->status}}</a>
+                    <a href="#!" class="badge badge-danger btn-sm btn" style="text-transform:capitalize;">{{$item->status}}</a>
                     @endif
                 </td>
                 <td>
 
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            @if($item->status== "pending")
-                                {{-- <button wire:click="approveRequest({{ $item->id }})" class="btn btn-success mb-1" style="text-transform: capitalize;padding:4px;">Approve</button> --}}
-                                <a href="/mark-as-approved/{{$item->id}}" class="btn btn-success btn-sm dropdown-item mb-1">Approve</a>
-                            @else
-                                {{-- <span wire:click="rejectRequest({{ $item->id }})" class="btn btn-danger"  style="text-transform: capitalize;padding:4px;">Activate</span> --}}
-                                <a href="/mark-as-rejected/{{$item->id}}" class="btn btn-primary btn-sm dropdown-item mb-1">Reject</a>
-                            @endif
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
-                        </div>
-                    </div>
+                    @if($item->status== "pending")
+                        <a href="/mark-as-approved/{{$item->id}}" class="btn btn-success btn-sm mb-1">Approve</a>
+                        <a href="{{URL::signedRoute('RejectRequestedItem', ['request_id' => $item->id])}}" class="btn btn-primary btn-sm mb-1">Reject</a>
+                    @elseif($item->status== "rejected")
+                        <a href="/mark-as-approved/{{$item->id}}" class="btn btn-success btn-sm mb-1">Approve</a>
+                    @else
+                        <a href="#!" class="btn btn-secondary btn-sm mb-1">Cleared</a>
+                    @endif
                 </td>
             </tr>
         @endforeach

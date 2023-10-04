@@ -50,4 +50,22 @@ class ExpenditureController extends Controller
     public function editSalary($salary_id){
         return view('expenditure::edit_salary',compact('salary_id'));
     }
+    /**
+     * This function gets item
+     */
+    public function editItem($scholastic_id){
+        return view('expenditure::edit_item',compact('scholastic_id'));
+    }
+    /**
+     * This function edits items requested
+     */
+    public function editRequestedItem($request_id){
+        return view('expenditure::edit_item_requested',compact('request_id'));
+    }
+    /**
+     * This function edits items requested
+     */
+    public function rejectRequestedItem($request_id){
+        return view('expenditure::reject_item_requested',compact('request_id'));
+    }
 }

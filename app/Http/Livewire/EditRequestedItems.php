@@ -8,6 +8,10 @@ use Modules\ScholasticMaterials\Entities\Scholastic;
 
 class EditRequestedItems extends Component
 {
+    public $request_id;
+    public $number_of_items;
+    public $item_id;
+
     //validate category
     protected $rules = [
         'item_id'           => 'required',
@@ -25,7 +29,7 @@ class EditRequestedItems extends Component
     public function render()
     {
         return view('livewire.edit-requested-items',[
-            'items_requested' =>ScholasticRequest::editScholasticRequest($request_id),
+            'items_requested' =>ScholasticRequest::editScholasticRequest($this->request_id),
             'items' =>Scholastic::get()
         ]);
     }
@@ -49,6 +53,6 @@ class EditRequestedItems extends Component
         ScholasticRequest::updateScholasticRequestInfo($this->request_id,$this->item_id,$this->number_of_items);
         //activity()->log(auth()->user()->name.' Edited Accomodation Type called');
 
-        return redirect()->to(url()->previous())->with('msg', 'Your Scholastic  Requested Materials info has been edited successfully');
+        return redirect()->to('/expenditure/my-item-requests')->with('msg', 'Your Scholastic  Requested Materials info has been edited successfully');
     }
 }

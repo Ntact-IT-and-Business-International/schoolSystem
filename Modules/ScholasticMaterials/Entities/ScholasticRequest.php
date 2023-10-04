@@ -4,6 +4,7 @@ namespace Modules\ScholasticMaterials\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
 
 class ScholasticRequest extends Model
 {
@@ -74,7 +75,18 @@ class ScholasticRequest extends Model
         ScholasticRequest::whereId($request_id)->update([
             'item_id'          => $item_id,
             'number_of_items'  => $number_of_items,
-            'user_id'          =>auth()->user()->id,
+            'requested_by'     =>auth()->user()->id,
+        ]);
+    }
+    /**
+     * This function updates the edited Scholastic Request
+     */
+    public static function rejectItemRequested($request_id,$comment)
+    {
+        ScholasticRequest::whereId($request_id)->update([
+            'comment'     => $comment,
+            'replied_on'  => Carbon::now(),
+            'status'      =>'rejected',
         ]);
     }
 }
