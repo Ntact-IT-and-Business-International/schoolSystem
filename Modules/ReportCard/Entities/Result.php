@@ -181,7 +181,7 @@ class Result extends Model
         ->where('results.term',$term)
         ->whereYear('results.created_at', '=', Carbon::today())
         ->distinct('students.last_name')
-        ->paginate($perPage,['students.last_name','students.first_name','students.other_names','results.student_id','results.term']);
+        ->paginate($perPage,['students.last_name','students.first_name','students.other_names','results.student_id','results.term','results.class_id']);
     }
     /**
      * This function gets form for editing Result information
@@ -208,5 +208,21 @@ class Result extends Model
             'remark'           => $remark,
             'user_id'          =>auth()->user()->id,
         ]);
+    }
+     /**
+     * This function gets Class Students for the current Year
+     */
+    public static function getTermlyClassStudentComment($student_id,$term)
+    {
+        return Result::join('users', 'users.id', 'results.user_id')
+        ->join('students', 'students.id', 'results.student_id')
+        ->join('classes', 'classes.id', 'results.class_id')
+        ->join('subjects', 'subjects.id', 'results.subject_id')
+        ->where('student_id',$student_id)
+        ->where('results.term',$term)
+        ->whereYear('results.created_at', '=', Carbon::today())
+        ->distinct('students.last_name')
+        ->get(['students.last_name','students.first_name','students.other_names','results.student_id',
+                            'students.date_of_birth','students.gender','subjects.subject','results.*']);
     }
 }

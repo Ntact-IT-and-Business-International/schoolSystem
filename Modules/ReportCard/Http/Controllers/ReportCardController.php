@@ -264,4 +264,10 @@ class ReportCardController extends Controller
     public function editPleResults($ple_result_id){
         return view('reportcard::edit_ple_results',compact('ple_result_id'));
     }
+    /**
+     * This function get page for commenting on the report card
+     */
+    public function commentOnReportCard($student_id,$term){
+        return view('reportcard::comment_on_report_card',compact('student_id','term'));
+    }
 }
