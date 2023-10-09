@@ -9,7 +9,7 @@ class ReportCardComment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id'];
+    protected $fillable = ['pupils_id','position','term','teachers_comment','next_term_begins','teachers_id','headteachers_comment','headteachers_id'];
     
     protected static function newFactory()
     {
@@ -25,28 +25,4 @@ class ReportCardComment extends Model
         ->orWhere('comments.created_at','like','%'.$val.'%')
         ->orWhere('users.name', 'like', '%'.$val.'%');
     }
-     /**
-     * This function creates the Comment for the classteacher
-     */
-    public static function addPupilsComment($student_id,$position,$next_term_begins,$teachers_comment,$term){
-       
-        ReportCardComment::create([
-             'student_id' => $student_id,
-             'position'  =>$position,
-             'term' => $term,
-             'teachers_comment' => $teachers_comment,
-             'next_term_begins' => $next_term_begins,
-             'teachers_id' => auth()->user()->id,
-         ]);
-     }
-      /**
-     * This function creates the headteachers Comment
-     */
-    public static function commentPupilsResults($student_id,$headteachers_comment){
-       
-        ReportCardComment::whereId($student_id)->update([
-             'headteachers_comment' => $headteachers_comment,
-             'headteachers_id' => auth()->user()->id,
-         ]);
-     }
 }

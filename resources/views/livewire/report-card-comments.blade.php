@@ -2,13 +2,7 @@
     {{-- Nothing in the world is as soft and yielding as water. --}}
     <div class="card overflow-hidden">
         <div class="row no-gutters row-bordered row-border-light">
-            <div class="col-md-3 pt-0">
-                <div class="list-group list-group-flush account-settings-links">
-                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general">HeadTeacher</a>
-                    <a class="list-group-item list-group-item-action" data-toggle="list" href="#account-change-passwords">ClassTeacher</a>
-                </div>
-            </div>
-            <div class="col-md-9">
+            <div class="col-md-12">
             <div class="table-responsive mb-4">
                 <table class="table m-0 table-bordered">
                     <thead>
@@ -109,66 +103,7 @@
                     </tbody>
                 </table>
             </div>
-                <div class="tab-content" style="margin-top:-45px">
-                    <div class="tab-pane fade show active" id="account-general">
-                        <div class="card-body">
-                            <form wire:submit.prevent="addHeadteachersComment">
-                                <div class="form-group">
-                                    <label class="form-label font-weight-bold">Heatechers' Comment</label>
-                                    <select class="custom-select col-sm-12" wire:model='headteachers_comment'>
-                                        <option> &nbsp; &nbsp;Good Results Keep it Up</option>
-                                        <option> &nbsp; &nbsp;You are capable of Performing better than these, Just work hard next time</option>
-                                    </select>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <button type="button" class="btn btn-primary">Submit Comment</button>&nbsp;
-                                <div wire:loading wire:target="addHeadteachersComment" class="text-success">Wait We are Saving Your Data...</div>
-                            </form>
-                        </div>
-                        <div class="text-right mt-3">
-                    </div>
-                    </div>
-                    <div class="tab-pane fade" id="account-change-passwords">
-                        <div class="card-body pb-2">
-                        <form wire:submit.prevent="submitClassTeacherComment">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="form-label">Pupils Name</label>
-                                    <input type="text" class="form-control" wire:model="student_id" placeholder="Name">
-                                    @error('student_id') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label class="form-label">Position</label>
-                                    <input type="text" class="form-control" wire:model="position" placeholder="Position">
-                                    @error('position') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-                            </div>
-                            <div class="form-row">
-                            <div class="form-group col-md-6">
-                                    <label class="form-label">Next Term Begins</label>
-                                    <input type="date" class="form-control" wire:model="next_term_begins" placeholder="LastName">
-                                    @error('next_term_begins') <span class="text-danger">{{ $message }}</span> @enderror
-                                </div>
-                            <div class="form-group col-md-6">
-                                    <label class="form-label">Term</label>
-                                    <input type="text" class="form-control" wire:model="term" placeholder="Position">
-                                    @error('term') <span class="text-danger">{{ $message }}</span> @enderror
-                            </div>
-                        </div>
-                            <div class="form-group">
-                                <label class="form-label font-weight-bold">Add Teachers Comment</label>
-                                <select class="custom-select col-sm-12" wire:model='teachers_comment'>
-                                    <option value="1"> &nbsp; &nbsp;Good Results Keep it Up</option>
-                                    <option value="2"> &nbsp; &nbsp;You are capable of Performing better than these, Just work hard next time</option>
-                                </select>
-                                <div class="clearfix"></div>
-                            </div>
-                            <button type="button" class="btn btn-primary">Submit Comment</button>&nbsp;
-                            <div wire:loading wire:target="submitClassTeacherComment" class="text-success">Wait We are Saving Your Data...</div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+            </div>
             </div>
         </div>
     </div>  

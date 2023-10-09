@@ -1,0 +1,11 @@
+{
+    "name": "TermDuration",
+    "alias": "termduration",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\TermDuration\\Providers\\TermDurationServiceProvider"
+    ],
+    "files": []
+}

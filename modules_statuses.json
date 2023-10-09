@@ -21,5 +21,6 @@
     "Library": true,
     "Carteen": true,
     "Nurse": true,
-    "Parents": true
+    "Parents": true,
+    "TermDuration": true
 }

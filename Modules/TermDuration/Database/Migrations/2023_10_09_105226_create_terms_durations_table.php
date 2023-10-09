@@ -13,16 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('report_card_comments', function (Blueprint $table) {
+        Schema::create('terms_durations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pupils_id');
-            $table->string('position');
             $table->string('term');
-            $table->string('teachers_comment');
-            $table->string('next_term_begins');
-            $table->foreignId('teachers_id');
-            $table->string('headteachers_comment')->nullable();
-            $table->foreignId('headteachers_id')->nullable();
+            $table->string('start_date');
+            $table->string('end_date')->nullable();
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('report_card_comments');
+        Schema::dropIfExists('terms_durations');
     }
 };

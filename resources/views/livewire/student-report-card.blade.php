@@ -220,37 +220,39 @@
                 </table>
             </div>
             <hr class="mb-4">
+            @foreach($students_comments as $comment)
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <div class="font-weight-bold mb-2">Position:.............................................................................................</div>
+                    <div class="font-weight-bold mb-2">Positions: &nbsp; <span style="color:blue">{{$comment->position}}</span></div>
                 </div>
                 <div class="col-sm-6 mb-4">
-                    <div class="font-weight-bold mb-2">Out of:................................................................................................</div>
+                    <div class="font-weight-bold mb-2">Out of: &nbsp; <span>{{$number_of_students}}</span></div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8 mb-4">
-                    <div class="font-weight-bold mb-2">Class Teacher's Report:...................................................................................................</div>
+                <div class="col-sm-9 mb-4">
+                    <div class="font-weight-bold mb-2">Class Teacher's Report:<span style="text-decoration:underline;text-underline-position:under;text-decoration-thickness: 2px; color: #8b888e;"> &nbsp; {{$comment->teachers_comment}}</span></div>
                 </div>
-                <div class="col-sm-4 mb-4">
-                    <div class="font-weight-bold mb-2">Sign:............................................................</div>
+                <div class="col-sm-3 mb-4">
+                    <div class="font-weight-bold mb-2">Sign:<span style="text-decoration:underline;text-underline-position:under;text-decoration-thickness: 2px; color: #8b888e;"> &nbsp; {{$classteacher_signature}}</span></div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-8 mb-4">
-                    <div class="font-weight-bold mb-2">Head Teacher's Report:.....................................................................................................</div>
+                <div class="col-sm-9 mb-4">
+                    <div class="font-weight-bold mb-2">Head Teacher's Report:&nbsp; <span style="text-decoration:underline;text-underline-position:under;text-decoration-thickness: 2px; color: #8b888e">{{$comment->headteachers_comment}}</span></div>
                 </div>
-                <div class="col-sm-4 mb-4">
-                    <div class="font-weight-bold mb-2">Sign:............................................................</div>
+                <div class="col-sm-3 mb-4">
+                    <div class="font-weight-bold mb-2">Sign:<span style="text-decoration:underline;text-underline-position:under;text-decoration-thickness: 2px; color: #8b888e;"> &nbsp; {{$headteacher_signature}}</span></div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6 mb-4">
-                    <div class="font-weight-bold mb-2">Next Term Begins On:...............................................................</div>
+                    <div class="font-weight-bold mb-2">Next Term Begins On:&nbsp; <span style="text-decoration:underline;text-underline-position:under;text-decoration-thickness: 2px; color: #8b888e">{{$comment->next_term_begins}}</span></div>
                 </div>
+                @endforeach
                 <div class="col-sm-6 mb-4">
                     @foreach($student_report_details as $detail)
-                    <div class="font-weight-bold mb-2">School Pay Code: {{$detail->fees_pay_code}}</div>
+                    <div class="font-weight-bold mb-2">School Pay Code: <span style="text-decoration:underline;text-underline-position:under;text-decoration-thickness: 2px; color: #8b888e">{{$detail->fees_pay_code}}</span></div>
                     @endforeach
                 </div>
             </div>

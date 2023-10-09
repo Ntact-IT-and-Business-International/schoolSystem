@@ -6,7 +6,10 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\ReportCard\Entities\Result;
+use Modules\ReportCard\Entities\ReportCardComment;
 use Carbon\Carbon;
+use DB;
+use Modules\TermDuration\Entities\TermsDuration;
 
 class ReportCardController extends Controller
 {
@@ -268,6 +271,54 @@ class ReportCardController extends Controller
      * This function get page for commenting on the report card
      */
     public function commentOnReportCard($student_id,$term){
-        return view('reportcard::comment_on_report_card',compact('student_id','term'));
+        $student_name = Result::join('students','students.id','results.student_id')->where('term',$term)->where('students.id',$student_id)->select(DB::raw('CONCAT(students.last_name, " ", students.first_name) as full_name'))->value('full_name');
+        $term = Result::join('students','students.id','results.student_id')->where('term',$term)->where('students.id',$student_id)->value('term');
+        $teachers_comment=$this->getTeachersComment($student_id,$term);
+        $start_date =$this->getStartOfTerm($term);
+        $class_teeachers_name =$this->getsClassteachesrName($student_id,$term);
+        return view('reportcard::comment_on_report_card',compact('student_id','term','student_name','term','teachers_comment','start_date','class_teeachers_name'));
+    }
+    
+    public function saveComment()
+    {
+        // Validate the request data here
+        $comment = new ReportCardComment;
+        $comment->pupils_id    =request()->pupils_id;
+        $comment->position  =request()->position;
+        $comment->term  =request()->term;
+        $comment->teachers_comment  =request()->teachers_comment;
+        $comment->next_term_begins  =request()->next_term_begins;
+        $comment->teachers_id       = auth()->user()->id;
+        $comment->save();
+
+        return Redirect()->back()->with('msg','Comment Added Successfully');
+    }
+    /**
+     * This function gets comment for the teachers comment for the headteacher to see before commenting his
+     */
+    public function getTeachersComment($student_id,$term){
+      return ReportCardComment::where('term',$term)->wherePupilsId($student_id)->value('teachers_comment');
+    }
+    /**
+     * This function adds Headteachers comment to the pupils results
+     */
+    public function commentOnPupilsResults($student_id){
+        ReportCardComment::wherePupilsId($student_id)->update([
+            'headteachers_comment' => request()->headteachers_comment,
+            'headteachers_id' => auth()->user()->id,
+        ]);
+        return Redirect()->back()->with('msg','Comment Added Successfully');
+    }
+    /**
+     * This function gets the beginning of next term
+     */
+    private function getStartOfTerm($term){
+        return TermsDuration::where('term',$term)->value('start_date');
+    }
+    /**
+     * This function get class teachers name 
+     */
+    public function getsClassteachesrName($student_id,$term){
+        return ReportCardComment::join('users','users.id','report_card_comments.teachers_id')->where('report_card_comments.term',$term)->value('users.name');
     }
 }
