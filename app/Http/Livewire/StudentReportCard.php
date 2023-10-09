@@ -68,12 +68,12 @@ class StudentReportCard extends Component
      * This function get class teachers name 
      */
     public function getsClassteachesrName($student_id,$term){
-        return ReportCardComment::join('users','users.id','report_card_comments.teachers_id')->where('report_card_comments.term',$term)->value('users.name');
+        return ReportCardComment::join('users','users.id','report_card_comments.teachers_id')->where('report_card_comments.term',$term)->where('report_card_comments.pupils_id',$student_id)->value('users.name');
     }
     /**
      * This function get head teachers name 
      */
     public function getsHeadteachesrName($student_id,$term){
-        return ReportCardComment::join('users','users.id','report_card_comments.headteachers_id')->where('report_card_comments.term',$term)->value('users.name');
+        return ReportCardComment::join('users','users.id','report_card_comments.headteachers_id')->where('report_card_comments.term',$term)->where('report_card_comments.pupils_id',$student_id)->value('users.name');
     }
 }

@@ -67,12 +67,12 @@ class StudentMidtermResults extends Component
        * This function get class teachers name 
        */
       public function getsClassteachesrName($student_id,$term){
-          return MidtermComment::join('users','users.id','midterm_comments.teacher_id')->where('midterm_comments.term',$term)->value('users.name');
+          return MidtermComment::join('users','users.id','midterm_comments.teacher_id')->where('midterm_comments.term',$term)->where('midterm_comments.student_id',$student_id)->value('users.name');
       }
       /**
        * This function get head teachers name 
        */
       public function getsHeadteachesrName($student_id,$term){
-          return MidtermComment::join('users','users.id','midterm_comments.headteacher_id')->where('midterm_comments.term',$term)->value('users.name');
+          return MidtermComment::join('users','users.id','midterm_comments.headteacher_id')->where('midterm_comments.term',$term)->where('midterm_comments.term',$term)->where('midterm_comments.student_id',$student_id)->value('users.name');
       }
 }
