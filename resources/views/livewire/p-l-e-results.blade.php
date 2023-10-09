@@ -22,68 +22,68 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('ple_results.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'ple_results.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('div1')" style="cursor: pointer;"> Div1
-                    @include('partials._sort-icon',['field'=>'div1'])
-                </th>
-                <th scope="col" wire:click="sortBy('div2')" style="cursor: pointer;"> Div2
-                    @include('partials._sort-icon',['field'=>'div2'])
-                </th>
-                <th scope="col" wire:click="sortBy('div3')" style="cursor: pointer;"> Div3
-                    @include('partials._sort-icon',['field'=>'div3'])
-                </th>
-                <th scope="col" wire:click="sortBy('div4')" style="cursor: pointer;"> Div4
-                    @include('partials._sort-icon',['field'=>'div4'])
-                </th>
-                <th scope="col" wire:click="sortBy('U')" style="cursor: pointer;"> U
-                    @include('partials._sort-icon',['field'=>'U'])
-                </th>
-                <th scope="col" wire:click="sortBy('X')" style="cursor: pointer;"> X
-                    @include('partials._sort-icon',['field'=>'X'])
-                </th>
-                <th scope="col" wire:click="sortBy('total')" style="cursor: pointer;"> Total
-                    @include('partials._sort-icon',['field'=>'total'])
-                </th>
-                <th scope="col" wire:click="sortBy('year')" style="cursor: pointer;"> Year
-                    @include('partials._sort-icon',['field'=>'year'])
-                </th>
-                <th scope="col" wire:click="sortBy('result')" style="cursor: pointer;"> Results
-                    @include('partials._sort-icon',['field'=>'result'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($ple_results as $i=>$result)
-            <tr>
-                <th scope="row">{{$ple_results->firstitem() + $i}}</th>
-                <td>{{$result->div1}}</td>
-                <td>{{$result->div2}}</td>
-                <td>{{$result->div3}}</td>
-                <td>{{$result->div4}}</td>
-                <td>{{$result->U}}</td>
-                <td>{{$result->X}}</td>
-                <td>{{$result->total}}</td>
-                <td>{{$result->year}}</td>
-                <td><a href="{{ asset('storage/Ple_Results/'.$result->result)}}" style="color:blue;" target="_blank">View Results</a></td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="{{URL::signedRoute('EditPleResults', ['ple_result_id' => $result->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('ple_results.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'ple_results.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('div1')" style="cursor: pointer;"> Div1
+                        @include('partials._sort-icon',['field'=>'div1'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('div2')" style="cursor: pointer;"> Div2
+                        @include('partials._sort-icon',['field'=>'div2'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('div3')" style="cursor: pointer;"> Div3
+                        @include('partials._sort-icon',['field'=>'div3'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('div4')" style="cursor: pointer;"> Div4
+                        @include('partials._sort-icon',['field'=>'div4'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('U')" style="cursor: pointer;"> U
+                        @include('partials._sort-icon',['field'=>'U'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('X')" style="cursor: pointer;"> X
+                        @include('partials._sort-icon',['field'=>'X'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('total')" style="cursor: pointer;"> Total
+                        @include('partials._sort-icon',['field'=>'total'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('year')" style="cursor: pointer;"> Year
+                        @include('partials._sort-icon',['field'=>'year'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('result')" style="cursor: pointer;"> Results
+                        @include('partials._sort-icon',['field'=>'result'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($ple_results as $i=>$result)
+                <tr>
+                    <th scope="row">{{$ple_results->firstitem() + $i}}</th>
+                    <td>{{$result->div1}}</td>
+                    <td>{{$result->div2}}</td>
+                    <td>{{$result->div3}}</td>
+                    <td>{{$result->div4}}</td>
+                    <td>{{$result->U}}</td>
+                    <td>{{$result->X}}</td>
+                    <td>{{$result->total}}</td>
+                    <td>{{$result->year}}</td>
+                    <td><a href="{{ asset('storage/Ple_Results/'.$result->result)}}" style="color:blue;" target="_blank">View Results</a></td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="{{URL::signedRoute('EditPleResults', ['ple_result_id' => $result->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

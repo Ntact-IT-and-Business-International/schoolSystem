@@ -21,48 +21,50 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('our_teams.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'our_teams.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Name
-                    @include('partials._sort-icon',['field'=>'name'])
-                </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th scope="col" wire:click="sortBy('contact')" style="cursor: pointer;"> Contact
-                    @include('partials._sort-icon',['field'=>'contact'])
-                </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Photo
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($teams as $i=>$team)
-            <tr>
-                <th scope="row">{{$teams->firstitem() + $i}}</th>
-                <td>{{$team->name}}</td>
-                <td>{{$team->title}}</td>
-                <td>{{$team->contact}}</td>
-                <td><img src="{{ asset('storage/team_photos/'.$team->photo)}}" style="width:60px; height:50px;"></td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('our_teams.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'our_teams.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Name
+                        @include('partials._sort-icon',['field'=>'name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
+                        @include('partials._sort-icon',['field'=>'title'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('contact')" style="cursor: pointer;"> Contact
+                        @include('partials._sort-icon',['field'=>'contact'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Photo
+                        @include('partials._sort-icon',['field'=>'title'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($teams as $i=>$team)
+                <tr>
+                    <th scope="row">{{$teams->firstitem() + $i}}</th>
+                    <td>{{$team->name}}</td>
+                    <td>{{$team->title}}</td>
+                    <td>{{$team->contact}}</td>
+                    <td><img src="{{ asset('storage/team_photos/'.$team->photo)}}" style="width:60px; height:50px;"></td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$teams->firstItem()}} to {{$teams->lastItem()}} out of {{$teams->total()}} items

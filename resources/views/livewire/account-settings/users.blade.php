@@ -21,44 +21,46 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('users.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'users.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Name
-                    @include('partials._sort-icon',['field'=>'name'])
-                </th>
-                <th scope="col" wire:click="sortBy('email')" style="cursor: pointer;"> Email
-                    @include('partials._sort-icon',['field'=>'email'])
-                </th>
-                <th scope="col" wire:click="sortBy('category')" style="cursor: pointer;"> Category
-                    @include('partials._sort-icon',['field'=>'category'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($users as $i=>$user)
-            <tr>
-                <th scope="row">{{$users->firstitem() + $i}}</th>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->category}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="{{URL::signedRoute('editUser', ['user_id' => $user->id])}}" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <button wire:click="deleteUser({{ $user->id }})" class="btn btn-danger btn-sm mb-1 dropdown-item">Delete</button>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('users.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'users.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Name
+                        @include('partials._sort-icon',['field'=>'name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('email')" style="cursor: pointer;"> Email
+                        @include('partials._sort-icon',['field'=>'email'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('category')" style="cursor: pointer;"> Category
+                        @include('partials._sort-icon',['field'=>'category'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($users as $i=>$user)
+                <tr>
+                    <th scope="row">{{$users->firstitem() + $i}}</th>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->category}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="{{URL::signedRoute('editUser', ['user_id' => $user->id])}}" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                                <button wire:click="deleteUser({{ $user->id }})" class="btn btn-danger btn-sm mb-1 dropdown-item">Delete</button>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$users->firstItem()}} to {{$users->lastItem()}} out of {{$users->total()}} items

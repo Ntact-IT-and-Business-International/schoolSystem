@@ -21,29 +21,31 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Class</th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($students as $i=>$clas)
-            <tr>
-                <th scope="row">{{$i + 1}}</th>
-                <td>{{$clas->level}} </td>
-                @php
-                    $get_class_id =\Modules\Students\Entities\Student::join('classes', 'classes.id', 'students.class_id')->where('classes.level',$clas->level)->value('class_id')
-                @endphp
-                <td>
-                    <a href="/students/view-students-for-this-class/{{$get_class_id}}" class="btn btn-info btn-sm">View Students For This Class</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Class</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($students as $i=>$clas)
+                <tr>
+                    <th scope="row">{{$i + 1}}</th>
+                    <td>{{$clas->level}} </td>
+                    @php
+                        $get_class_id =\Modules\Students\Entities\Student::join('classes', 'classes.id', 'students.class_id')->where('classes.level',$clas->level)->value('class_id')
+                    @endphp
+                    <td>
+                        <a href="/students/view-students-for-this-class/{{$get_class_id}}" class="btn btn-info btn-sm">View Students For This Class</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row align-items-center m-l-0">
         <div class="col-sm-6">
         </div>

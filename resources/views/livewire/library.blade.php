@@ -22,56 +22,56 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('librays.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'librays.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('subject')" style="cursor: pointer;"> Subject
-                    @include('partials._sort-icon',['field'=>'subject'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th scope="col" wire:click="sortBy('number_of_books')" style="cursor: pointer;"> Number
-                    @include('partials._sort-icon',['field'=>'number_of_books'])
-                </th>
-                <th scope="col" wire:click="sortBy('status')" style="cursor: pointer;"> Status
-                    @include('partials._sort-icon',['field'=>'status'])
-                </th>
-                <th scope="col" wire:click="sortBy('date_of_entry')" style="cursor: pointer;"> Date
-                    @include('partials._sort-icon',['field'=>'date_of_entry'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($libraries as $i=>$library)
-            <tr>
-                <th scope="row">{{$libraries->firstitem() + $i}}</th>
-                <td>{{$library->subject}}</td>
-                <td>{{$library->level}}</td>
-                <td>{{ $library->title}}</td>
-                <td>{{$library->number_of_books}}</td>
-                <td>{{$library->status}}</td>
-                <td>{{$library->date_of_entry}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="{{URL::signedRoute('EditLibrary', ['library_id' => $library->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('librays.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'librays.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('subject')" style="cursor: pointer;"> Subject
+                        @include('partials._sort-icon',['field'=>'subject'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
+                        @include('partials._sort-icon',['field'=>'level'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
+                        @include('partials._sort-icon',['field'=>'title'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('number_of_books')" style="cursor: pointer;"> Number
+                        @include('partials._sort-icon',['field'=>'number_of_books'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('status')" style="cursor: pointer;"> Status
+                        @include('partials._sort-icon',['field'=>'status'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('date_of_entry')" style="cursor: pointer;"> Date
+                        @include('partials._sort-icon',['field'=>'date_of_entry'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($libraries as $i=>$library)
+                <tr>
+                    <th scope="row">{{$libraries->firstitem() + $i}}</th>
+                    <td>{{$library->subject}}</td>
+                    <td>{{$library->level}}</td>
+                    <td>{{ $library->title}}</td>
+                    <td>{{$library->number_of_books}}</td>
+                    <td>{{$library->status}}</td>
+                    <td>{{$library->date_of_entry}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="{{URL::signedRoute('EditLibrary', ['library_id' => $library->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

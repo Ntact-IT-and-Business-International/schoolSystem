@@ -22,52 +22,52 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('dos_offices.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'dos_offices.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('first_name')" style="cursor: pointer;"> Name
-                    @include('partials._sort-icon',['field'=>'first_name'])
-                </th>
-                <th scope="col" wire:click="sortBy('item_name')" style="cursor: pointer;"> Item
-                    @include('partials._sort-icon',['field'=>'item_name'])
-                </th>
-                <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
-                    @include('partials._sort-icon',['field'=>'term'])
-                </th>
-                <th scope="col" wire:click="sortBy('quantity')" style="cursor: pointer;"> Quantity
-                    @include('partials._sort-icon',['field'=>'quantity'])
-                </th>
-                <th scope="col" wire:click="sortBy('date')" style="cursor: pointer;"> Date
-                    @include('partials._sort-icon',['field'=>'date'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($doss as $i=>$dos)
-            <tr>
-                <th scope="row">{{$doss->firstitem() + $i}}</th>
-                <td>{{$dos->staff_last_name}} {{$dos->staff_first_name}} {{$dos->staff_other_names}}</td>
-                <td>{{$dos->item_name}}</td>
-                <td>{{ $dos->term}}</td>
-                <td>{{$dos->quantity}} {{ $dos->units}}</td>
-                <td>{{$dos->date}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('dos_offices.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'dos_offices.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('first_name')" style="cursor: pointer;"> Name
+                        @include('partials._sort-icon',['field'=>'first_name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('item_name')" style="cursor: pointer;"> Item
+                        @include('partials._sort-icon',['field'=>'item_name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
+                        @include('partials._sort-icon',['field'=>'term'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('quantity')" style="cursor: pointer;"> Quantity
+                        @include('partials._sort-icon',['field'=>'quantity'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('date')" style="cursor: pointer;"> Date
+                        @include('partials._sort-icon',['field'=>'date'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($doss as $i=>$dos)
+                <tr>
+                    <th scope="row">{{$doss->firstitem() + $i}}</th>
+                    <td>{{$dos->staff_last_name}} {{$dos->staff_first_name}} {{$dos->staff_other_names}}</td>
+                    <td>{{$dos->item_name}}</td>
+                    <td>{{ $dos->term}}</td>
+                    <td>{{$dos->quantity}} {{ $dos->units}}</td>
+                    <td>{{$dos->date}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

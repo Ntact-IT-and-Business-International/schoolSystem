@@ -21,27 +21,29 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Class</th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($distinctData as $i=>$class)
-            @php
-                $class_level =\Modules\Students\Entities\Student::join('classes', 'classes.id', 'students.class_id')->where('students.class_id',$class->class_id)->value('classes.level');
-            @endphp
-            <tr>
-                <th scope="row">{{$i + 1}}</th>
-                <td>{{$class_level}}</td>
-                <td>
-                    <a href="/students/students-per-class-per-year/{{$class->class_id}}" class="btn btn-success btn-sm">View Students For This Class</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Class</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($distinctData as $i=>$class)
+                @php
+                    $class_level =\Modules\Students\Entities\Student::join('classes', 'classes.id', 'students.class_id')->where('students.class_id',$class->class_id)->value('classes.level');
+                @endphp
+                <tr>
+                    <th scope="row">{{$i + 1}}</th>
+                    <td>{{$class_level}}</td>
+                    <td>
+                        <a href="/students/students-per-class-per-year/{{$class->class_id}}" class="btn btn-success btn-sm">View Students For This Class</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+     </div>
 </div>

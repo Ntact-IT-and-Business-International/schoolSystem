@@ -22,53 +22,53 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('complains.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'complains.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('last_name')" style="cursor: pointer;"> Name of Students
-                    @include('partials._sort-icon',['field'=>'last_name'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
-                <th scope="col" wire:click="sortBy('complain')" style="cursor: pointer;"> Complain
-                    @include('partials._sort-icon',['field'=>'complain'])
-                </th>
-                <th scope="col" wire:click="sortBy('reply')" style="cursor: pointer;"> Reply
-                    @include('partials._sort-icon',['field'=>'reply'])
-                </th>
-                <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Officer
-                    @include('partials._sort-icon',['field'=>'name'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($complains as $i=>$complain)
-            <tr>
-                <th scope="row">{{$complains->firstitem() + $i}}</th>
-                <td>{{$complain->last_name}} {{$complain->first_name}} {{$complain->other_names}}</td>
-                <td>{{$complain->level}}</td>
-                <td>{{ $complain->complain}}</td>
-                <td>{{$complain->reply}}</td>
-                <td>{{$complain->name}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="/contact/reply-complain/{{$complain->id}}" class="btn btn-success btn-sm mb-1">Reply Complain</a>
-                            <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('complains.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'complains.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('last_name')" style="cursor: pointer;"> Name of Students
+                        @include('partials._sort-icon',['field'=>'last_name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
+                        @include('partials._sort-icon',['field'=>'level'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('complain')" style="cursor: pointer;"> Complain
+                        @include('partials._sort-icon',['field'=>'complain'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('reply')" style="cursor: pointer;"> Reply
+                        @include('partials._sort-icon',['field'=>'reply'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;"> Officer
+                        @include('partials._sort-icon',['field'=>'name'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($complains as $i=>$complain)
+                <tr>
+                    <th scope="row">{{$complains->firstitem() + $i}}</th>
+                    <td>{{$complain->last_name}} {{$complain->first_name}} {{$complain->other_names}}</td>
+                    <td>{{$complain->level}}</td>
+                    <td>{{ $complain->complain}}</td>
+                    <td>{{$complain->reply}}</td>
+                    <td>{{$complain->name}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="/contact/reply-complain/{{$complain->id}}" class="btn btn-success btn-sm mb-1">Reply Complain</a>
+                                <a href="#!" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

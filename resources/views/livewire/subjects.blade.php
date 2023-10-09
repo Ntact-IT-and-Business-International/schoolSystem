@@ -21,31 +21,33 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('subjects.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'subjects.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('class')" style="cursor: pointer;"> Class
-                    @include('partials._sort-icon',['field'=>'class'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($subjects as $i=>$subject)
-            <tr>
-                <th scope="row">{{$subjects->firstitem() + $i}}</th>
-                <td>{{$subject->subject}}</td>
-                <td>
-                    <a href="{{URL::signedRoute('EditSubject', ['subject_id' => $subject->id])}}" class="btn btn-info btn-sm">Edit</a>
-                    <button wire:click="deleteSubject({{ $subject->id }})" class="btn btn-danger btn-sm">Delete</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('subjects.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'subjects.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('class')" style="cursor: pointer;"> Class
+                        @include('partials._sort-icon',['field'=>'class'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($subjects as $i=>$subject)
+                <tr>
+                    <th scope="row">{{$subjects->firstitem() + $i}}</th>
+                    <td>{{$subject->subject}}</td>
+                    <td>
+                        <a href="{{URL::signedRoute('EditSubject', ['subject_id' => $subject->id])}}" class="btn btn-info btn-sm">Edit</a>
+                        <button wire:click="deleteSubject({{ $subject->id }})" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$subjects->firstItem()}} to {{$subjects->lastItem()}} out of {{$subjects->total()}} items

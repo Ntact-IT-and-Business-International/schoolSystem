@@ -22,56 +22,56 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('carteens.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'carteens.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('last_name')" style="cursor: pointer;"> Student
-                    @include('partials._sort-icon',['field'=>'last_name'])
-                </th>
-                <th scope="col" wire:click="sortBy('item_bought')" style="cursor: pointer;"> Item
-                    @include('partials._sort-icon',['field'=>'item_bought'])
-                </th>
-                <th scope="col" wire:click="sortBy('number')" style="cursor: pointer;"> Quantity
-                    @include('partials._sort-icon',['field'=>'number'])
-                </th>
-                <th scope="col" wire:click="sortBy('price')" style="cursor: pointer;">Unit Price
-                    @include('partials._sort-icon',['field'=>'price'])
-                </th>
-                <th scope="col" wire:click="sortBy('price')" style="cursor: pointer;">Total Amount
-                    @include('partials._sort-icon',['field'=>'price'])
-                </th>
-                <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;">ShopKeeper
-                    @include('partials._sort-icon',['field'=>'name'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($canteens as $i=>$carteen)
-            <tr>
-                <th scope="row">{{$canteens->firstitem() + $i}}</th>
-                <td>{{$carteen->last_name}} {{$carteen->first_name}} {{$carteen->other_names}}</td>
-                <td>{{$carteen->item_bought}}</td>
-                <td>{{$carteen->number}}</td>
-                <td>{{ number_format($carteen->price)}}</td>
-                <td>{{ number_format($carteen->price * $carteen->number)}}</td>
-                <td>{{$carteen->name}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('carteens.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'carteens.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('last_name')" style="cursor: pointer;"> Student
+                        @include('partials._sort-icon',['field'=>'last_name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('item_bought')" style="cursor: pointer;"> Item
+                        @include('partials._sort-icon',['field'=>'item_bought'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('number')" style="cursor: pointer;"> Quantity
+                        @include('partials._sort-icon',['field'=>'number'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('price')" style="cursor: pointer;">Unit Price
+                        @include('partials._sort-icon',['field'=>'price'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('price')" style="cursor: pointer;">Total Amount
+                        @include('partials._sort-icon',['field'=>'price'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('name')" style="cursor: pointer;">ShopKeeper
+                        @include('partials._sort-icon',['field'=>'name'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($canteens as $i=>$carteen)
+                <tr>
+                    <th scope="row">{{$canteens->firstitem() + $i}}</th>
+                    <td>{{$carteen->last_name}} {{$carteen->first_name}} {{$carteen->other_names}}</td>
+                    <td>{{$carteen->item_bought}}</td>
+                    <td>{{$carteen->number}}</td>
+                    <td>{{ number_format($carteen->price)}}</td>
+                    <td>{{ number_format($carteen->price * $carteen->number)}}</td>
+                    <td>{{$carteen->name}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

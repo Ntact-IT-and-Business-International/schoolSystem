@@ -21,30 +21,32 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'results.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Terms
-                    @include('partials._sort-icon',['field'=>'term'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($nursery_termly_results as $i=>$result)
-            <tr>
-                <th scope="row">{{$nursery_termly_results->firstitem() + $i}}</th>
-                <td>Term {{$result->term}}</td>
-                <td>
-                    <a href="/reportcard/view-nursery-termly-classes/{{$result->term}}" class="btn btn-info btn-sm">View Classes</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'results.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Terms
+                        @include('partials._sort-icon',['field'=>'term'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($nursery_termly_results as $i=>$result)
+                <tr>
+                    <th scope="row">{{$nursery_termly_results->firstitem() + $i}}</th>
+                    <td>Term {{$result->term}}</td>
+                    <td>
+                        <a href="/reportcard/view-nursery-termly-classes/{{$result->term}}" class="btn btn-info btn-sm">View Classes</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$nursery_termly_results->firstItem()}} to {{$nursery_termly_results->lastItem()}} out of {{$nursery_termly_results->total()}} items

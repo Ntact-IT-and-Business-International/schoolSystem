@@ -21,38 +21,40 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('terms_durations.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'terms_durations.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
-                    @include('partials._sort-icon',['field'=>'term'])
-                </th>
-                <th scope="col" wire:click="sortBy('start_date')" style="cursor: pointer;"> Start Date
-                    @include('partials._sort-icon',['field'=>'start_date'])
-                </th>
-                <th scope="col" wire:click="sortBy('end_date')" style="cursor: pointer;"> End Date
-                    @include('partials._sort-icon',['field'=>'end_date'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($durations as $i=>$duration)
-            <tr>
-                <th scope="row">{{$durations->firstitem() + $i}}</th>
-                <td>{{$duration->term}}</td>
-                <td>{{$duration->start_date}}</td>
-                <td>{{$duration->end_date}}</td>
-                <td>
-                    <a href="{{URL::signedRoute('editTermDuration', ['term_duration_id' => $duration->id])}}" class="btn btn-info btn-sm mb-1">Edit</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('terms_durations.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'terms_durations.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
+                        @include('partials._sort-icon',['field'=>'term'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('start_date')" style="cursor: pointer;"> Start Date
+                        @include('partials._sort-icon',['field'=>'start_date'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('end_date')" style="cursor: pointer;"> End Date
+                        @include('partials._sort-icon',['field'=>'end_date'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($durations as $i=>$duration)
+                <tr>
+                    <th scope="row">{{$durations->firstitem() + $i}}</th>
+                    <td>{{$duration->term}}</td>
+                    <td>{{$duration->start_date}}</td>
+                    <td>{{$duration->end_date}}</td>
+                    <td>
+                        <a href="{{URL::signedRoute('editTermDuration', ['term_duration_id' => $duration->id])}}" class="btn btn-info btn-sm mb-1">Edit</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$durations->firstItem()}} to {{$durations->lastItem()}} out of {{$durations->total()}} items

@@ -127,62 +127,62 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('fees.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'fees.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('last_name')" style="cursor: pointer;"> Name
-                    @include('partials._sort-icon',['field'=>'last_name'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
-                <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
-                    @include('partials._sort-icon',['field'=>'term'])
-                </th>
-                <th scope="col" wire:click="sortBy('amount_paid')" style="cursor: pointer;"> Amount Paid
-                    @include('partials._sort-icon',['field'=>'amount_paid'])
-                </th>
-                <th scope="col" wire:click="sortBy('balance')" style="cursor: pointer;"> Balance
-                    @include('partials._sort-icon',['field'=>'balance'])
-                </th>
-                <th scope="col" wire:click="sortBy('mode_of_payment')" style="cursor: pointer;"> Mode Of Payment
-                    @include('partials._sort-icon',['field'=>'mode_of_payment'])
-                </th>
-                <th scope="col" wire:click="sortBy('payment_code')" style="cursor: pointer;"> Payment Code
-                    @include('partials._sort-icon',['field'=>'payment_code'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($fees as $i=>$fee)
-            <tr>
-                <th scope="row">{{$fees->firstitem() + $i}}</th>
-                <td>{{$fee->last_name}} {{$fee->first_name}} {{$fee->other_names}}</td>
-                <td>{{$fee->level}}</td>
-                <td>{{$fee->term}}</td>
-                <td>{{ number_format($fee->amount_paid)}}</td>
-                <td>{{ number_format($fee->balance)}}</td>
-                <td>{{$fee->mode_of_payment}}</td>
-                <td>{{$fee->payment_code}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="/fees/generate-receipt/{{$fee->id}}" class="btn btn-success btn-sm dropdown-item mb-1">Print Receipt</a>
-                            <a href="/fees/clear-payments/{{$fee->id}}" class="btn btn-warning btn-sm dropdown-item mb-1">Clear Payments</a>
-                            <a href="{{URL::signedRoute('EditFees', ['fee_id' => $fee->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('fees.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'fees.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('last_name')" style="cursor: pointer;"> Name
+                        @include('partials._sort-icon',['field'=>'last_name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
+                        @include('partials._sort-icon',['field'=>'level'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('term')" style="cursor: pointer;"> Term
+                        @include('partials._sort-icon',['field'=>'term'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('amount_paid')" style="cursor: pointer;"> Amount Paid
+                        @include('partials._sort-icon',['field'=>'amount_paid'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('balance')" style="cursor: pointer;"> Balance
+                        @include('partials._sort-icon',['field'=>'balance'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('mode_of_payment')" style="cursor: pointer;"> Mode Of Payment
+                        @include('partials._sort-icon',['field'=>'mode_of_payment'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('payment_code')" style="cursor: pointer;"> Payment Code
+                        @include('partials._sort-icon',['field'=>'payment_code'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($fees as $i=>$fee)
+                <tr>
+                    <th scope="row">{{$fees->firstitem() + $i}}</th>
+                    <td>{{$fee->last_name}} {{$fee->first_name}} {{$fee->other_names}}</td>
+                    <td>{{$fee->level}}</td>
+                    <td>{{$fee->term}}</td>
+                    <td>{{ number_format($fee->amount_paid)}}</td>
+                    <td>{{ number_format($fee->balance)}}</td>
+                    <td>{{$fee->mode_of_payment}}</td>
+                    <td>{{$fee->payment_code}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="/fees/generate-receipt/{{$fee->id}}" class="btn btn-success btn-sm dropdown-item mb-1">Print Receipt</a>
+                                <a href="/fees/clear-payments/{{$fee->id}}" class="btn btn-warning btn-sm dropdown-item mb-1">Clear Payments</a>
+                                <a href="{{URL::signedRoute('EditFees', ['fee_id' => $fee->id])}}" class="btn btn-info btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

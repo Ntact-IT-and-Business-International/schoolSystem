@@ -21,40 +21,42 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('our_teams.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'our_teams.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Event Photos
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($events as $i=>$event)
-            <tr>
-                <th scope="row">{{$events->firstitem() + $i}}</th>
-                <td>{{$event->title}}</td>
-                <td class="text-center"><img src="{{ asset('storage/event_photos/'.$event->event_image)}}" style="width:80px; height:40px;"></td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('our_teams.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'our_teams.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
+                        @include('partials._sort-icon',['field'=>'title'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Event Photos
+                        @include('partials._sort-icon',['field'=>'title'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($events as $i=>$event)
+                <tr>
+                    <th scope="row">{{$events->firstitem() + $i}}</th>
+                    <td>{{$event->title}}</td>
+                    <td class="text-center"><img src="{{ asset('storage/event_photos/'.$event->event_image)}}" style="width:80px; height:40px;"></td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$events->firstItem()}} to {{$events->lastItem()}} out of {{$events->total()}} items

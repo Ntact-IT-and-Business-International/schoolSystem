@@ -21,32 +21,34 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'results.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Name of Student
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($students as $i=>$student)
-            <tr>
-                <th scope="row">{{$students->firstitem() + $i}}</th>
-                <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
-                <td>
-                    <a href="/reportcard/print-midterm-results/{{$student->student_id}}/{{$student->term}}" class="btn btn-success btn-sm">Generate Midterm Results</a>
-                    <a href="/reportcard/print-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-info btn-sm">Generate Report Card</a>
-                    <a href="/reportcard/comment-on-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-secondary btn-sm">Comment</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'results.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Name of Student
+                        @include('partials._sort-icon',['field'=>'level'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($students as $i=>$student)
+                <tr>
+                    <th scope="row">{{$students->firstitem() + $i}}</th>
+                    <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
+                    <td>
+                        <a href="/reportcard/print-midterm-results/{{$student->student_id}}/{{$student->term}}" class="btn btn-success btn-sm">Generate Midterm Results</a>
+                        <a href="/reportcard/print-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-info btn-sm">Generate Report Card</a>
+                        <a href="/reportcard/comment-on-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-secondary btn-sm">Comment</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$students->firstItem()}} to {{$students->lastItem()}} out of {{$students->total()}} items

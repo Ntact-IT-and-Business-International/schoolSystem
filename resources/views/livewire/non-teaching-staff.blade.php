@@ -22,65 +22,65 @@
         </div>
     </div>
     <div class="table-responsive">
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('non_teaching_staffs.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'non_teaching_staffs.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('staff_last_name')" style="cursor: pointer;"> Name
-                    @include('partials._sort-icon',['field'=>'staff_last_name'])
-                </th>
-                <th scope="col" wire:click="sortBy('gender')" style="cursor: pointer;"> Sex
-                    @include('partials._sort-icon',['field'=>'gender'])
-                </th>
-                <th scope="col" wire:click="sortBy('phone_number')" style="cursor: pointer;"> Contact
-                    @include('partials._sort-icon',['field'=>'phone_number'])
-                </th>
-                <th scope="col" wire:click="sortBy('qualification')" style="cursor: pointer;"> Education
-                    @include('partials._sort-icon',['field'=>'qualification'])
-                </th>
-                <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
-                    @include('partials._sort-icon',['field'=>'title'])
-                </th>
-                <th scope="col" wire:click="sortBy('documents')" style="cursor: pointer;"> Documents
-                    @include('partials._sort-icon',['field'=>'documents'])
-                </th>
-                <th scope="col" wire:click="sortBy('salary')" style="cursor: pointer;"> Salary
-                    @include('partials._sort-icon',['field'=>'salary'])
-                </th>
-                <th scope="col" wire:click="sortBy('photo')" style="cursor: pointer;"> Photo
-                    @include('partials._sort-icon',['field'=>'photo'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($non_teaching_staffs as $i=>$staff)
-            <tr>
-                <th scope="row">{{$non_teaching_staffs->firstitem() + $i}}</th>
-                <td>{{$staff->staff_last_name}} {{$staff->staff_first_name}} {{$staff->staff_other_names}}</td>
-                <td>{{$staff->gender}}</td>
-                <td>{{$staff->phone_number}}</td>
-                <td>{{$staff->qualification}}</td>
-                <td>{{$staff->title}}</td>
-                <td style="color:blue;"><a href="{{ asset('storage/Staff_document/'.$staff->documents)}}" style="width:60px; height:40px;" target="_blank">View Documents</a></td>
-                <td>{{ number_format($staff->salary)}}</td>
-                <td><img src="{{ asset('storage/Staff_photos/'.$staff->photo)}}" style="width:60px; height:40px;"></td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                    <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
-                    <div class="dropdown-menu">
-                        <a href="{{URL::signedRoute('MoreStaffInfo', ['staff_id' => $staff->id])}}" class="btn btn-success btn-sm dropdown-item btn-square mb-1">More Info</a>
-                        <a href="{{URL::signedRoute('EditStaff', ['staff_id' => $staff->id])}}" class="btn btn-warning btn-sm dropdown-item btn-square mb-1">Edit</a>
-                        <button wire:click="deleteStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('non_teaching_staffs.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'non_teaching_staffs.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('staff_last_name')" style="cursor: pointer;"> Name
+                        @include('partials._sort-icon',['field'=>'staff_last_name'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('gender')" style="cursor: pointer;"> Sex
+                        @include('partials._sort-icon',['field'=>'gender'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('phone_number')" style="cursor: pointer;"> Contact
+                        @include('partials._sort-icon',['field'=>'phone_number'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('qualification')" style="cursor: pointer;"> Education
+                        @include('partials._sort-icon',['field'=>'qualification'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('title')" style="cursor: pointer;"> Title
+                        @include('partials._sort-icon',['field'=>'title'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('documents')" style="cursor: pointer;"> Documents
+                        @include('partials._sort-icon',['field'=>'documents'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('salary')" style="cursor: pointer;"> Salary
+                        @include('partials._sort-icon',['field'=>'salary'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('photo')" style="cursor: pointer;"> Photo
+                        @include('partials._sort-icon',['field'=>'photo'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($non_teaching_staffs as $i=>$staff)
+                <tr>
+                    <th scope="row">{{$non_teaching_staffs->firstitem() + $i}}</th>
+                    <td>{{$staff->staff_last_name}} {{$staff->staff_first_name}} {{$staff->staff_other_names}}</td>
+                    <td>{{$staff->gender}}</td>
+                    <td>{{$staff->phone_number}}</td>
+                    <td>{{$staff->qualification}}</td>
+                    <td>{{$staff->title}}</td>
+                    <td style="color:blue;"><a href="{{ asset('storage/Staff_document/'.$staff->documents)}}" style="width:60px; height:40px;" target="_blank">View Documents</a></td>
+                    <td>{{ number_format($staff->salary)}}</td>
+                    <td><img src="{{ asset('storage/Staff_photos/'.$staff->photo)}}" style="width:60px; height:40px;"></td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                        <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" data-trigger="hover">Select</button>
+                        <div class="dropdown-menu">
+                            <a href="{{URL::signedRoute('MoreStaffInfo', ['staff_id' => $staff->id])}}" class="btn btn-success btn-sm dropdown-item btn-square mb-1">More Info</a>
+                            <a href="{{URL::signedRoute('EditStaff', ['staff_id' => $staff->id])}}" class="btn btn-warning btn-sm dropdown-item btn-square mb-1">Edit</a>
+                            <button wire:click="deleteStaff({{ $staff->id }})" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</button>
+                        </div>
+                    </td>
                     </div>
-                </td>
-                </div>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
     </div>
     <div class="row">
         <div class="col-sm-6 mb-2">

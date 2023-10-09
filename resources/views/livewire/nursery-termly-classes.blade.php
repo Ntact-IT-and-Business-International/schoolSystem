@@ -21,35 +21,37 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'results.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($nursery_termly_classes as $i=>$clas)
-            <tr>
-                <th scope="row">{{$nursery_termly_classes->firstitem() + $i}}</th>
-                <td>{{$clas->level}}</td>
-                @php
-                    $class_id =\Modules\ReportCard\Entities\Result::where('class_id',$clas->level)->get();
-                @endphp
-                <td>
-                    <a href="/reportcard/view-nursery-students/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-info btn-sm">View Students</a>
-                    <a href="/reportcard/nursery-midterm-marksheet/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-secondary btn-sm">Midterm Marksheet</a>
-                    <a href="/reportcard/nursery-exam-marksheet/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-success btn-sm">Exams Marksheet</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'results.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Class
+                        @include('partials._sort-icon',['field'=>'level'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($nursery_termly_classes as $i=>$clas)
+                <tr>
+                    <th scope="row">{{$nursery_termly_classes->firstitem() + $i}}</th>
+                    <td>{{$clas->level}}</td>
+                    @php
+                        $class_id =\Modules\ReportCard\Entities\Result::where('class_id',$clas->level)->get();
+                    @endphp
+                    <td>
+                        <a href="/reportcard/view-nursery-students/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-info btn-sm">View Students</a>
+                        <a href="/reportcard/nursery-midterm-marksheet/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-secondary btn-sm">Midterm Marksheet</a>
+                        <a href="/reportcard/nursery-exam-marksheet/{{$clas->class_id}}/{{$clas->term}}" class="btn btn-success btn-sm">Exams Marksheet</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$nursery_termly_classes->firstItem()}} to {{$nursery_termly_classes->lastItem()}} out of {{$nursery_termly_classes->total()}} items

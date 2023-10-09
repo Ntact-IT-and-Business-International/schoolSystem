@@ -21,40 +21,42 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('our_faqs.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'our_faqs.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('heading')" style="cursor: pointer;"> Heading
-                    @include('partials._sort-icon',['field'=>'heading'])
-                </th>
-                <th scope="col" wire:click="sortBy('question')" style="cursor: pointer;"> question
-                    @include('partials._sort-icon',['field'=>'question'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($faqs as $i=>$faq)
-            <tr>
-                <th scope="row">{{$faqs->firstitem() + $i}}</th>
-                <td>{{$faq->heading}}</td>
-                <td>{{$faq->question}}</td>
-                <td>
-                    <div class="btn-group" id="hover-dropdown-demo">
-                        <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
-                        <div class="dropdown-menu">
-                            <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
-                            <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('our_faqs.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'our_faqs.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('heading')" style="cursor: pointer;"> Heading
+                        @include('partials._sort-icon',['field'=>'heading'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('question')" style="cursor: pointer;"> question
+                        @include('partials._sort-icon',['field'=>'question'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($faqs as $i=>$faq)
+                <tr>
+                    <th scope="row">{{$faqs->firstitem() + $i}}</th>
+                    <td>{{$faq->heading}}</td>
+                    <td>{{$faq->question}}</td>
+                    <td>
+                        <div class="btn-group" id="hover-dropdown-demo">
+                            <button type="button" class="btn btn-info dropdown-toggle btn-sm" data-toggle="dropdown" data-trigger="hover">Select</button>
+                            <div class="dropdown-menu">
+                                <a href="#!" class="btn btn-secondary btn-sm dropdown-item mb-1">Edit</a>
+                                <a href="#!" class="btn btn-danger btn-sm dropdown-item mb-1">Delete</a>
+                            </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$faqs->firstItem()}} to {{$faqs->lastItem()}} out of {{$faqs->total()}} items

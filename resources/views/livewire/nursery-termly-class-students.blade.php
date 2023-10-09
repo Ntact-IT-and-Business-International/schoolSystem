@@ -21,31 +21,33 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'results.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Name of Student
-                    @include('partials._sort-icon',['field'=>'level'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($nursery_students as $i=>$student)
-            <tr>
-                <th scope="row">{{$nursery_students->firstitem() + $i}}</th>
-                <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
-                <td>
-                    <a href="/reportcard/print-nursery-midterm-results/{{$student->student_id}}/{{$student->term}}" class="btn btn-success btn-sm" target="_blank">Generate Nursery Midterm Results</a>
-                    <a href="/reportcard/print-nursery-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-info btn-sm" target="_blank">Generate Nursery Report Card</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('results.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'results.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('level')" style="cursor: pointer;"> Name of Student
+                        @include('partials._sort-icon',['field'=>'level'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($nursery_students as $i=>$student)
+                <tr>
+                    <th scope="row">{{$nursery_students->firstitem() + $i}}</th>
+                    <td>{{$student->last_name}} {{$student->first_name}} {{$student->other_names}}</td>
+                    <td>
+                        <a href="/reportcard/print-nursery-midterm-results/{{$student->student_id}}/{{$student->term}}" class="btn btn-success btn-sm" target="_blank">Generate Nursery Midterm Results</a>
+                        <a href="/reportcard/print-nursery-report-card/{{$student->student_id}}/{{$student->term}}" class="btn btn-info btn-sm" target="_blank">Generate Nursery Report Card</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$nursery_students->firstItem()}} to {{$nursery_students->lastItem()}} out of {{$nursery_students->total()}} items

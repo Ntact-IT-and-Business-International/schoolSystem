@@ -21,30 +21,32 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover table-bordered">
-        <thead>
-            <tr>
-                <th scope="col" wire:click="sortBy('user_types.id')" style="cursor: pointer;">#
-                    @include('partials._sort-icon',['field'=>'user_types.id'])
-                </th>
-                <th scope="col" wire:click="sortBy('category')" style="cursor: pointer;"> Category
-                    @include('partials._sort-icon',['field'=>'category'])
-                </th>
-                <th>Option</th>
-            </tr>
-        </thead>
-        <tbody>
-        @foreach($all_user_types as $i=>$types)
-            <tr>
-                <th scope="row">{{$all_user_types->firstitem() + $i}}</th>
-                <td>{{$types->category}}</td>
-                <td>
-                    <a href="/permissions/view-permissions/{{$types->id}}" class="btn btn-info btn-sm">View Permission</a>
-                </td>
-            </tr>
-        @endforeach
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col" wire:click="sortBy('user_types.id')" style="cursor: pointer;">#
+                        @include('partials._sort-icon',['field'=>'user_types.id'])
+                    </th>
+                    <th scope="col" wire:click="sortBy('category')" style="cursor: pointer;"> Category
+                        @include('partials._sort-icon',['field'=>'category'])
+                    </th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach($all_user_types as $i=>$types)
+                <tr>
+                    <th scope="row">{{$all_user_types->firstitem() + $i}}</th>
+                    <td>{{$types->category}}</td>
+                    <td>
+                        <a href="/permissions/view-permissions/{{$types->id}}" class="btn btn-info btn-sm">View Permission</a>
+                    </td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row">
         <div class="col-sm-6 mb-2">
             Showing {{$all_user_types->firstItem()}} to {{$all_user_types->lastItem()}} out of {{$all_user_types->total()}} items
