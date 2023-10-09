@@ -40,5 +40,8 @@ Route::group(['prefix' => 'reportcard', 'middleware' => ['auth']], function () {
     Route::get('/edit-ple-results/{ple_result_id}','ReportCardController@editPleResults')->name('EditPleResults');
     Route::get('/comment-on-report-card/{student_id}/{term}','ReportCardController@commentOnReportCard')->name('CommentOnReportCard');
     Route::get('/save', 'ReportCardController@saveComment');
-    Route::get('/create-headteachers-comment/{student_id}', 'ReportCardController@commentOnPupilsResults');
+    Route::get('/create-headteachers-comment/{student_id}', 'ReportCardController@commentOnPupilsResults'); 
+    Route::get('/comment-on-midterm/{student_id}/{term}', 'MidtermController@commentOnMidtermResults');
+    Route::get('/save-teachers-comment', 'MidtermController@createMidtermComment');
+    Route::get('/save-headteachers-comment/{student_id}', 'MidtermController@commentMidtermResults'); 
 });

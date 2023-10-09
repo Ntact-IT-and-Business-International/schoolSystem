@@ -7,6 +7,7 @@ use Modules\ReportCard\Entities\Result;
 use App\Traits\WithSorting;
 use Livewire\WithPagination;
 use Carbon\Carbon;
+use Modules\ReportCard\Entities\MidtermComment;
 
 class StudentMidtermResults extends Component
 {
@@ -25,7 +26,11 @@ class StudentMidtermResults extends Component
     {
         return view('livewire.student-midterm-results',[
             'student_report_cards'=>Result::getTermlyClassStudent($this->student_id,$this->term,$this->search, $this->sortBy, $this->sortDirection, $this->perPage),
-            'student_report_details'=>$this->getStudentDetails($this->student_id,$this->term)
+            'student_report_details'=>$this->getStudentDetails($this->student_id,$this->term),
+            'students_comments' =>$this->getComments($this->student_id,$this->term),
+            'number_of_students' =>$this->countPupils($this->term),
+            'classteacher_signature' =>$this->getsClassteachesrName($this->student_id,$this->term),
+            'headteacher_signature' =>$this->getsHeadteachesrName($this->student_id,$this->term)
         ]);
     }
     private function getStudentDetails($student_id,$term){
@@ -45,4 +50,29 @@ class StudentMidtermResults extends Component
         $this->student_id =$student_id;
         $this->term =$term;
     }
+     /**
+     * This function gets all students comments
+     */
+    private function getComments($student_id,$term){
+        return MidtermComment::join('results', 'results.id', 'midterm_comments.student_id')->where('midterm_comments.student_id',$student_id)
+        ->where('midterm_comments.term',$term)->get(['midterm_comments.*']);
+      }
+      /**
+       * This function counts the number of pupils in particular class,year
+       */
+      public function countPupils($term){
+          return Result::whereTerm($term)->whereYear('created_at', '=', Carbon::today())->distinct('student_id')->count();
+      } 
+      /**
+       * This function get class teachers name 
+       */
+      public function getsClassteachesrName($student_id,$term){
+          return MidtermComment::join('users','users.id','midterm_comments.teacher_id')->where('midterm_comments.term',$term)->value('users.name');
+      }
+      /**
+       * This function get head teachers name 
+       */
+      public function getsHeadteachesrName($student_id,$term){
+          return MidtermComment::join('users','users.id','midterm_comments.headteacher_id')->where('midterm_comments.term',$term)->value('users.name');
+      }
 }
