@@ -47,8 +47,7 @@
                 <td>{{$duration->start_date}}</td>
                 <td>{{$duration->end_date}}</td>
                 <td>
-                    <a href="{{URL::signedRoute('editClass', ['class_id' => $duration->id])}}" class="btn btn-info btn-sm mb-1">Edit</a>
-                    <button wire:click="deleteClass({{ $duration->id }})" class="btn btn-danger btn-sm mb-1">Delete</button>
+                    <a href="{{URL::signedRoute('editTermDuration', ['term_duration_id' => $duration->id])}}" class="btn btn-info btn-sm mb-1">Edit</a>
                 </td>
             </tr>
         @endforeach

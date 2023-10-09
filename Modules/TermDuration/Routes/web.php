@@ -11,7 +11,8 @@
 |
 */
 
-Route::prefix('termduration')->group(function() {
+Route::group(['prefix' => 'termduration', 'middleware' => ['auth']], function () { 
     Route::get('/', 'TermDurationController@index');
     Route::get('/term-duration','TermDurationController@getDuration')->name('Terms Duration');
+    Route::get('/edit-term-duration/{term_duration_id}','TermDurationController@editTermDuration')->name('editTermDuration');
 });

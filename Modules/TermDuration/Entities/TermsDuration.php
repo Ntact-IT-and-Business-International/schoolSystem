@@ -55,7 +55,7 @@ class TermsDuration extends Model
     /**
      * This function updates the edited Term Duration
      */
-    public static function updateTermDuration($term_duration_id,$term)
+    public static function updateTermDuration($term_duration_id,$term,$start_date,$end_date)
     {
         TermsDuration::whereId($term_duration_id)->update([
             'term'  =>$term,

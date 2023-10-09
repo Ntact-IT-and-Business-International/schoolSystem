@@ -25,5 +25,10 @@ class TermDurationController extends Controller
     {
         return view('termduration::terms_duration');
     }
-
+    /**
+     * This function gets form for editing term duration
+     */
+    public function editTermDuration($term_duration_id){
+        return view('termduration::edit_term_duration',compact('term_duration_id'));
+    }
 }
